@@ -1,5 +1,5 @@
 {
-  "name": "@quran-monorepo/quran-data-api",
+  "name": "quran-data-api",
   "version": "1.0.1",
   "private": true,
   "scripts": {
