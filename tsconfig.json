@@ -5,9 +5,11 @@
     "rootDir": "./"
   },
   "include": [
-    "api/**/*.ts"
+    "api/v1/**/*.ts",
+    "api/lib/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "api/test/**/*"
   ]
 }
