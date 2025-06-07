@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Data API</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.6; }
+        .endpoint { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .method { color: #0066cc; font-weight: bold; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🕌 Quran Data API</h1>
+    <p>A RESTful API for accessing Quran verses, translations, and metadata.</p>
+    
+    <h2>📚 Available Endpoints</h2>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/v1/get-verses</strong>
+        <p>Retrieve verses from a specific Surah</p>
+        <p><strong>Parameters:</strong> <code>surah</code> (required), <code>start</code>, <code>end</code></p>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/v1/get-metadata</strong>
+        <p>Get Quran metadata and Surah information</p>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/v1/get-surah-description</strong>
+        <p>Get description and details for a specific Surah</p>
+        <p><strong>Parameters:</strong> <code>surah</code> (required)</p>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/v1/get-translated-verse</strong>
+        <p>Get translated verse content</p>
+        <p><strong>Parameters:</strong> <code>surah</code>, <code>verse</code></p>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">GET/POST/PUT/DELETE</div>
+        <strong>/api/v1/user-bookmarks</strong>
+        <p>Manage user bookmarks (requires authentication)</p>
+    </div>
+    
+    <h2>🔗 URL Aliases</h2>
+    <p>All endpoints are also available under <code>/v1/*</code> for shorter URLs.</p>
+    
+    <h2>🛠️ CORS</h2>
+    <p>CORS is enabled for all origins with support for credentials.</p>
+    
+    <footer style="margin-top: 50px; text-align: center; color: #666;">
+        <p>Powered by Vercel • Built with TypeScript & Prisma</p>
+    </footer>
+</body>
+</html>
