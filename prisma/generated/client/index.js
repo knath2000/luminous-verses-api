@@ -171,7 +171,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/kalyannath/quran-data-api/prisma/generated/client",
+      "value": "/Users/kalyannath/projects/quran-data-api/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -195,7 +195,7 @@ const config = {
     "previewFeatures": [
       "driverAdapters"
     ],
-    "sourceFilePath": "/Users/kalyannath/quran-data-api/prisma/schema.prisma",
+    "sourceFilePath": "/Users/kalyannath/projects/quran-data-api/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
