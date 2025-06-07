@@ -1,12 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const prisma_1 = require("../lib/prisma"); // Import the shared Prisma client
+const prisma_1 = require("../lib/prisma");
 exports.default = async (request, response) => {
-    // Añadir encabezados CORS para permitir solicitudes desde cualquier origen
-    response.setHeader('Access-Control-Allow-Origin', '*'); // Permitir cualquier origen
+    response.setHeader('Access-Control-Allow-Origin', '*');
     response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
     response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    // Manejar solicitudes OPTIONS (preflight)
     if (request.method === 'OPTIONS') {
         return response.status(200).end();
     }
@@ -15,19 +13,28 @@ exports.default = async (request, response) => {
         if (!surahId) {
             return response.status(400).json({ error: 'surahId is required' });
         }
-        const surahDescription = await prisma_1.prisma.surahDescription.findUnique({
+        const surahInfo = await prisma_1.prisma.quranSurah.findUnique({
             where: {
-                surah_id: Number(surahId),
+                number: Number(surahId),
             },
             select: {
-                description: true,
+                arabicName: true,
+                transliteration: true,
+                englishName: true,
+                revelationType: true,
+                ayas: true,
+                chronologicalOrder: true,
             },
         });
-        if (surahDescription) {
-            response.status(200).json({ description: surahDescription.description });
+        if (surahInfo) {
+            const description = `${surahInfo.englishName} (${surahInfo.transliteration}) is a ${surahInfo.revelationType} Surah with ${surahInfo.ayas} verses. It is the ${surahInfo.chronologicalOrder}${getOrdinalSuffix(surahInfo.chronologicalOrder)} chapter revealed chronologically.`;
+            response.status(200).json({
+                description,
+                surahInfo
+            });
         }
         else {
-            response.status(404).json({ error: 'Description not found for this surahId' });
+            response.status(404).json({ error: 'Surah not found for this surahId' });
         }
     }
     catch (error) {
@@ -35,3 +42,14 @@ exports.default = async (request, response) => {
         response.status(500).json({ error: 'Internal Server Error' });
     }
 };
+function getOrdinalSuffix(num) {
+    const j = num % 10;
+    const k = num % 100;
+    if (j === 1 && k !== 11)
+        return "st";
+    if (j === 2 && k !== 12)
+        return "nd";
+    if (j === 3 && k !== 13)
+        return "rd";
+    return "th";
+}
