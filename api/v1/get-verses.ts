@@ -37,9 +37,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })
 
     const response = verses.map((verse: QuranText) => ({ // Use the directly imported type
-      id: verse.id,
-      surahId: verse.sura,
-      numberInSurah: verse.aya,
+      id: Number(verse.id),
+      surahId: Number(verse.sura),
+      numberInSurah: Number(verse.aya),
       text: verse.text
     }))
 

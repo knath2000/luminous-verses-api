@@ -34,7 +34,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     return res.status(200).json({
-      id: arabicVerse?.id || translation?.index || 0,
+      id: Number(arabicVerse?.id || translation?.index || 0),
       surahId: surahNum,
       numberInSurah: ayahNum,
       text: arabicVerse?.text || '',
