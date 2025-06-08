@@ -34,6 +34,11 @@ export type QuranSurah = $Result.DefaultSelection<Prisma.$QuranSurahPayload>
  */
 export type QuranText = $Result.DefaultSelection<Prisma.$QuranTextPayload>
 /**
+ * Model SurahDescription
+ * 
+ */
+export type SurahDescription = $Result.DefaultSelection<Prisma.$SurahDescriptionPayload>
+/**
  * Model UserBookmark
  * 
  */
@@ -201,6 +206,16 @@ export class PrismaClient<
     * ```
     */
   get quranText(): Prisma.QuranTextDelegate<ExtArgs>;
+
+  /**
+   * `prisma.surahDescription`: Exposes CRUD operations for the **SurahDescription** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SurahDescriptions
+    * const surahDescriptions = await prisma.surahDescription.findMany()
+    * ```
+    */
+  get surahDescription(): Prisma.SurahDescriptionDelegate<ExtArgs>;
 
   /**
    * `prisma.userBookmark`: Exposes CRUD operations for the **UserBookmark** model.
@@ -656,6 +671,7 @@ export namespace Prisma {
     QuranSajda: 'QuranSajda',
     QuranSurah: 'QuranSurah',
     QuranText: 'QuranText',
+    SurahDescription: 'SurahDescription',
     UserBookmark: 'UserBookmark'
   };
 
@@ -672,7 +688,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "enYusufali" | "quranSajda" | "quranSurah" | "quranText" | "userBookmark"
+      modelProps: "enYusufali" | "quranSajda" | "quranSurah" | "quranText" | "surahDescription" | "userBookmark"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -956,6 +972,76 @@ export namespace Prisma {
           }
         }
       }
+      SurahDescription: {
+        payload: Prisma.$SurahDescriptionPayload<ExtArgs>
+        fields: Prisma.SurahDescriptionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SurahDescriptionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SurahDescriptionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>
+          }
+          findFirst: {
+            args: Prisma.SurahDescriptionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SurahDescriptionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>
+          }
+          findMany: {
+            args: Prisma.SurahDescriptionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>[]
+          }
+          create: {
+            args: Prisma.SurahDescriptionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>
+          }
+          createMany: {
+            args: Prisma.SurahDescriptionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SurahDescriptionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>[]
+          }
+          delete: {
+            args: Prisma.SurahDescriptionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>
+          }
+          update: {
+            args: Prisma.SurahDescriptionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>
+          }
+          deleteMany: {
+            args: Prisma.SurahDescriptionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SurahDescriptionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SurahDescriptionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>
+          }
+          aggregate: {
+            args: Prisma.SurahDescriptionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSurahDescription>
+          }
+          groupBy: {
+            args: Prisma.SurahDescriptionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SurahDescriptionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SurahDescriptionCountArgs<ExtArgs>
+            result: $Utils.Optional<SurahDescriptionCountAggregateOutputType> | number
+          }
+        }
+      }
       UserBookmark: {
         payload: Prisma.$UserBookmarkPayload<ExtArgs>
         fields: Prisma.UserBookmarkFieldRefs
@@ -1210,22 +1296,22 @@ export namespace Prisma {
   }
 
   export type EnYusufaliSumAggregateOutputType = {
-    index: number | null
-    sura: number | null
-    aya: number | null
+    index: bigint | null
+    sura: bigint | null
+    aya: bigint | null
   }
 
   export type EnYusufaliMinAggregateOutputType = {
-    index: number | null
-    sura: number | null
-    aya: number | null
+    index: bigint | null
+    sura: bigint | null
+    aya: bigint | null
     text: string | null
   }
 
   export type EnYusufaliMaxAggregateOutputType = {
-    index: number | null
-    sura: number | null
-    aya: number | null
+    index: bigint | null
+    sura: bigint | null
+    aya: bigint | null
     text: string | null
   }
 
@@ -1359,10 +1445,10 @@ export namespace Prisma {
   }
 
   export type EnYusufaliGroupByOutputType = {
-    index: number
-    sura: number
-    aya: number
-    text: string
+    index: bigint
+    sura: bigint | null
+    aya: bigint | null
+    text: string | null
     _count: EnYusufaliCountAggregateOutputType | null
     _avg: EnYusufaliAvgAggregateOutputType | null
     _sum: EnYusufaliSumAggregateOutputType | null
@@ -1410,10 +1496,10 @@ export namespace Prisma {
     name: "EnYusufali"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: number
-      sura: number
-      aya: number
-      text: string
+      index: bigint
+      sura: bigint | null
+      aya: bigint | null
+      text: string | null
     }, ExtArgs["result"]["enYusufali"]>
     composites: {}
   }
@@ -1807,9 +1893,9 @@ export namespace Prisma {
    * Fields of the EnYusufali model
    */ 
   interface EnYusufaliFieldRefs {
-    readonly index: FieldRef<"EnYusufali", 'Int'>
-    readonly sura: FieldRef<"EnYusufali", 'Int'>
-    readonly aya: FieldRef<"EnYusufali", 'Int'>
+    readonly index: FieldRef<"EnYusufali", 'BigInt'>
+    readonly sura: FieldRef<"EnYusufali", 'BigInt'>
+    readonly aya: FieldRef<"EnYusufali", 'BigInt'>
     readonly text: FieldRef<"EnYusufali", 'String'>
   }
     
@@ -1981,7 +2067,7 @@ export namespace Prisma {
     /**
      * The data needed to create a EnYusufali.
      */
-    data: XOR<EnYusufaliCreateInput, EnYusufaliUncheckedCreateInput>
+    data?: XOR<EnYusufaliCreateInput, EnYusufaliUncheckedCreateInput>
   }
 
   /**
@@ -2118,22 +2204,22 @@ export namespace Prisma {
   }
 
   export type QuranSajdaSumAggregateOutputType = {
-    sajdaId: number | null
-    surahNumber: number | null
-    ayahNumber: number | null
+    sajdaId: bigint | null
+    surahNumber: bigint | null
+    ayahNumber: bigint | null
   }
 
   export type QuranSajdaMinAggregateOutputType = {
-    sajdaId: number | null
-    surahNumber: number | null
-    ayahNumber: number | null
+    sajdaId: bigint | null
+    surahNumber: bigint | null
+    ayahNumber: bigint | null
     type: string | null
   }
 
   export type QuranSajdaMaxAggregateOutputType = {
-    sajdaId: number | null
-    surahNumber: number | null
-    ayahNumber: number | null
+    sajdaId: bigint | null
+    surahNumber: bigint | null
+    ayahNumber: bigint | null
     type: string | null
   }
 
@@ -2267,9 +2353,9 @@ export namespace Prisma {
   }
 
   export type QuranSajdaGroupByOutputType = {
-    sajdaId: number
-    surahNumber: number
-    ayahNumber: number
+    sajdaId: bigint
+    surahNumber: bigint | null
+    ayahNumber: bigint | null
     type: string | null
     _count: QuranSajdaCountAggregateOutputType | null
     _avg: QuranSajdaAvgAggregateOutputType | null
@@ -2318,9 +2404,9 @@ export namespace Prisma {
     name: "QuranSajda"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      sajdaId: number
-      surahNumber: number
-      ayahNumber: number
+      sajdaId: bigint
+      surahNumber: bigint | null
+      ayahNumber: bigint | null
       type: string | null
     }, ExtArgs["result"]["quranSajda"]>
     composites: {}
@@ -2715,9 +2801,9 @@ export namespace Prisma {
    * Fields of the QuranSajda model
    */ 
   interface QuranSajdaFieldRefs {
-    readonly sajdaId: FieldRef<"QuranSajda", 'Int'>
-    readonly surahNumber: FieldRef<"QuranSajda", 'Int'>
-    readonly ayahNumber: FieldRef<"QuranSajda", 'Int'>
+    readonly sajdaId: FieldRef<"QuranSajda", 'BigInt'>
+    readonly surahNumber: FieldRef<"QuranSajda", 'BigInt'>
+    readonly ayahNumber: FieldRef<"QuranSajda", 'BigInt'>
     readonly type: FieldRef<"QuranSajda", 'String'>
   }
     
@@ -2889,7 +2975,7 @@ export namespace Prisma {
     /**
      * The data needed to create a QuranSajda.
      */
-    data: XOR<QuranSajdaCreateInput, QuranSajdaUncheckedCreateInput>
+    data?: XOR<QuranSajdaCreateInput, QuranSajdaUncheckedCreateInput>
   }
 
   /**
@@ -3028,35 +3114,35 @@ export namespace Prisma {
   }
 
   export type QuranSurahSumAggregateOutputType = {
-    number: number | null
-    ayas: number | null
-    chronologicalOrder: number | null
-    rukus: number | null
-    startIndex: number | null
+    number: bigint | null
+    ayas: bigint | null
+    chronologicalOrder: bigint | null
+    rukus: bigint | null
+    startIndex: bigint | null
   }
 
   export type QuranSurahMinAggregateOutputType = {
-    number: number | null
+    number: bigint | null
     arabicName: string | null
     transliteration: string | null
     englishName: string | null
-    ayas: number | null
+    ayas: bigint | null
     revelationType: string | null
-    chronologicalOrder: number | null
-    rukus: number | null
-    startIndex: number | null
+    chronologicalOrder: bigint | null
+    rukus: bigint | null
+    startIndex: bigint | null
   }
 
   export type QuranSurahMaxAggregateOutputType = {
-    number: number | null
+    number: bigint | null
     arabicName: string | null
     transliteration: string | null
     englishName: string | null
-    ayas: number | null
+    ayas: bigint | null
     revelationType: string | null
-    chronologicalOrder: number | null
-    rukus: number | null
-    startIndex: number | null
+    chronologicalOrder: bigint | null
+    rukus: bigint | null
+    startIndex: bigint | null
   }
 
   export type QuranSurahCountAggregateOutputType = {
@@ -3213,15 +3299,15 @@ export namespace Prisma {
   }
 
   export type QuranSurahGroupByOutputType = {
-    number: number
-    arabicName: string
-    transliteration: string
-    englishName: string
-    ayas: number
-    revelationType: string
-    chronologicalOrder: number
-    rukus: number
-    startIndex: number | null
+    number: bigint
+    arabicName: string | null
+    transliteration: string | null
+    englishName: string | null
+    ayas: bigint | null
+    revelationType: string | null
+    chronologicalOrder: bigint | null
+    rukus: bigint | null
+    startIndex: bigint | null
     _count: QuranSurahCountAggregateOutputType | null
     _avg: QuranSurahAvgAggregateOutputType | null
     _sum: QuranSurahSumAggregateOutputType | null
@@ -3284,15 +3370,15 @@ export namespace Prisma {
     name: "QuranSurah"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      number: number
-      arabicName: string
-      transliteration: string
-      englishName: string
-      ayas: number
-      revelationType: string
-      chronologicalOrder: number
-      rukus: number
-      startIndex: number | null
+      number: bigint
+      arabicName: string | null
+      transliteration: string | null
+      englishName: string | null
+      ayas: bigint | null
+      revelationType: string | null
+      chronologicalOrder: bigint | null
+      rukus: bigint | null
+      startIndex: bigint | null
     }, ExtArgs["result"]["quranSurah"]>
     composites: {}
   }
@@ -3686,15 +3772,15 @@ export namespace Prisma {
    * Fields of the QuranSurah model
    */ 
   interface QuranSurahFieldRefs {
-    readonly number: FieldRef<"QuranSurah", 'Int'>
+    readonly number: FieldRef<"QuranSurah", 'BigInt'>
     readonly arabicName: FieldRef<"QuranSurah", 'String'>
     readonly transliteration: FieldRef<"QuranSurah", 'String'>
     readonly englishName: FieldRef<"QuranSurah", 'String'>
-    readonly ayas: FieldRef<"QuranSurah", 'Int'>
+    readonly ayas: FieldRef<"QuranSurah", 'BigInt'>
     readonly revelationType: FieldRef<"QuranSurah", 'String'>
-    readonly chronologicalOrder: FieldRef<"QuranSurah", 'Int'>
-    readonly rukus: FieldRef<"QuranSurah", 'Int'>
-    readonly startIndex: FieldRef<"QuranSurah", 'Int'>
+    readonly chronologicalOrder: FieldRef<"QuranSurah", 'BigInt'>
+    readonly rukus: FieldRef<"QuranSurah", 'BigInt'>
+    readonly startIndex: FieldRef<"QuranSurah", 'BigInt'>
   }
     
 
@@ -3865,7 +3951,7 @@ export namespace Prisma {
     /**
      * The data needed to create a QuranSurah.
      */
-    data: XOR<QuranSurahCreateInput, QuranSurahUncheckedCreateInput>
+    data?: XOR<QuranSurahCreateInput, QuranSurahUncheckedCreateInput>
   }
 
   /**
@@ -4002,22 +4088,22 @@ export namespace Prisma {
   }
 
   export type QuranTextSumAggregateOutputType = {
-    id: number | null
-    sura: number | null
-    aya: number | null
+    id: bigint | null
+    sura: bigint | null
+    aya: bigint | null
   }
 
   export type QuranTextMinAggregateOutputType = {
-    id: number | null
-    sura: number | null
-    aya: number | null
+    id: bigint | null
+    sura: bigint | null
+    aya: bigint | null
     text: string | null
   }
 
   export type QuranTextMaxAggregateOutputType = {
-    id: number | null
-    sura: number | null
-    aya: number | null
+    id: bigint | null
+    sura: bigint | null
+    aya: bigint | null
     text: string | null
   }
 
@@ -4151,10 +4237,10 @@ export namespace Prisma {
   }
 
   export type QuranTextGroupByOutputType = {
-    id: number
-    sura: number
-    aya: number
-    text: string
+    id: bigint
+    sura: bigint | null
+    aya: bigint | null
+    text: string | null
     _count: QuranTextCountAggregateOutputType | null
     _avg: QuranTextAvgAggregateOutputType | null
     _sum: QuranTextSumAggregateOutputType | null
@@ -4202,10 +4288,10 @@ export namespace Prisma {
     name: "QuranText"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      sura: number
-      aya: number
-      text: string
+      id: bigint
+      sura: bigint | null
+      aya: bigint | null
+      text: string | null
     }, ExtArgs["result"]["quranText"]>
     composites: {}
   }
@@ -4599,9 +4685,9 @@ export namespace Prisma {
    * Fields of the QuranText model
    */ 
   interface QuranTextFieldRefs {
-    readonly id: FieldRef<"QuranText", 'Int'>
-    readonly sura: FieldRef<"QuranText", 'Int'>
-    readonly aya: FieldRef<"QuranText", 'Int'>
+    readonly id: FieldRef<"QuranText", 'BigInt'>
+    readonly sura: FieldRef<"QuranText", 'BigInt'>
+    readonly aya: FieldRef<"QuranText", 'BigInt'>
     readonly text: FieldRef<"QuranText", 'String'>
   }
     
@@ -4773,7 +4859,7 @@ export namespace Prisma {
     /**
      * The data needed to create a QuranText.
      */
-    data: XOR<QuranTextCreateInput, QuranTextUncheckedCreateInput>
+    data?: XOR<QuranTextCreateInput, QuranTextUncheckedCreateInput>
   }
 
   /**
@@ -4892,6 +4978,894 @@ export namespace Prisma {
 
 
   /**
+   * Model SurahDescription
+   */
+
+  export type AggregateSurahDescription = {
+    _count: SurahDescriptionCountAggregateOutputType | null
+    _avg: SurahDescriptionAvgAggregateOutputType | null
+    _sum: SurahDescriptionSumAggregateOutputType | null
+    _min: SurahDescriptionMinAggregateOutputType | null
+    _max: SurahDescriptionMaxAggregateOutputType | null
+  }
+
+  export type SurahDescriptionAvgAggregateOutputType = {
+    surahId: number | null
+  }
+
+  export type SurahDescriptionSumAggregateOutputType = {
+    surahId: bigint | null
+  }
+
+  export type SurahDescriptionMinAggregateOutputType = {
+    surahId: bigint | null
+    description: string | null
+    updatedAt: Date | null
+  }
+
+  export type SurahDescriptionMaxAggregateOutputType = {
+    surahId: bigint | null
+    description: string | null
+    updatedAt: Date | null
+  }
+
+  export type SurahDescriptionCountAggregateOutputType = {
+    surahId: number
+    description: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SurahDescriptionAvgAggregateInputType = {
+    surahId?: true
+  }
+
+  export type SurahDescriptionSumAggregateInputType = {
+    surahId?: true
+  }
+
+  export type SurahDescriptionMinAggregateInputType = {
+    surahId?: true
+    description?: true
+    updatedAt?: true
+  }
+
+  export type SurahDescriptionMaxAggregateInputType = {
+    surahId?: true
+    description?: true
+    updatedAt?: true
+  }
+
+  export type SurahDescriptionCountAggregateInputType = {
+    surahId?: true
+    description?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SurahDescriptionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SurahDescription to aggregate.
+     */
+    where?: SurahDescriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SurahDescriptions to fetch.
+     */
+    orderBy?: SurahDescriptionOrderByWithRelationInput | SurahDescriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SurahDescriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SurahDescriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SurahDescriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SurahDescriptions
+    **/
+    _count?: true | SurahDescriptionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SurahDescriptionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SurahDescriptionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SurahDescriptionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SurahDescriptionMaxAggregateInputType
+  }
+
+  export type GetSurahDescriptionAggregateType<T extends SurahDescriptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateSurahDescription]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSurahDescription[P]>
+      : GetScalarType<T[P], AggregateSurahDescription[P]>
+  }
+
+
+
+
+  export type SurahDescriptionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SurahDescriptionWhereInput
+    orderBy?: SurahDescriptionOrderByWithAggregationInput | SurahDescriptionOrderByWithAggregationInput[]
+    by: SurahDescriptionScalarFieldEnum[] | SurahDescriptionScalarFieldEnum
+    having?: SurahDescriptionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SurahDescriptionCountAggregateInputType | true
+    _avg?: SurahDescriptionAvgAggregateInputType
+    _sum?: SurahDescriptionSumAggregateInputType
+    _min?: SurahDescriptionMinAggregateInputType
+    _max?: SurahDescriptionMaxAggregateInputType
+  }
+
+  export type SurahDescriptionGroupByOutputType = {
+    surahId: bigint
+    description: string | null
+    updatedAt: Date | null
+    _count: SurahDescriptionCountAggregateOutputType | null
+    _avg: SurahDescriptionAvgAggregateOutputType | null
+    _sum: SurahDescriptionSumAggregateOutputType | null
+    _min: SurahDescriptionMinAggregateOutputType | null
+    _max: SurahDescriptionMaxAggregateOutputType | null
+  }
+
+  type GetSurahDescriptionGroupByPayload<T extends SurahDescriptionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SurahDescriptionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SurahDescriptionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SurahDescriptionGroupByOutputType[P]>
+            : GetScalarType<T[P], SurahDescriptionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SurahDescriptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    surahId?: boolean
+    description?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["surahDescription"]>
+
+  export type SurahDescriptionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    surahId?: boolean
+    description?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["surahDescription"]>
+
+  export type SurahDescriptionSelectScalar = {
+    surahId?: boolean
+    description?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $SurahDescriptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SurahDescription"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      surahId: bigint
+      description: string | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["surahDescription"]>
+    composites: {}
+  }
+
+  type SurahDescriptionGetPayload<S extends boolean | null | undefined | SurahDescriptionDefaultArgs> = $Result.GetResult<Prisma.$SurahDescriptionPayload, S>
+
+  type SurahDescriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SurahDescriptionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SurahDescriptionCountAggregateInputType | true
+    }
+
+  export interface SurahDescriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SurahDescription'], meta: { name: 'SurahDescription' } }
+    /**
+     * Find zero or one SurahDescription that matches the filter.
+     * @param {SurahDescriptionFindUniqueArgs} args - Arguments to find a SurahDescription
+     * @example
+     * // Get one SurahDescription
+     * const surahDescription = await prisma.surahDescription.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SurahDescriptionFindUniqueArgs>(args: SelectSubset<T, SurahDescriptionFindUniqueArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one SurahDescription that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SurahDescriptionFindUniqueOrThrowArgs} args - Arguments to find a SurahDescription
+     * @example
+     * // Get one SurahDescription
+     * const surahDescription = await prisma.surahDescription.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SurahDescriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, SurahDescriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first SurahDescription that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionFindFirstArgs} args - Arguments to find a SurahDescription
+     * @example
+     * // Get one SurahDescription
+     * const surahDescription = await prisma.surahDescription.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SurahDescriptionFindFirstArgs>(args?: SelectSubset<T, SurahDescriptionFindFirstArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first SurahDescription that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionFindFirstOrThrowArgs} args - Arguments to find a SurahDescription
+     * @example
+     * // Get one SurahDescription
+     * const surahDescription = await prisma.surahDescription.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SurahDescriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, SurahDescriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more SurahDescriptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SurahDescriptions
+     * const surahDescriptions = await prisma.surahDescription.findMany()
+     * 
+     * // Get first 10 SurahDescriptions
+     * const surahDescriptions = await prisma.surahDescription.findMany({ take: 10 })
+     * 
+     * // Only select the `surahId`
+     * const surahDescriptionWithSurahIdOnly = await prisma.surahDescription.findMany({ select: { surahId: true } })
+     * 
+     */
+    findMany<T extends SurahDescriptionFindManyArgs>(args?: SelectSubset<T, SurahDescriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a SurahDescription.
+     * @param {SurahDescriptionCreateArgs} args - Arguments to create a SurahDescription.
+     * @example
+     * // Create one SurahDescription
+     * const SurahDescription = await prisma.surahDescription.create({
+     *   data: {
+     *     // ... data to create a SurahDescription
+     *   }
+     * })
+     * 
+     */
+    create<T extends SurahDescriptionCreateArgs>(args: SelectSubset<T, SurahDescriptionCreateArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many SurahDescriptions.
+     * @param {SurahDescriptionCreateManyArgs} args - Arguments to create many SurahDescriptions.
+     * @example
+     * // Create many SurahDescriptions
+     * const surahDescription = await prisma.surahDescription.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SurahDescriptionCreateManyArgs>(args?: SelectSubset<T, SurahDescriptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SurahDescriptions and returns the data saved in the database.
+     * @param {SurahDescriptionCreateManyAndReturnArgs} args - Arguments to create many SurahDescriptions.
+     * @example
+     * // Create many SurahDescriptions
+     * const surahDescription = await prisma.surahDescription.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SurahDescriptions and only return the `surahId`
+     * const surahDescriptionWithSurahIdOnly = await prisma.surahDescription.createManyAndReturn({ 
+     *   select: { surahId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SurahDescriptionCreateManyAndReturnArgs>(args?: SelectSubset<T, SurahDescriptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a SurahDescription.
+     * @param {SurahDescriptionDeleteArgs} args - Arguments to delete one SurahDescription.
+     * @example
+     * // Delete one SurahDescription
+     * const SurahDescription = await prisma.surahDescription.delete({
+     *   where: {
+     *     // ... filter to delete one SurahDescription
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SurahDescriptionDeleteArgs>(args: SelectSubset<T, SurahDescriptionDeleteArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one SurahDescription.
+     * @param {SurahDescriptionUpdateArgs} args - Arguments to update one SurahDescription.
+     * @example
+     * // Update one SurahDescription
+     * const surahDescription = await prisma.surahDescription.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SurahDescriptionUpdateArgs>(args: SelectSubset<T, SurahDescriptionUpdateArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more SurahDescriptions.
+     * @param {SurahDescriptionDeleteManyArgs} args - Arguments to filter SurahDescriptions to delete.
+     * @example
+     * // Delete a few SurahDescriptions
+     * const { count } = await prisma.surahDescription.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SurahDescriptionDeleteManyArgs>(args?: SelectSubset<T, SurahDescriptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SurahDescriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SurahDescriptions
+     * const surahDescription = await prisma.surahDescription.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SurahDescriptionUpdateManyArgs>(args: SelectSubset<T, SurahDescriptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SurahDescription.
+     * @param {SurahDescriptionUpsertArgs} args - Arguments to update or create a SurahDescription.
+     * @example
+     * // Update or create a SurahDescription
+     * const surahDescription = await prisma.surahDescription.upsert({
+     *   create: {
+     *     // ... data to create a SurahDescription
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SurahDescription we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SurahDescriptionUpsertArgs>(args: SelectSubset<T, SurahDescriptionUpsertArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of SurahDescriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionCountArgs} args - Arguments to filter SurahDescriptions to count.
+     * @example
+     * // Count the number of SurahDescriptions
+     * const count = await prisma.surahDescription.count({
+     *   where: {
+     *     // ... the filter for the SurahDescriptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends SurahDescriptionCountArgs>(
+      args?: Subset<T, SurahDescriptionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SurahDescriptionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SurahDescription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SurahDescriptionAggregateArgs>(args: Subset<T, SurahDescriptionAggregateArgs>): Prisma.PrismaPromise<GetSurahDescriptionAggregateType<T>>
+
+    /**
+     * Group by SurahDescription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SurahDescriptionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SurahDescriptionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SurahDescriptionGroupByArgs['orderBy'] }
+        : { orderBy?: SurahDescriptionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SurahDescriptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSurahDescriptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SurahDescription model
+   */
+  readonly fields: SurahDescriptionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SurahDescription.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SurahDescriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SurahDescription model
+   */ 
+  interface SurahDescriptionFieldRefs {
+    readonly surahId: FieldRef<"SurahDescription", 'BigInt'>
+    readonly description: FieldRef<"SurahDescription", 'String'>
+    readonly updatedAt: FieldRef<"SurahDescription", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SurahDescription findUnique
+   */
+  export type SurahDescriptionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * Filter, which SurahDescription to fetch.
+     */
+    where: SurahDescriptionWhereUniqueInput
+  }
+
+  /**
+   * SurahDescription findUniqueOrThrow
+   */
+  export type SurahDescriptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * Filter, which SurahDescription to fetch.
+     */
+    where: SurahDescriptionWhereUniqueInput
+  }
+
+  /**
+   * SurahDescription findFirst
+   */
+  export type SurahDescriptionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * Filter, which SurahDescription to fetch.
+     */
+    where?: SurahDescriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SurahDescriptions to fetch.
+     */
+    orderBy?: SurahDescriptionOrderByWithRelationInput | SurahDescriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SurahDescriptions.
+     */
+    cursor?: SurahDescriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SurahDescriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SurahDescriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SurahDescriptions.
+     */
+    distinct?: SurahDescriptionScalarFieldEnum | SurahDescriptionScalarFieldEnum[]
+  }
+
+  /**
+   * SurahDescription findFirstOrThrow
+   */
+  export type SurahDescriptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * Filter, which SurahDescription to fetch.
+     */
+    where?: SurahDescriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SurahDescriptions to fetch.
+     */
+    orderBy?: SurahDescriptionOrderByWithRelationInput | SurahDescriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SurahDescriptions.
+     */
+    cursor?: SurahDescriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SurahDescriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SurahDescriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SurahDescriptions.
+     */
+    distinct?: SurahDescriptionScalarFieldEnum | SurahDescriptionScalarFieldEnum[]
+  }
+
+  /**
+   * SurahDescription findMany
+   */
+  export type SurahDescriptionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * Filter, which SurahDescriptions to fetch.
+     */
+    where?: SurahDescriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SurahDescriptions to fetch.
+     */
+    orderBy?: SurahDescriptionOrderByWithRelationInput | SurahDescriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SurahDescriptions.
+     */
+    cursor?: SurahDescriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SurahDescriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SurahDescriptions.
+     */
+    skip?: number
+    distinct?: SurahDescriptionScalarFieldEnum | SurahDescriptionScalarFieldEnum[]
+  }
+
+  /**
+   * SurahDescription create
+   */
+  export type SurahDescriptionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * The data needed to create a SurahDescription.
+     */
+    data: XOR<SurahDescriptionCreateInput, SurahDescriptionUncheckedCreateInput>
+  }
+
+  /**
+   * SurahDescription createMany
+   */
+  export type SurahDescriptionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SurahDescriptions.
+     */
+    data: SurahDescriptionCreateManyInput | SurahDescriptionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SurahDescription createManyAndReturn
+   */
+  export type SurahDescriptionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many SurahDescriptions.
+     */
+    data: SurahDescriptionCreateManyInput | SurahDescriptionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SurahDescription update
+   */
+  export type SurahDescriptionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * The data needed to update a SurahDescription.
+     */
+    data: XOR<SurahDescriptionUpdateInput, SurahDescriptionUncheckedUpdateInput>
+    /**
+     * Choose, which SurahDescription to update.
+     */
+    where: SurahDescriptionWhereUniqueInput
+  }
+
+  /**
+   * SurahDescription updateMany
+   */
+  export type SurahDescriptionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SurahDescriptions.
+     */
+    data: XOR<SurahDescriptionUpdateManyMutationInput, SurahDescriptionUncheckedUpdateManyInput>
+    /**
+     * Filter which SurahDescriptions to update
+     */
+    where?: SurahDescriptionWhereInput
+  }
+
+  /**
+   * SurahDescription upsert
+   */
+  export type SurahDescriptionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * The filter to search for the SurahDescription to update in case it exists.
+     */
+    where: SurahDescriptionWhereUniqueInput
+    /**
+     * In case the SurahDescription found by the `where` argument doesn't exist, create a new SurahDescription with this data.
+     */
+    create: XOR<SurahDescriptionCreateInput, SurahDescriptionUncheckedCreateInput>
+    /**
+     * In case the SurahDescription was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SurahDescriptionUpdateInput, SurahDescriptionUncheckedUpdateInput>
+  }
+
+  /**
+   * SurahDescription delete
+   */
+  export type SurahDescriptionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+    /**
+     * Filter which SurahDescription to delete.
+     */
+    where: SurahDescriptionWhereUniqueInput
+  }
+
+  /**
+   * SurahDescription deleteMany
+   */
+  export type SurahDescriptionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SurahDescriptions to delete
+     */
+    where?: SurahDescriptionWhereInput
+  }
+
+  /**
+   * SurahDescription without action
+   */
+  export type SurahDescriptionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SurahDescription
+     */
+    select?: SurahDescriptionSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model UserBookmark
    */
 
@@ -4904,103 +5878,103 @@ export namespace Prisma {
   }
 
   export type UserBookmarkAvgAggregateOutputType = {
-    surahId: number | null
-    verseNumber: number | null
+    surahid: number | null
+    versenumber: number | null
   }
 
   export type UserBookmarkSumAggregateOutputType = {
-    surahId: number | null
-    verseNumber: number | null
+    surahid: bigint | null
+    versenumber: bigint | null
   }
 
   export type UserBookmarkMinAggregateOutputType = {
     id: string | null
-    userId: string | null
-    surahId: number | null
-    verseNumber: number | null
-    verseText: string | null
-    surahName: string | null
+    userid: string | null
+    surahid: bigint | null
+    versenumber: bigint | null
+    versetext: string | null
+    surahname: string | null
     translation: string | null
     notes: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    createdat: Date | null
+    updatedat: Date | null
   }
 
   export type UserBookmarkMaxAggregateOutputType = {
     id: string | null
-    userId: string | null
-    surahId: number | null
-    verseNumber: number | null
-    verseText: string | null
-    surahName: string | null
+    userid: string | null
+    surahid: bigint | null
+    versenumber: bigint | null
+    versetext: string | null
+    surahname: string | null
     translation: string | null
     notes: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    createdat: Date | null
+    updatedat: Date | null
   }
 
   export type UserBookmarkCountAggregateOutputType = {
     id: number
-    userId: number
-    surahId: number
-    verseNumber: number
-    verseText: number
-    surahName: number
+    userid: number
+    surahid: number
+    versenumber: number
+    versetext: number
+    surahname: number
     translation: number
     notes: number
-    createdAt: number
-    updatedAt: number
+    createdat: number
+    updatedat: number
     _all: number
   }
 
 
   export type UserBookmarkAvgAggregateInputType = {
-    surahId?: true
-    verseNumber?: true
+    surahid?: true
+    versenumber?: true
   }
 
   export type UserBookmarkSumAggregateInputType = {
-    surahId?: true
-    verseNumber?: true
+    surahid?: true
+    versenumber?: true
   }
 
   export type UserBookmarkMinAggregateInputType = {
     id?: true
-    userId?: true
-    surahId?: true
-    verseNumber?: true
-    verseText?: true
-    surahName?: true
+    userid?: true
+    surahid?: true
+    versenumber?: true
+    versetext?: true
+    surahname?: true
     translation?: true
     notes?: true
-    createdAt?: true
-    updatedAt?: true
+    createdat?: true
+    updatedat?: true
   }
 
   export type UserBookmarkMaxAggregateInputType = {
     id?: true
-    userId?: true
-    surahId?: true
-    verseNumber?: true
-    verseText?: true
-    surahName?: true
+    userid?: true
+    surahid?: true
+    versenumber?: true
+    versetext?: true
+    surahname?: true
     translation?: true
     notes?: true
-    createdAt?: true
-    updatedAt?: true
+    createdat?: true
+    updatedat?: true
   }
 
   export type UserBookmarkCountAggregateInputType = {
     id?: true
-    userId?: true
-    surahId?: true
-    verseNumber?: true
-    verseText?: true
-    surahName?: true
+    userid?: true
+    surahid?: true
+    versenumber?: true
+    versetext?: true
+    surahname?: true
     translation?: true
     notes?: true
-    createdAt?: true
-    updatedAt?: true
+    createdat?: true
+    updatedat?: true
     _all?: true
   }
 
@@ -5092,15 +6066,15 @@ export namespace Prisma {
 
   export type UserBookmarkGroupByOutputType = {
     id: string
-    userId: string
-    surahId: number
-    verseNumber: number
-    verseText: string
-    surahName: string
-    translation: string
+    userid: string | null
+    surahid: bigint | null
+    versenumber: bigint | null
+    versetext: string | null
+    surahname: string | null
+    translation: string | null
     notes: string | null
-    createdAt: Date
-    updatedAt: Date
+    createdat: Date | null
+    updatedat: Date | null
     _count: UserBookmarkCountAggregateOutputType | null
     _avg: UserBookmarkAvgAggregateOutputType | null
     _sum: UserBookmarkSumAggregateOutputType | null
@@ -5124,41 +6098,41 @@ export namespace Prisma {
 
   export type UserBookmarkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
-    surahId?: boolean
-    verseNumber?: boolean
-    verseText?: boolean
-    surahName?: boolean
+    userid?: boolean
+    surahid?: boolean
+    versenumber?: boolean
+    versetext?: boolean
+    surahname?: boolean
     translation?: boolean
     notes?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    createdat?: boolean
+    updatedat?: boolean
   }, ExtArgs["result"]["userBookmark"]>
 
   export type UserBookmarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
-    surahId?: boolean
-    verseNumber?: boolean
-    verseText?: boolean
-    surahName?: boolean
+    userid?: boolean
+    surahid?: boolean
+    versenumber?: boolean
+    versetext?: boolean
+    surahname?: boolean
     translation?: boolean
     notes?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    createdat?: boolean
+    updatedat?: boolean
   }, ExtArgs["result"]["userBookmark"]>
 
   export type UserBookmarkSelectScalar = {
     id?: boolean
-    userId?: boolean
-    surahId?: boolean
-    verseNumber?: boolean
-    verseText?: boolean
-    surahName?: boolean
+    userid?: boolean
+    surahid?: boolean
+    versenumber?: boolean
+    versetext?: boolean
+    surahname?: boolean
     translation?: boolean
     notes?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    createdat?: boolean
+    updatedat?: boolean
   }
 
 
@@ -5167,15 +6141,15 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string
-      surahId: number
-      verseNumber: number
-      verseText: string
-      surahName: string
-      translation: string
+      userid: string | null
+      surahid: bigint | null
+      versenumber: bigint | null
+      versetext: string | null
+      surahname: string | null
+      translation: string | null
       notes: string | null
-      createdAt: Date
-      updatedAt: Date
+      createdat: Date | null
+      updatedat: Date | null
     }, ExtArgs["result"]["userBookmark"]>
     composites: {}
   }
@@ -5570,15 +6544,15 @@ export namespace Prisma {
    */ 
   interface UserBookmarkFieldRefs {
     readonly id: FieldRef<"UserBookmark", 'String'>
-    readonly userId: FieldRef<"UserBookmark", 'String'>
-    readonly surahId: FieldRef<"UserBookmark", 'Int'>
-    readonly verseNumber: FieldRef<"UserBookmark", 'Int'>
-    readonly verseText: FieldRef<"UserBookmark", 'String'>
-    readonly surahName: FieldRef<"UserBookmark", 'String'>
+    readonly userid: FieldRef<"UserBookmark", 'String'>
+    readonly surahid: FieldRef<"UserBookmark", 'BigInt'>
+    readonly versenumber: FieldRef<"UserBookmark", 'BigInt'>
+    readonly versetext: FieldRef<"UserBookmark", 'String'>
+    readonly surahname: FieldRef<"UserBookmark", 'String'>
     readonly translation: FieldRef<"UserBookmark", 'String'>
     readonly notes: FieldRef<"UserBookmark", 'String'>
-    readonly createdAt: FieldRef<"UserBookmark", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserBookmark", 'DateTime'>
+    readonly createdat: FieldRef<"UserBookmark", 'DateTime'>
+    readonly updatedat: FieldRef<"UserBookmark", 'DateTime'>
   }
     
 
@@ -5749,7 +6723,7 @@ export namespace Prisma {
     /**
      * The data needed to create a UserBookmark.
      */
-    data: XOR<UserBookmarkCreateInput, UserBookmarkUncheckedCreateInput>
+    data?: XOR<UserBookmarkCreateInput, UserBookmarkUncheckedCreateInput>
   }
 
   /**
@@ -5926,17 +6900,26 @@ export namespace Prisma {
   export type QuranTextScalarFieldEnum = (typeof QuranTextScalarFieldEnum)[keyof typeof QuranTextScalarFieldEnum]
 
 
+  export const SurahDescriptionScalarFieldEnum: {
+    surahId: 'surahId',
+    description: 'description',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SurahDescriptionScalarFieldEnum = (typeof SurahDescriptionScalarFieldEnum)[keyof typeof SurahDescriptionScalarFieldEnum]
+
+
   export const UserBookmarkScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
-    surahId: 'surahId',
-    verseNumber: 'verseNumber',
-    verseText: 'verseText',
-    surahName: 'surahName',
+    userid: 'userid',
+    surahid: 'surahid',
+    versenumber: 'versenumber',
+    versetext: 'versetext',
+    surahname: 'surahname',
     translation: 'translation',
     notes: 'notes',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    createdat: 'createdat',
+    updatedat: 'updatedat'
   };
 
   export type UserBookmarkScalarFieldEnum = (typeof UserBookmarkScalarFieldEnum)[keyof typeof UserBookmarkScalarFieldEnum]
@@ -5972,16 +6955,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'BigInt'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'BigInt[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
 
 
@@ -6014,6 +6997,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -6034,34 +7031,34 @@ export namespace Prisma {
     AND?: EnYusufaliWhereInput | EnYusufaliWhereInput[]
     OR?: EnYusufaliWhereInput[]
     NOT?: EnYusufaliWhereInput | EnYusufaliWhereInput[]
-    index?: IntFilter<"EnYusufali"> | number
-    sura?: IntFilter<"EnYusufali"> | number
-    aya?: IntFilter<"EnYusufali"> | number
-    text?: StringFilter<"EnYusufali"> | string
+    index?: BigIntFilter<"EnYusufali"> | bigint | number
+    sura?: BigIntNullableFilter<"EnYusufali"> | bigint | number | null
+    aya?: BigIntNullableFilter<"EnYusufali"> | bigint | number | null
+    text?: StringNullableFilter<"EnYusufali"> | string | null
   }
 
   export type EnYusufaliOrderByWithRelationInput = {
     index?: SortOrder
-    sura?: SortOrder
-    aya?: SortOrder
-    text?: SortOrder
+    sura?: SortOrderInput | SortOrder
+    aya?: SortOrderInput | SortOrder
+    text?: SortOrderInput | SortOrder
   }
 
   export type EnYusufaliWhereUniqueInput = Prisma.AtLeast<{
-    index?: number
+    index?: bigint | number
     AND?: EnYusufaliWhereInput | EnYusufaliWhereInput[]
     OR?: EnYusufaliWhereInput[]
     NOT?: EnYusufaliWhereInput | EnYusufaliWhereInput[]
-    sura?: IntFilter<"EnYusufali"> | number
-    aya?: IntFilter<"EnYusufali"> | number
-    text?: StringFilter<"EnYusufali"> | string
+    sura?: BigIntNullableFilter<"EnYusufali"> | bigint | number | null
+    aya?: BigIntNullableFilter<"EnYusufali"> | bigint | number | null
+    text?: StringNullableFilter<"EnYusufali"> | string | null
   }, "index">
 
   export type EnYusufaliOrderByWithAggregationInput = {
     index?: SortOrder
-    sura?: SortOrder
-    aya?: SortOrder
-    text?: SortOrder
+    sura?: SortOrderInput | SortOrder
+    aya?: SortOrderInput | SortOrder
+    text?: SortOrderInput | SortOrder
     _count?: EnYusufaliCountOrderByAggregateInput
     _avg?: EnYusufaliAvgOrderByAggregateInput
     _max?: EnYusufaliMaxOrderByAggregateInput
@@ -6073,43 +7070,43 @@ export namespace Prisma {
     AND?: EnYusufaliScalarWhereWithAggregatesInput | EnYusufaliScalarWhereWithAggregatesInput[]
     OR?: EnYusufaliScalarWhereWithAggregatesInput[]
     NOT?: EnYusufaliScalarWhereWithAggregatesInput | EnYusufaliScalarWhereWithAggregatesInput[]
-    index?: IntWithAggregatesFilter<"EnYusufali"> | number
-    sura?: IntWithAggregatesFilter<"EnYusufali"> | number
-    aya?: IntWithAggregatesFilter<"EnYusufali"> | number
-    text?: StringWithAggregatesFilter<"EnYusufali"> | string
+    index?: BigIntWithAggregatesFilter<"EnYusufali"> | bigint | number
+    sura?: BigIntNullableWithAggregatesFilter<"EnYusufali"> | bigint | number | null
+    aya?: BigIntNullableWithAggregatesFilter<"EnYusufali"> | bigint | number | null
+    text?: StringNullableWithAggregatesFilter<"EnYusufali"> | string | null
   }
 
   export type QuranSajdaWhereInput = {
     AND?: QuranSajdaWhereInput | QuranSajdaWhereInput[]
     OR?: QuranSajdaWhereInput[]
     NOT?: QuranSajdaWhereInput | QuranSajdaWhereInput[]
-    sajdaId?: IntFilter<"QuranSajda"> | number
-    surahNumber?: IntFilter<"QuranSajda"> | number
-    ayahNumber?: IntFilter<"QuranSajda"> | number
+    sajdaId?: BigIntFilter<"QuranSajda"> | bigint | number
+    surahNumber?: BigIntNullableFilter<"QuranSajda"> | bigint | number | null
+    ayahNumber?: BigIntNullableFilter<"QuranSajda"> | bigint | number | null
     type?: StringNullableFilter<"QuranSajda"> | string | null
   }
 
   export type QuranSajdaOrderByWithRelationInput = {
     sajdaId?: SortOrder
-    surahNumber?: SortOrder
-    ayahNumber?: SortOrder
+    surahNumber?: SortOrderInput | SortOrder
+    ayahNumber?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
   }
 
   export type QuranSajdaWhereUniqueInput = Prisma.AtLeast<{
-    sajdaId?: number
+    sajdaId?: bigint | number
     AND?: QuranSajdaWhereInput | QuranSajdaWhereInput[]
     OR?: QuranSajdaWhereInput[]
     NOT?: QuranSajdaWhereInput | QuranSajdaWhereInput[]
-    surahNumber?: IntFilter<"QuranSajda"> | number
-    ayahNumber?: IntFilter<"QuranSajda"> | number
+    surahNumber?: BigIntNullableFilter<"QuranSajda"> | bigint | number | null
+    ayahNumber?: BigIntNullableFilter<"QuranSajda"> | bigint | number | null
     type?: StringNullableFilter<"QuranSajda"> | string | null
   }, "sajdaId">
 
   export type QuranSajdaOrderByWithAggregationInput = {
     sajdaId?: SortOrder
-    surahNumber?: SortOrder
-    ayahNumber?: SortOrder
+    surahNumber?: SortOrderInput | SortOrder
+    ayahNumber?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
     _count?: QuranSajdaCountOrderByAggregateInput
     _avg?: QuranSajdaAvgOrderByAggregateInput
@@ -6122,9 +7119,9 @@ export namespace Prisma {
     AND?: QuranSajdaScalarWhereWithAggregatesInput | QuranSajdaScalarWhereWithAggregatesInput[]
     OR?: QuranSajdaScalarWhereWithAggregatesInput[]
     NOT?: QuranSajdaScalarWhereWithAggregatesInput | QuranSajdaScalarWhereWithAggregatesInput[]
-    sajdaId?: IntWithAggregatesFilter<"QuranSajda"> | number
-    surahNumber?: IntWithAggregatesFilter<"QuranSajda"> | number
-    ayahNumber?: IntWithAggregatesFilter<"QuranSajda"> | number
+    sajdaId?: BigIntWithAggregatesFilter<"QuranSajda"> | bigint | number
+    surahNumber?: BigIntNullableWithAggregatesFilter<"QuranSajda"> | bigint | number | null
+    ayahNumber?: BigIntNullableWithAggregatesFilter<"QuranSajda"> | bigint | number | null
     type?: StringNullableWithAggregatesFilter<"QuranSajda"> | string | null
   }
 
@@ -6132,53 +7129,53 @@ export namespace Prisma {
     AND?: QuranSurahWhereInput | QuranSurahWhereInput[]
     OR?: QuranSurahWhereInput[]
     NOT?: QuranSurahWhereInput | QuranSurahWhereInput[]
-    number?: IntFilter<"QuranSurah"> | number
-    arabicName?: StringFilter<"QuranSurah"> | string
-    transliteration?: StringFilter<"QuranSurah"> | string
-    englishName?: StringFilter<"QuranSurah"> | string
-    ayas?: IntFilter<"QuranSurah"> | number
-    revelationType?: StringFilter<"QuranSurah"> | string
-    chronologicalOrder?: IntFilter<"QuranSurah"> | number
-    rukus?: IntFilter<"QuranSurah"> | number
-    startIndex?: IntNullableFilter<"QuranSurah"> | number | null
+    number?: BigIntFilter<"QuranSurah"> | bigint | number
+    arabicName?: StringNullableFilter<"QuranSurah"> | string | null
+    transliteration?: StringNullableFilter<"QuranSurah"> | string | null
+    englishName?: StringNullableFilter<"QuranSurah"> | string | null
+    ayas?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
+    revelationType?: StringNullableFilter<"QuranSurah"> | string | null
+    chronologicalOrder?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
+    rukus?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
+    startIndex?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
   }
 
   export type QuranSurahOrderByWithRelationInput = {
     number?: SortOrder
-    arabicName?: SortOrder
-    transliteration?: SortOrder
-    englishName?: SortOrder
-    ayas?: SortOrder
-    revelationType?: SortOrder
-    chronologicalOrder?: SortOrder
-    rukus?: SortOrder
+    arabicName?: SortOrderInput | SortOrder
+    transliteration?: SortOrderInput | SortOrder
+    englishName?: SortOrderInput | SortOrder
+    ayas?: SortOrderInput | SortOrder
+    revelationType?: SortOrderInput | SortOrder
+    chronologicalOrder?: SortOrderInput | SortOrder
+    rukus?: SortOrderInput | SortOrder
     startIndex?: SortOrderInput | SortOrder
   }
 
   export type QuranSurahWhereUniqueInput = Prisma.AtLeast<{
-    number?: number
+    number?: bigint | number
     AND?: QuranSurahWhereInput | QuranSurahWhereInput[]
     OR?: QuranSurahWhereInput[]
     NOT?: QuranSurahWhereInput | QuranSurahWhereInput[]
-    arabicName?: StringFilter<"QuranSurah"> | string
-    transliteration?: StringFilter<"QuranSurah"> | string
-    englishName?: StringFilter<"QuranSurah"> | string
-    ayas?: IntFilter<"QuranSurah"> | number
-    revelationType?: StringFilter<"QuranSurah"> | string
-    chronologicalOrder?: IntFilter<"QuranSurah"> | number
-    rukus?: IntFilter<"QuranSurah"> | number
-    startIndex?: IntNullableFilter<"QuranSurah"> | number | null
+    arabicName?: StringNullableFilter<"QuranSurah"> | string | null
+    transliteration?: StringNullableFilter<"QuranSurah"> | string | null
+    englishName?: StringNullableFilter<"QuranSurah"> | string | null
+    ayas?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
+    revelationType?: StringNullableFilter<"QuranSurah"> | string | null
+    chronologicalOrder?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
+    rukus?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
+    startIndex?: BigIntNullableFilter<"QuranSurah"> | bigint | number | null
   }, "number">
 
   export type QuranSurahOrderByWithAggregationInput = {
     number?: SortOrder
-    arabicName?: SortOrder
-    transliteration?: SortOrder
-    englishName?: SortOrder
-    ayas?: SortOrder
-    revelationType?: SortOrder
-    chronologicalOrder?: SortOrder
-    rukus?: SortOrder
+    arabicName?: SortOrderInput | SortOrder
+    transliteration?: SortOrderInput | SortOrder
+    englishName?: SortOrderInput | SortOrder
+    ayas?: SortOrderInput | SortOrder
+    revelationType?: SortOrderInput | SortOrder
+    chronologicalOrder?: SortOrderInput | SortOrder
+    rukus?: SortOrderInput | SortOrder
     startIndex?: SortOrderInput | SortOrder
     _count?: QuranSurahCountOrderByAggregateInput
     _avg?: QuranSurahAvgOrderByAggregateInput
@@ -6191,49 +7188,49 @@ export namespace Prisma {
     AND?: QuranSurahScalarWhereWithAggregatesInput | QuranSurahScalarWhereWithAggregatesInput[]
     OR?: QuranSurahScalarWhereWithAggregatesInput[]
     NOT?: QuranSurahScalarWhereWithAggregatesInput | QuranSurahScalarWhereWithAggregatesInput[]
-    number?: IntWithAggregatesFilter<"QuranSurah"> | number
-    arabicName?: StringWithAggregatesFilter<"QuranSurah"> | string
-    transliteration?: StringWithAggregatesFilter<"QuranSurah"> | string
-    englishName?: StringWithAggregatesFilter<"QuranSurah"> | string
-    ayas?: IntWithAggregatesFilter<"QuranSurah"> | number
-    revelationType?: StringWithAggregatesFilter<"QuranSurah"> | string
-    chronologicalOrder?: IntWithAggregatesFilter<"QuranSurah"> | number
-    rukus?: IntWithAggregatesFilter<"QuranSurah"> | number
-    startIndex?: IntNullableWithAggregatesFilter<"QuranSurah"> | number | null
+    number?: BigIntWithAggregatesFilter<"QuranSurah"> | bigint | number
+    arabicName?: StringNullableWithAggregatesFilter<"QuranSurah"> | string | null
+    transliteration?: StringNullableWithAggregatesFilter<"QuranSurah"> | string | null
+    englishName?: StringNullableWithAggregatesFilter<"QuranSurah"> | string | null
+    ayas?: BigIntNullableWithAggregatesFilter<"QuranSurah"> | bigint | number | null
+    revelationType?: StringNullableWithAggregatesFilter<"QuranSurah"> | string | null
+    chronologicalOrder?: BigIntNullableWithAggregatesFilter<"QuranSurah"> | bigint | number | null
+    rukus?: BigIntNullableWithAggregatesFilter<"QuranSurah"> | bigint | number | null
+    startIndex?: BigIntNullableWithAggregatesFilter<"QuranSurah"> | bigint | number | null
   }
 
   export type QuranTextWhereInput = {
     AND?: QuranTextWhereInput | QuranTextWhereInput[]
     OR?: QuranTextWhereInput[]
     NOT?: QuranTextWhereInput | QuranTextWhereInput[]
-    id?: IntFilter<"QuranText"> | number
-    sura?: IntFilter<"QuranText"> | number
-    aya?: IntFilter<"QuranText"> | number
-    text?: StringFilter<"QuranText"> | string
+    id?: BigIntFilter<"QuranText"> | bigint | number
+    sura?: BigIntNullableFilter<"QuranText"> | bigint | number | null
+    aya?: BigIntNullableFilter<"QuranText"> | bigint | number | null
+    text?: StringNullableFilter<"QuranText"> | string | null
   }
 
   export type QuranTextOrderByWithRelationInput = {
     id?: SortOrder
-    sura?: SortOrder
-    aya?: SortOrder
-    text?: SortOrder
+    sura?: SortOrderInput | SortOrder
+    aya?: SortOrderInput | SortOrder
+    text?: SortOrderInput | SortOrder
   }
 
   export type QuranTextWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: bigint | number
     AND?: QuranTextWhereInput | QuranTextWhereInput[]
     OR?: QuranTextWhereInput[]
     NOT?: QuranTextWhereInput | QuranTextWhereInput[]
-    sura?: IntFilter<"QuranText"> | number
-    aya?: IntFilter<"QuranText"> | number
-    text?: StringFilter<"QuranText"> | string
+    sura?: BigIntNullableFilter<"QuranText"> | bigint | number | null
+    aya?: BigIntNullableFilter<"QuranText"> | bigint | number | null
+    text?: StringNullableFilter<"QuranText"> | string | null
   }, "id">
 
   export type QuranTextOrderByWithAggregationInput = {
     id?: SortOrder
-    sura?: SortOrder
-    aya?: SortOrder
-    text?: SortOrder
+    sura?: SortOrderInput | SortOrder
+    aya?: SortOrderInput | SortOrder
+    text?: SortOrderInput | SortOrder
     _count?: QuranTextCountOrderByAggregateInput
     _avg?: QuranTextAvgOrderByAggregateInput
     _max?: QuranTextMaxOrderByAggregateInput
@@ -6245,10 +7242,54 @@ export namespace Prisma {
     AND?: QuranTextScalarWhereWithAggregatesInput | QuranTextScalarWhereWithAggregatesInput[]
     OR?: QuranTextScalarWhereWithAggregatesInput[]
     NOT?: QuranTextScalarWhereWithAggregatesInput | QuranTextScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"QuranText"> | number
-    sura?: IntWithAggregatesFilter<"QuranText"> | number
-    aya?: IntWithAggregatesFilter<"QuranText"> | number
-    text?: StringWithAggregatesFilter<"QuranText"> | string
+    id?: BigIntWithAggregatesFilter<"QuranText"> | bigint | number
+    sura?: BigIntNullableWithAggregatesFilter<"QuranText"> | bigint | number | null
+    aya?: BigIntNullableWithAggregatesFilter<"QuranText"> | bigint | number | null
+    text?: StringNullableWithAggregatesFilter<"QuranText"> | string | null
+  }
+
+  export type SurahDescriptionWhereInput = {
+    AND?: SurahDescriptionWhereInput | SurahDescriptionWhereInput[]
+    OR?: SurahDescriptionWhereInput[]
+    NOT?: SurahDescriptionWhereInput | SurahDescriptionWhereInput[]
+    surahId?: BigIntFilter<"SurahDescription"> | bigint | number
+    description?: StringNullableFilter<"SurahDescription"> | string | null
+    updatedAt?: DateTimeNullableFilter<"SurahDescription"> | Date | string | null
+  }
+
+  export type SurahDescriptionOrderByWithRelationInput = {
+    surahId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type SurahDescriptionWhereUniqueInput = Prisma.AtLeast<{
+    surahId?: bigint | number
+    AND?: SurahDescriptionWhereInput | SurahDescriptionWhereInput[]
+    OR?: SurahDescriptionWhereInput[]
+    NOT?: SurahDescriptionWhereInput | SurahDescriptionWhereInput[]
+    description?: StringNullableFilter<"SurahDescription"> | string | null
+    updatedAt?: DateTimeNullableFilter<"SurahDescription"> | Date | string | null
+  }, "surahId">
+
+  export type SurahDescriptionOrderByWithAggregationInput = {
+    surahId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: SurahDescriptionCountOrderByAggregateInput
+    _avg?: SurahDescriptionAvgOrderByAggregateInput
+    _max?: SurahDescriptionMaxOrderByAggregateInput
+    _min?: SurahDescriptionMinOrderByAggregateInput
+    _sum?: SurahDescriptionSumOrderByAggregateInput
+  }
+
+  export type SurahDescriptionScalarWhereWithAggregatesInput = {
+    AND?: SurahDescriptionScalarWhereWithAggregatesInput | SurahDescriptionScalarWhereWithAggregatesInput[]
+    OR?: SurahDescriptionScalarWhereWithAggregatesInput[]
+    NOT?: SurahDescriptionScalarWhereWithAggregatesInput | SurahDescriptionScalarWhereWithAggregatesInput[]
+    surahId?: BigIntWithAggregatesFilter<"SurahDescription"> | bigint | number
+    description?: StringNullableWithAggregatesFilter<"SurahDescription"> | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"SurahDescription"> | Date | string | null
   }
 
   export type UserBookmarkWhereInput = {
@@ -6256,58 +7297,58 @@ export namespace Prisma {
     OR?: UserBookmarkWhereInput[]
     NOT?: UserBookmarkWhereInput | UserBookmarkWhereInput[]
     id?: StringFilter<"UserBookmark"> | string
-    userId?: StringFilter<"UserBookmark"> | string
-    surahId?: IntFilter<"UserBookmark"> | number
-    verseNumber?: IntFilter<"UserBookmark"> | number
-    verseText?: StringFilter<"UserBookmark"> | string
-    surahName?: StringFilter<"UserBookmark"> | string
-    translation?: StringFilter<"UserBookmark"> | string
+    userid?: StringNullableFilter<"UserBookmark"> | string | null
+    surahid?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
+    versenumber?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
+    versetext?: StringNullableFilter<"UserBookmark"> | string | null
+    surahname?: StringNullableFilter<"UserBookmark"> | string | null
+    translation?: StringNullableFilter<"UserBookmark"> | string | null
     notes?: StringNullableFilter<"UserBookmark"> | string | null
-    createdAt?: DateTimeFilter<"UserBookmark"> | Date | string
-    updatedAt?: DateTimeFilter<"UserBookmark"> | Date | string
+    createdat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
+    updatedat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
   }
 
   export type UserBookmarkOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
-    surahId?: SortOrder
-    verseNumber?: SortOrder
-    verseText?: SortOrder
-    surahName?: SortOrder
-    translation?: SortOrder
+    userid?: SortOrderInput | SortOrder
+    surahid?: SortOrderInput | SortOrder
+    versenumber?: SortOrderInput | SortOrder
+    versetext?: SortOrderInput | SortOrder
+    surahname?: SortOrderInput | SortOrder
+    translation?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdat?: SortOrderInput | SortOrder
+    updatedat?: SortOrderInput | SortOrder
   }
 
   export type UserBookmarkWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId_surahId_verseNumber?: UserBookmarkUserIdSurahIdVerseNumberCompoundUniqueInput
+    userid_surahid_versenumber?: UserBookmarkUseridSurahidVersenumberCompoundUniqueInput
     AND?: UserBookmarkWhereInput | UserBookmarkWhereInput[]
     OR?: UserBookmarkWhereInput[]
     NOT?: UserBookmarkWhereInput | UserBookmarkWhereInput[]
-    userId?: StringFilter<"UserBookmark"> | string
-    surahId?: IntFilter<"UserBookmark"> | number
-    verseNumber?: IntFilter<"UserBookmark"> | number
-    verseText?: StringFilter<"UserBookmark"> | string
-    surahName?: StringFilter<"UserBookmark"> | string
-    translation?: StringFilter<"UserBookmark"> | string
+    userid?: StringNullableFilter<"UserBookmark"> | string | null
+    surahid?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
+    versenumber?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
+    versetext?: StringNullableFilter<"UserBookmark"> | string | null
+    surahname?: StringNullableFilter<"UserBookmark"> | string | null
+    translation?: StringNullableFilter<"UserBookmark"> | string | null
     notes?: StringNullableFilter<"UserBookmark"> | string | null
-    createdAt?: DateTimeFilter<"UserBookmark"> | Date | string
-    updatedAt?: DateTimeFilter<"UserBookmark"> | Date | string
-  }, "id" | "userId_surahId_verseNumber">
+    createdat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
+    updatedat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
+  }, "id" | "userid_surahid_versenumber">
 
   export type UserBookmarkOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
-    surahId?: SortOrder
-    verseNumber?: SortOrder
-    verseText?: SortOrder
-    surahName?: SortOrder
-    translation?: SortOrder
+    userid?: SortOrderInput | SortOrder
+    surahid?: SortOrderInput | SortOrder
+    versenumber?: SortOrderInput | SortOrder
+    versetext?: SortOrderInput | SortOrder
+    surahname?: SortOrderInput | SortOrder
+    translation?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdat?: SortOrderInput | SortOrder
+    updatedat?: SortOrderInput | SortOrder
     _count?: UserBookmarkCountOrderByAggregateInput
     _avg?: UserBookmarkAvgOrderByAggregateInput
     _max?: UserBookmarkMaxOrderByAggregateInput
@@ -6320,348 +7361,407 @@ export namespace Prisma {
     OR?: UserBookmarkScalarWhereWithAggregatesInput[]
     NOT?: UserBookmarkScalarWhereWithAggregatesInput | UserBookmarkScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserBookmark"> | string
-    userId?: StringWithAggregatesFilter<"UserBookmark"> | string
-    surahId?: IntWithAggregatesFilter<"UserBookmark"> | number
-    verseNumber?: IntWithAggregatesFilter<"UserBookmark"> | number
-    verseText?: StringWithAggregatesFilter<"UserBookmark"> | string
-    surahName?: StringWithAggregatesFilter<"UserBookmark"> | string
-    translation?: StringWithAggregatesFilter<"UserBookmark"> | string
+    userid?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
+    surahid?: BigIntNullableWithAggregatesFilter<"UserBookmark"> | bigint | number | null
+    versenumber?: BigIntNullableWithAggregatesFilter<"UserBookmark"> | bigint | number | null
+    versetext?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
+    surahname?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
+    translation?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
     notes?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"UserBookmark"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserBookmark"> | Date | string
+    createdat?: DateTimeNullableWithAggregatesFilter<"UserBookmark"> | Date | string | null
+    updatedat?: DateTimeNullableWithAggregatesFilter<"UserBookmark"> | Date | string | null
   }
 
   export type EnYusufaliCreateInput = {
-    index: number
-    sura: number
-    aya: number
-    text: string
+    index?: bigint | number
+    sura?: bigint | number | null
+    aya?: bigint | number | null
+    text?: string | null
   }
 
   export type EnYusufaliUncheckedCreateInput = {
-    index: number
-    sura: number
-    aya: number
-    text: string
+    index?: bigint | number
+    sura?: bigint | number | null
+    aya?: bigint | number | null
+    text?: string | null
   }
 
   export type EnYusufaliUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EnYusufaliUncheckedUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EnYusufaliCreateManyInput = {
-    index: number
-    sura: number
-    aya: number
-    text: string
+    index?: bigint | number
+    sura?: bigint | number | null
+    aya?: bigint | number | null
+    text?: string | null
   }
 
   export type EnYusufaliUpdateManyMutationInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EnYusufaliUncheckedUpdateManyInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranSajdaCreateInput = {
-    surahNumber: number
-    ayahNumber: number
+    sajdaId?: bigint | number
+    surahNumber?: bigint | number | null
+    ayahNumber?: bigint | number | null
     type?: string | null
   }
 
   export type QuranSajdaUncheckedCreateInput = {
-    sajdaId?: number
-    surahNumber: number
-    ayahNumber: number
+    sajdaId?: bigint | number
+    surahNumber?: bigint | number | null
+    ayahNumber?: bigint | number | null
     type?: string | null
   }
 
   export type QuranSajdaUpdateInput = {
-    surahNumber?: IntFieldUpdateOperationsInput | number
-    ayahNumber?: IntFieldUpdateOperationsInput | number
+    sajdaId?: BigIntFieldUpdateOperationsInput | bigint | number
+    surahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    ayahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranSajdaUncheckedUpdateInput = {
-    sajdaId?: IntFieldUpdateOperationsInput | number
-    surahNumber?: IntFieldUpdateOperationsInput | number
-    ayahNumber?: IntFieldUpdateOperationsInput | number
+    sajdaId?: BigIntFieldUpdateOperationsInput | bigint | number
+    surahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    ayahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranSajdaCreateManyInput = {
-    sajdaId?: number
-    surahNumber: number
-    ayahNumber: number
+    sajdaId?: bigint | number
+    surahNumber?: bigint | number | null
+    ayahNumber?: bigint | number | null
     type?: string | null
   }
 
   export type QuranSajdaUpdateManyMutationInput = {
-    surahNumber?: IntFieldUpdateOperationsInput | number
-    ayahNumber?: IntFieldUpdateOperationsInput | number
+    sajdaId?: BigIntFieldUpdateOperationsInput | bigint | number
+    surahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    ayahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranSajdaUncheckedUpdateManyInput = {
-    sajdaId?: IntFieldUpdateOperationsInput | number
-    surahNumber?: IntFieldUpdateOperationsInput | number
-    ayahNumber?: IntFieldUpdateOperationsInput | number
+    sajdaId?: BigIntFieldUpdateOperationsInput | bigint | number
+    surahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    ayahNumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranSurahCreateInput = {
-    number: number
-    arabicName: string
-    transliteration: string
-    englishName: string
-    ayas: number
-    revelationType: string
-    chronologicalOrder: number
-    rukus: number
-    startIndex?: number | null
+    number?: bigint | number
+    arabicName?: string | null
+    transliteration?: string | null
+    englishName?: string | null
+    ayas?: bigint | number | null
+    revelationType?: string | null
+    chronologicalOrder?: bigint | number | null
+    rukus?: bigint | number | null
+    startIndex?: bigint | number | null
   }
 
   export type QuranSurahUncheckedCreateInput = {
-    number: number
-    arabicName: string
-    transliteration: string
-    englishName: string
-    ayas: number
-    revelationType: string
-    chronologicalOrder: number
-    rukus: number
-    startIndex?: number | null
+    number?: bigint | number
+    arabicName?: string | null
+    transliteration?: string | null
+    englishName?: string | null
+    ayas?: bigint | number | null
+    revelationType?: string | null
+    chronologicalOrder?: bigint | number | null
+    rukus?: bigint | number | null
+    startIndex?: bigint | number | null
   }
 
   export type QuranSurahUpdateInput = {
-    number?: IntFieldUpdateOperationsInput | number
-    arabicName?: StringFieldUpdateOperationsInput | string
-    transliteration?: StringFieldUpdateOperationsInput | string
-    englishName?: StringFieldUpdateOperationsInput | string
-    ayas?: IntFieldUpdateOperationsInput | number
-    revelationType?: StringFieldUpdateOperationsInput | string
-    chronologicalOrder?: IntFieldUpdateOperationsInput | number
-    rukus?: IntFieldUpdateOperationsInput | number
-    startIndex?: NullableIntFieldUpdateOperationsInput | number | null
+    number?: BigIntFieldUpdateOperationsInput | bigint | number
+    arabicName?: NullableStringFieldUpdateOperationsInput | string | null
+    transliteration?: NullableStringFieldUpdateOperationsInput | string | null
+    englishName?: NullableStringFieldUpdateOperationsInput | string | null
+    ayas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    revelationType?: NullableStringFieldUpdateOperationsInput | string | null
+    chronologicalOrder?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    rukus?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    startIndex?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type QuranSurahUncheckedUpdateInput = {
-    number?: IntFieldUpdateOperationsInput | number
-    arabicName?: StringFieldUpdateOperationsInput | string
-    transliteration?: StringFieldUpdateOperationsInput | string
-    englishName?: StringFieldUpdateOperationsInput | string
-    ayas?: IntFieldUpdateOperationsInput | number
-    revelationType?: StringFieldUpdateOperationsInput | string
-    chronologicalOrder?: IntFieldUpdateOperationsInput | number
-    rukus?: IntFieldUpdateOperationsInput | number
-    startIndex?: NullableIntFieldUpdateOperationsInput | number | null
+    number?: BigIntFieldUpdateOperationsInput | bigint | number
+    arabicName?: NullableStringFieldUpdateOperationsInput | string | null
+    transliteration?: NullableStringFieldUpdateOperationsInput | string | null
+    englishName?: NullableStringFieldUpdateOperationsInput | string | null
+    ayas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    revelationType?: NullableStringFieldUpdateOperationsInput | string | null
+    chronologicalOrder?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    rukus?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    startIndex?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type QuranSurahCreateManyInput = {
-    number: number
-    arabicName: string
-    transliteration: string
-    englishName: string
-    ayas: number
-    revelationType: string
-    chronologicalOrder: number
-    rukus: number
-    startIndex?: number | null
+    number?: bigint | number
+    arabicName?: string | null
+    transliteration?: string | null
+    englishName?: string | null
+    ayas?: bigint | number | null
+    revelationType?: string | null
+    chronologicalOrder?: bigint | number | null
+    rukus?: bigint | number | null
+    startIndex?: bigint | number | null
   }
 
   export type QuranSurahUpdateManyMutationInput = {
-    number?: IntFieldUpdateOperationsInput | number
-    arabicName?: StringFieldUpdateOperationsInput | string
-    transliteration?: StringFieldUpdateOperationsInput | string
-    englishName?: StringFieldUpdateOperationsInput | string
-    ayas?: IntFieldUpdateOperationsInput | number
-    revelationType?: StringFieldUpdateOperationsInput | string
-    chronologicalOrder?: IntFieldUpdateOperationsInput | number
-    rukus?: IntFieldUpdateOperationsInput | number
-    startIndex?: NullableIntFieldUpdateOperationsInput | number | null
+    number?: BigIntFieldUpdateOperationsInput | bigint | number
+    arabicName?: NullableStringFieldUpdateOperationsInput | string | null
+    transliteration?: NullableStringFieldUpdateOperationsInput | string | null
+    englishName?: NullableStringFieldUpdateOperationsInput | string | null
+    ayas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    revelationType?: NullableStringFieldUpdateOperationsInput | string | null
+    chronologicalOrder?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    rukus?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    startIndex?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type QuranSurahUncheckedUpdateManyInput = {
-    number?: IntFieldUpdateOperationsInput | number
-    arabicName?: StringFieldUpdateOperationsInput | string
-    transliteration?: StringFieldUpdateOperationsInput | string
-    englishName?: StringFieldUpdateOperationsInput | string
-    ayas?: IntFieldUpdateOperationsInput | number
-    revelationType?: StringFieldUpdateOperationsInput | string
-    chronologicalOrder?: IntFieldUpdateOperationsInput | number
-    rukus?: IntFieldUpdateOperationsInput | number
-    startIndex?: NullableIntFieldUpdateOperationsInput | number | null
+    number?: BigIntFieldUpdateOperationsInput | bigint | number
+    arabicName?: NullableStringFieldUpdateOperationsInput | string | null
+    transliteration?: NullableStringFieldUpdateOperationsInput | string | null
+    englishName?: NullableStringFieldUpdateOperationsInput | string | null
+    ayas?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    revelationType?: NullableStringFieldUpdateOperationsInput | string | null
+    chronologicalOrder?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    rukus?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    startIndex?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type QuranTextCreateInput = {
-    sura: number
-    aya: number
-    text: string
+    id?: bigint | number
+    sura?: bigint | number | null
+    aya?: bigint | number | null
+    text?: string | null
   }
 
   export type QuranTextUncheckedCreateInput = {
-    id?: number
-    sura: number
-    aya: number
-    text: string
+    id?: bigint | number
+    sura?: bigint | number | null
+    aya?: bigint | number | null
+    text?: string | null
   }
 
   export type QuranTextUpdateInput = {
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranTextUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranTextCreateManyInput = {
-    id?: number
-    sura: number
-    aya: number
-    text: string
+    id?: bigint | number
+    sura?: bigint | number | null
+    aya?: bigint | number | null
+    text?: string | null
   }
 
   export type QuranTextUpdateManyMutationInput = {
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type QuranTextUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    sura?: IntFieldUpdateOperationsInput | number
-    aya?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    aya?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SurahDescriptionCreateInput = {
+    surahId: bigint | number
+    description?: string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type SurahDescriptionUncheckedCreateInput = {
+    surahId: bigint | number
+    description?: string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type SurahDescriptionUpdateInput = {
+    surahId?: BigIntFieldUpdateOperationsInput | bigint | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type SurahDescriptionUncheckedUpdateInput = {
+    surahId?: BigIntFieldUpdateOperationsInput | bigint | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type SurahDescriptionCreateManyInput = {
+    surahId: bigint | number
+    description?: string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type SurahDescriptionUpdateManyMutationInput = {
+    surahId?: BigIntFieldUpdateOperationsInput | bigint | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type SurahDescriptionUncheckedUpdateManyInput = {
+    surahId?: BigIntFieldUpdateOperationsInput | bigint | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserBookmarkCreateInput = {
     id?: string
-    userId: string
-    surahId: number
-    verseNumber: number
-    verseText: string
-    surahName: string
-    translation: string
+    userid?: string | null
+    surahid?: bigint | number | null
+    versenumber?: bigint | number | null
+    versetext?: string | null
+    surahname?: string | null
+    translation?: string | null
     notes?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdat?: Date | string | null
+    updatedat?: Date | string | null
   }
 
   export type UserBookmarkUncheckedCreateInput = {
     id?: string
-    userId: string
-    surahId: number
-    verseNumber: number
-    verseText: string
-    surahName: string
-    translation: string
+    userid?: string | null
+    surahid?: bigint | number | null
+    versenumber?: bigint | number | null
+    versetext?: string | null
+    surahname?: string | null
+    translation?: string | null
     notes?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdat?: Date | string | null
+    updatedat?: Date | string | null
   }
 
   export type UserBookmarkUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    surahId?: IntFieldUpdateOperationsInput | number
-    verseNumber?: IntFieldUpdateOperationsInput | number
-    verseText?: StringFieldUpdateOperationsInput | string
-    surahName?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
+    userid?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versetext?: NullableStringFieldUpdateOperationsInput | string | null
+    surahname?: NullableStringFieldUpdateOperationsInput | string | null
+    translation?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserBookmarkUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    surahId?: IntFieldUpdateOperationsInput | number
-    verseNumber?: IntFieldUpdateOperationsInput | number
-    verseText?: StringFieldUpdateOperationsInput | string
-    surahName?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
+    userid?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versetext?: NullableStringFieldUpdateOperationsInput | string | null
+    surahname?: NullableStringFieldUpdateOperationsInput | string | null
+    translation?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserBookmarkCreateManyInput = {
     id?: string
-    userId: string
-    surahId: number
-    verseNumber: number
-    verseText: string
-    surahName: string
-    translation: string
+    userid?: string | null
+    surahid?: bigint | number | null
+    versenumber?: bigint | number | null
+    versetext?: string | null
+    surahname?: string | null
+    translation?: string | null
     notes?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdat?: Date | string | null
+    updatedat?: Date | string | null
   }
 
   export type UserBookmarkUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    surahId?: IntFieldUpdateOperationsInput | number
-    verseNumber?: IntFieldUpdateOperationsInput | number
-    verseText?: StringFieldUpdateOperationsInput | string
-    surahName?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
+    userid?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versetext?: NullableStringFieldUpdateOperationsInput | string | null
+    surahname?: NullableStringFieldUpdateOperationsInput | string | null
+    translation?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserBookmarkUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    surahId?: IntFieldUpdateOperationsInput | number
-    verseNumber?: IntFieldUpdateOperationsInput | number
-    verseText?: StringFieldUpdateOperationsInput | string
-    surahName?: StringFieldUpdateOperationsInput | string
-    translation?: StringFieldUpdateOperationsInput | string
+    userid?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    versetext?: NullableStringFieldUpdateOperationsInput | string | null
+    surahname?: NullableStringFieldUpdateOperationsInput | string | null
+    translation?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -6670,7 +7770,12 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
-    not?: NestedStringFilter<$PrismaModel> | string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type EnYusufaliCountOrderByAggregateInput = {
@@ -6706,41 +7811,39 @@ export namespace Prisma {
     aya?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6752,12 +7855,10 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type QuranSajdaCountOrderByAggregateInput = {
@@ -6791,35 +7892,6 @@ export namespace Prisma {
     sajdaId?: SortOrder
     surahNumber?: SortOrder
     ayahNumber?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type QuranSurahCountOrderByAggregateInput = {
@@ -6874,22 +7946,6 @@ export namespace Prisma {
     startIndex?: SortOrder
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type QuranTextCountOrderByAggregateInput = {
     id?: SortOrder
     sura?: SortOrder
@@ -6923,181 +7979,193 @@ export namespace Prisma {
     aya?: SortOrder
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type UserBookmarkUserIdSurahIdVerseNumberCompoundUniqueInput = {
-    userId: string
-    surahId: number
-    verseNumber: number
+  export type SurahDescriptionCountOrderByAggregateInput = {
+    surahId?: SortOrder
+    description?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SurahDescriptionAvgOrderByAggregateInput = {
+    surahId?: SortOrder
+  }
+
+  export type SurahDescriptionMaxOrderByAggregateInput = {
+    surahId?: SortOrder
+    description?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SurahDescriptionMinOrderByAggregateInput = {
+    surahId?: SortOrder
+    description?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SurahDescriptionSumOrderByAggregateInput = {
+    surahId?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type UserBookmarkUseridSurahidVersenumberCompoundUniqueInput = {
+    userid: string
+    surahid: bigint | number
+    versenumber: bigint | number
   }
 
   export type UserBookmarkCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
-    surahId?: SortOrder
-    verseNumber?: SortOrder
-    verseText?: SortOrder
-    surahName?: SortOrder
+    userid?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
+    versetext?: SortOrder
+    surahname?: SortOrder
     translation?: SortOrder
     notes?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdat?: SortOrder
+    updatedat?: SortOrder
   }
 
   export type UserBookmarkAvgOrderByAggregateInput = {
-    surahId?: SortOrder
-    verseNumber?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
   }
 
   export type UserBookmarkMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
-    surahId?: SortOrder
-    verseNumber?: SortOrder
-    verseText?: SortOrder
-    surahName?: SortOrder
+    userid?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
+    versetext?: SortOrder
+    surahname?: SortOrder
     translation?: SortOrder
     notes?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdat?: SortOrder
+    updatedat?: SortOrder
   }
 
   export type UserBookmarkMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
-    surahId?: SortOrder
-    verseNumber?: SortOrder
-    verseText?: SortOrder
-    surahName?: SortOrder
+    userid?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
+    versetext?: SortOrder
+    surahname?: SortOrder
     translation?: SortOrder
     notes?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdat?: SortOrder
+    updatedat?: SortOrder
   }
 
   export type UserBookmarkSumOrderByAggregateInput = {
-    surahId?: SortOrder
-    verseNumber?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type NullableBigIntFieldUpdateOperationsInput = {
+    set?: bigint | number | null
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -7112,6 +8180,82 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -7131,67 +8275,60 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
 
@@ -7215,6 +8352,10 @@ export namespace Prisma {
      * @deprecated Use QuranTextDefaultArgs instead
      */
     export type QuranTextArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuranTextDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SurahDescriptionDefaultArgs instead
+     */
+    export type SurahDescriptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SurahDescriptionDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserBookmarkDefaultArgs instead
      */

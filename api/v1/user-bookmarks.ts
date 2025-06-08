@@ -87,8 +87,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method === 'GET') {
       try {
         const bookmarks = await prisma.userBookmark.findMany({
-          where: { userId },
-          orderBy: { createdAt: 'desc' }
+          where: { userid: userId },
+          orderBy: { createdat: 'desc' }
         });
         return res.status(200).json(bookmarks);
       } catch (error) {
@@ -134,9 +134,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         console.log('Checking for existing bookmark...');
         const existingBookmark = await prisma.userBookmark.findFirst({
           where: {
-            userId: userId,
-            surahId: surahId,
-            verseNumber: verseNumber
+            userid: userId,
+            surahid: surahId,
+            versenumber: verseNumber
           }
         });
         
@@ -161,11 +161,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         
         const bookmark = await prisma.userBookmark.create({
           data: {
-            userId,
-            surahId,
-            verseNumber,
-            verseText: verseText as string,
-            surahName: surahName as string,
+            userid: userId,
+            surahid: surahId,
+            versenumber: verseNumber,
+            versetext: verseText as string,
+            surahname: surahName as string,
             translation: translation as string,
             notes: notes || ''
           }
@@ -205,7 +205,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           return res.status(400).json({ error: 'Bookmark ID is required' });
         }
         const bookmark = await prisma.userBookmark.updateMany({
-          where: { id, userId },
+          where: { id, userid: userId },
           data: { notes }
         });
         if (bookmark.count === 0) {
@@ -227,7 +227,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           return res.status(400).json({ error: 'Bookmark ID is required' });
         }
         const bookmark = await prisma.userBookmark.deleteMany({
-          where: { id, userId }
+          where: { id, userid: userId }
         });
         if (bookmark.count === 0) {
           return res.status(404).json({ error: 'Bookmark not found or unauthorized' });

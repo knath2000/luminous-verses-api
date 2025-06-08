@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
   output          = "./generated/client"
+  previewFeatures = ["driverAdapters"]
   binaryTargets   = ["native", "rhel-openssl-3.0.x", "darwin-arm64"]
 }
 
@@ -11,58 +11,66 @@ datasource db {
 }
 
 model EnYusufali {
-  index Int    @id
-  sura  Int
-  aya   Int
-  text  String
+  index BigInt  @id @default(autoincrement())
+  sura  BigInt?
+  aya   BigInt?
+  text  String?
 
   @@map("en_yusufali")
 }
 
 model QuranSajda {
-  sajdaId     Int     @id @default(autoincrement()) @map("sajda_id")
-  surahNumber Int     @map("surah_number")
-  ayahNumber  Int     @map("ayah_number")
+  sajdaId     BigInt  @id @default(autoincrement()) @map("sajda_id")
+  surahNumber BigInt? @map("surah_number")
+  ayahNumber  BigInt? @map("ayah_number")
   type        String?
 
   @@map("quran_sajdas")
 }
 
 model QuranSurah {
-  number             Int    @id
-  arabicName         String @map("arabic_name")
-  transliteration    String
-  englishName        String @map("english_name")
-  ayas               Int
-  revelationType     String @map("revelation_type")
-  chronologicalOrder Int    @map("chronological_order")
-  rukus              Int
-  startIndex         Int?   @map("start_index") // Add this line
+  number             BigInt  @id @default(autoincrement())
+  arabicName         String? @map("arabic_name")
+  transliteration    String?
+  englishName        String? @map("english_name")
+  ayas               BigInt?
+  revelationType     String? @map("revelation_type")
+  chronologicalOrder BigInt? @map("chronological_order")
+  rukus              BigInt?
+  startIndex         BigInt? @map("start_index")
 
   @@map("quran_surahs")
 }
 
 model QuranText {
-  id   Int    @id @default(autoincrement())
-  sura Int
-  aya  Int
-  text String
+  id   BigInt  @id @default(autoincrement())
+  sura BigInt?
+  aya  BigInt?
+  text String?
 
   @@map("quran_text")
 }
 
-model UserBookmark {
-  id          String   @id @default(cuid())
-  userId      String
-  surahId     Int
-  verseNumber Int
-  verseText   String
-  surahName   String
-  translation String
-  notes       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model SurahDescription {
+  surahId     BigInt    @id @map("surah_id")
+  description String?
+  updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamp(6)
 
-  @@unique([userId, surahId, verseNumber])
+  @@map("surah_descriptions")
+}
+
+model UserBookmark {
+  id          String    @id(map: "sqlite_autoindex_user_bookmarks_1") @default(cuid())
+  userid      String?
+  surahid     BigInt?
+  versenumber BigInt?
+  versetext   String?
+  surahname   String?
+  translation String?
+  notes       String?
+  createdat   DateTime? @default(now()) @db.Timestamptz(6)
+  updatedat   DateTime? @default(now()) @db.Timestamptz(6)
+
+  @@unique([userid, surahid, versenumber], map: "sqlite_autoindex_user_bookmarks_2")
   @@map("user_bookmarks")
 }

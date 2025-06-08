@@ -76,8 +76,8 @@ async function handler(req, res) {
         if (req.method === 'GET') {
             try {
                 const bookmarks = await prisma_1.prisma.userBookmark.findMany({
-                    where: { userId },
-                    orderBy: { createdAt: 'desc' }
+                    where: { userid: userId },
+                    orderBy: { createdat: 'desc' }
                 });
                 return res.status(200).json(bookmarks);
             }
@@ -119,9 +119,9 @@ async function handler(req, res) {
                 console.log('Checking for existing bookmark...');
                 const existingBookmark = await prisma_1.prisma.userBookmark.findFirst({
                     where: {
-                        userId: userId,
-                        surahId: surahId,
-                        verseNumber: verseNumber
+                        userid: userId,
+                        surahid: surahId,
+                        versenumber: verseNumber
                     }
                 });
                 if (existingBookmark) {
@@ -143,11 +143,11 @@ async function handler(req, res) {
                 });
                 const bookmark = await prisma_1.prisma.userBookmark.create({
                     data: {
-                        userId,
-                        surahId,
-                        verseNumber,
-                        verseText: verseText,
-                        surahName: surahName,
+                        userid: userId,
+                        surahid: surahId,
+                        versenumber: verseNumber,
+                        versetext: verseText,
+                        surahname: surahName,
                         translation: translation,
                         notes: notes || ''
                     }
@@ -184,7 +184,7 @@ async function handler(req, res) {
                     return res.status(400).json({ error: 'Bookmark ID is required' });
                 }
                 const bookmark = await prisma_1.prisma.userBookmark.updateMany({
-                    where: { id, userId },
+                    where: { id, userid: userId },
                     data: { notes }
                 });
                 if (bookmark.count === 0) {
@@ -207,7 +207,7 @@ async function handler(req, res) {
                     return res.status(400).json({ error: 'Bookmark ID is required' });
                 }
                 const bookmark = await prisma_1.prisma.userBookmark.deleteMany({
-                    where: { id, userId }
+                    where: { id, userid: userId }
                 });
                 if (bookmark.count === 0) {
                     return res.status(404).json({ error: 'Bookmark not found or unauthorized' });

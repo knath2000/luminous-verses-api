@@ -123,17 +123,23 @@ exports.Prisma.QuranTextScalarFieldEnum = {
   text: 'text'
 };
 
+exports.Prisma.SurahDescriptionScalarFieldEnum = {
+  surahId: 'surahId',
+  description: 'description',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserBookmarkScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  surahId: 'surahId',
-  verseNumber: 'verseNumber',
-  verseText: 'verseText',
-  surahName: 'surahName',
+  userid: 'userid',
+  surahid: 'surahid',
+  versenumber: 'versenumber',
+  versetext: 'versetext',
+  surahname: 'surahname',
   translation: 'translation',
   notes: 'notes',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  createdat: 'createdat',
+  updatedat: 'updatedat'
 };
 
 exports.Prisma.SortOrder = {
@@ -157,6 +163,7 @@ exports.Prisma.ModelName = {
   QuranSajda: 'QuranSajda',
   QuranSurah: 'QuranSurah',
   QuranText: 'QuranText',
+  SurahDescription: 'SurahDescription',
   UserBookmark: 'UserBookmark'
 };
 /**
@@ -217,13 +224,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  previewFeatures = [\"driverAdapters\"]\n  output          = \"./generated/client\"\n  binaryTargets   = [\"native\", \"rhel-openssl-3.0.x\", \"darwin-arm64\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel EnYusufali {\n  index Int    @id\n  sura  Int\n  aya   Int\n  text  String\n\n  @@map(\"en_yusufali\")\n}\n\nmodel QuranSajda {\n  sajdaId     Int     @id @default(autoincrement()) @map(\"sajda_id\")\n  surahNumber Int     @map(\"surah_number\")\n  ayahNumber  Int     @map(\"ayah_number\")\n  type        String?\n\n  @@map(\"quran_sajdas\")\n}\n\nmodel QuranSurah {\n  number             Int    @id\n  arabicName         String @map(\"arabic_name\")\n  transliteration    String\n  englishName        String @map(\"english_name\")\n  ayas               Int\n  revelationType     String @map(\"revelation_type\")\n  chronologicalOrder Int    @map(\"chronological_order\")\n  rukus              Int\n  startIndex         Int?   @map(\"start_index\") // Add this line\n\n  @@map(\"quran_surahs\")\n}\n\nmodel QuranText {\n  id   Int    @id @default(autoincrement())\n  sura Int\n  aya  Int\n  text String\n\n  @@map(\"quran_text\")\n}\n\nmodel UserBookmark {\n  id          String   @id @default(cuid())\n  userId      String\n  surahId     Int\n  verseNumber Int\n  verseText   String\n  surahName   String\n  translation String\n  notes       String?\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  @@unique([userId, surahId, verseNumber])\n  @@map(\"user_bookmarks\")\n}\n",
-  "inlineSchemaHash": "2e9a0b7cdb334029bda860a242b05abb4ef16b556197a1a94b025279e56ec70f",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"./generated/client\"\n  previewFeatures = [\"driverAdapters\"]\n  binaryTargets   = [\"native\", \"rhel-openssl-3.0.x\", \"darwin-arm64\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel EnYusufali {\n  index BigInt  @id @default(autoincrement())\n  sura  BigInt?\n  aya   BigInt?\n  text  String?\n\n  @@map(\"en_yusufali\")\n}\n\nmodel QuranSajda {\n  sajdaId     BigInt  @id @default(autoincrement()) @map(\"sajda_id\")\n  surahNumber BigInt? @map(\"surah_number\")\n  ayahNumber  BigInt? @map(\"ayah_number\")\n  type        String?\n\n  @@map(\"quran_sajdas\")\n}\n\nmodel QuranSurah {\n  number             BigInt  @id @default(autoincrement())\n  arabicName         String? @map(\"arabic_name\")\n  transliteration    String?\n  englishName        String? @map(\"english_name\")\n  ayas               BigInt?\n  revelationType     String? @map(\"revelation_type\")\n  chronologicalOrder BigInt? @map(\"chronological_order\")\n  rukus              BigInt?\n  startIndex         BigInt? @map(\"start_index\")\n\n  @@map(\"quran_surahs\")\n}\n\nmodel QuranText {\n  id   BigInt  @id @default(autoincrement())\n  sura BigInt?\n  aya  BigInt?\n  text String?\n\n  @@map(\"quran_text\")\n}\n\nmodel SurahDescription {\n  surahId     BigInt    @id @map(\"surah_id\")\n  description String?\n  updatedAt   DateTime? @default(now()) @map(\"updated_at\") @db.Timestamp(6)\n\n  @@map(\"surah_descriptions\")\n}\n\nmodel UserBookmark {\n  id          String    @id(map: \"sqlite_autoindex_user_bookmarks_1\") @default(cuid())\n  userid      String?\n  surahid     BigInt?\n  versenumber BigInt?\n  versetext   String?\n  surahname   String?\n  translation String?\n  notes       String?\n  createdat   DateTime? @default(now()) @db.Timestamptz(6)\n  updatedat   DateTime? @default(now()) @db.Timestamptz(6)\n\n  @@unique([userid, surahid, versenumber], map: \"sqlite_autoindex_user_bookmarks_2\")\n  @@map(\"user_bookmarks\")\n}\n",
+  "inlineSchemaHash": "2f5f7e88ce1b36dc798232a24e67e55c87096c4b70df6dd85317de4ddfd76513",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"EnYusufali\":{\"fields\":[{\"name\":\"index\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"sura\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"aya\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"en_yusufali\"},\"QuranSajda\":{\"fields\":[{\"name\":\"sajdaId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"sajda_id\"},{\"name\":\"surahNumber\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"surah_number\"},{\"name\":\"ayahNumber\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"ayah_number\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"quran_sajdas\"},\"QuranSurah\":{\"fields\":[{\"name\":\"number\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"arabicName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"arabic_name\"},{\"name\":\"transliteration\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"englishName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"english_name\"},{\"name\":\"ayas\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"revelationType\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"revelation_type\"},{\"name\":\"chronologicalOrder\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"chronological_order\"},{\"name\":\"rukus\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"startIndex\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"start_index\"}],\"dbName\":\"quran_surahs\"},\"QuranText\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"sura\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"aya\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"quran_text\"},\"UserBookmark\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"surahId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"verseNumber\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"verseText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"surahName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"translation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"user_bookmarks\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"EnYusufali\":{\"fields\":[{\"name\":\"index\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"sura\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"aya\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"en_yusufali\"},\"QuranSajda\":{\"fields\":[{\"name\":\"sajdaId\",\"kind\":\"scalar\",\"type\":\"BigInt\",\"dbName\":\"sajda_id\"},{\"name\":\"surahNumber\",\"kind\":\"scalar\",\"type\":\"BigInt\",\"dbName\":\"surah_number\"},{\"name\":\"ayahNumber\",\"kind\":\"scalar\",\"type\":\"BigInt\",\"dbName\":\"ayah_number\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"quran_sajdas\"},\"QuranSurah\":{\"fields\":[{\"name\":\"number\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"arabicName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"arabic_name\"},{\"name\":\"transliteration\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"englishName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"english_name\"},{\"name\":\"ayas\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"revelationType\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"revelation_type\"},{\"name\":\"chronologicalOrder\",\"kind\":\"scalar\",\"type\":\"BigInt\",\"dbName\":\"chronological_order\"},{\"name\":\"rukus\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"startIndex\",\"kind\":\"scalar\",\"type\":\"BigInt\",\"dbName\":\"start_index\"}],\"dbName\":\"quran_surahs\"},\"QuranText\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"sura\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"aya\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"quran_text\"},\"SurahDescription\":{\"fields\":[{\"name\":\"surahId\",\"kind\":\"scalar\",\"type\":\"BigInt\",\"dbName\":\"surah_id\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"surah_descriptions\"},\"UserBookmark\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userid\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"surahid\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"versenumber\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"versetext\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"surahname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"translation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdat\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedat\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"user_bookmarks\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: () => require('./query_engine_bg.js'),
