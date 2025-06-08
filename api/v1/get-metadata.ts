@@ -36,15 +36,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
         
         return res.status(200).json(surahs.map((s: QuranSurah) => ({
-          number: s.number,
+          number: Number(s.number),
           name: s.arabicName,
           tname: s.transliteration,
           ename: s.englishName,
-          ayas: s.ayas,
+          ayas: Number(s.ayas),
           type: s.revelationType,
-          order: s.chronologicalOrder,
-          rukus: s.rukus,
-          startIndex: s.startIndex
+          order: Number(s.chronologicalOrder),
+          rukus: Number(s.rukus),
+          startIndex: Number(s.startIndex)
         })));
 
       case 'sajdas':
@@ -52,7 +52,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const sajdas = await prisma.quranSajda.findMany({
           orderBy: [{ surahNumber: 'asc' }, { ayahNumber: 'asc' }]
         });
-        return res.status(200).json(sajdas);
+        return res.status(200).json(sajdas.map(sajda => ({
+          ...sajda,
+          surahNumber: Number(sajda.surahNumber),
+          ayahNumber: Number(sajda.ayahNumber)
+        })));
 
       case undefined:
       case null:
@@ -85,15 +89,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           defaultData: {
             totalSurahs: defaultSurahs.length,
             surahs: defaultSurahs.map((s: QuranSurah) => ({
-              number: s.number,
+              number: Number(s.number),
               name: s.arabicName,
               tname: s.transliteration,
               ename: s.englishName,
-              ayas: s.ayas,
+              ayas: Number(s.ayas),
               type: s.revelationType,
-              order: s.chronologicalOrder,
-              rukus: s.rukus,
-              startIndex: s.startIndex
+              order: Number(s.chronologicalOrder),
+              rukus: Number(s.rukus),
+              startIndex: Number(s.startIndex)
             }))
           }
         });
