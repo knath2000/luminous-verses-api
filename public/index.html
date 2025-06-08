@@ -3,61 +3,1190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Data API</title>
+    <title>Quran Data API - Developer Documentation</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.6; }
-        .endpoint { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
-        .method { color: #0066cc; font-weight: bold; }
-        code { background: #eee; padding: 2px 5px; border-radius: 3px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            background: #f8fafc;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: white; 
+            padding: 60px 0; 
+            text-align: center; 
+            margin-bottom: 40px;
+        }
+        .header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .header p { font-size: 1.2rem; opacity: 0.9; }
+        .nav { 
+            background: white; 
+            padding: 20px 0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+        }
+        .nav ul { 
+            list-style: none; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 30px; 
+        }
+        .nav a { 
+            text-decoration: none; 
+            color: #667eea; 
+            font-weight: 600; 
+            padding: 10px 15px; 
+            border-radius: 5px; 
+            transition: all 0.3s;
+        }
+        .nav a:hover { background: #667eea; color: white; }
+        .section { 
+            background: white; 
+            margin: 30px 0; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .section h2 { 
+            color: #667eea; 
+            margin-bottom: 20px; 
+            font-size: 2rem; 
+            border-bottom: 3px solid #667eea; 
+            padding-bottom: 10px;
+        }
+        .endpoint { 
+            background: #f8fafc; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 8px; 
+            border-left: 4px solid #667eea;
+        }
+        .method { 
+            display: inline-block; 
+            color: white; 
+            font-weight: bold; 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            margin-right: 10px; 
+            font-size: 0.9rem;
+        }
+        .get { background: #10b981; }
+        .post { background: #3b82f6; }
+        .put { background: #f59e0b; }
+        .delete { background: #ef4444; }
+        .framework-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 30px; 
+            margin: 30px 0;
+        }
+        .framework-card { 
+            background: #f8fafc; 
+            padding: 25px; 
+            border-radius: 10px; 
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .framework-card:hover { 
+            border-color: #667eea; 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .framework-card h3 { 
+            color: #667eea; 
+            margin-bottom: 15px; 
+            font-size: 1.4rem;
+        }
+        .code-block { 
+            background: #1e293b; 
+            color: #e2e8f0; 
+            padding: 20px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            margin: 15px 0; 
+            font-family: 'Monaco', 'Menlo', monospace; 
+            font-size: 0.9rem;
+        }
+        .code-block .comment { color: #64748b; }
+        .code-block .keyword { color: #f472b6; }
+        .code-block .string { color: #34d399; }
+        .code-block .function { color: #60a5fa; }
+        .badge { 
+            display: inline-block; 
+            background: #667eea; 
+            color: white; 
+            padding: 3px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8rem; 
+            margin: 0 5px;
+        }
+        .response-example { 
+            background: #f0f9ff; 
+            border: 1px solid #0ea5e9; 
+            padding: 15px; 
+            border-radius: 6px; 
+            margin: 15px 0;
+        }
+        .response-example h4 { color: #0ea5e9; margin-bottom: 10px; }
+        .feature-list { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin: 20px 0;
+        }
+        .feature-item { 
+            background: #f0f9ff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            text-align: center;
+        }
+        .feature-item h4 { color: #0ea5e9; margin-bottom: 10px; }
+        .toc { 
+            background: #f8fafc; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 30px;
+        }
+        .toc h3 { color: #667eea; margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc li { margin: 8px 0; }
+        .toc a { color: #64748b; text-decoration: none; }
+        .toc a:hover { color: #667eea; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .nav ul { flex-direction: column; align-items: center; }
+            .framework-grid { grid-template-columns: 1fr; }
+            .section { padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <h1>🕌 Quran Data API</h1>
-    <p>A RESTful API for accessing Quran verses, translations, and metadata.</p>
-    
-    <h2>📚 Available Endpoints</h2>
-    
-    <div class="endpoint">
-        <div class="method">GET</div>
-        <strong>/api/v1/get-verses</strong>
-        <p>Retrieve verses from a specific Surah</p>
-        <p><strong>Parameters:</strong> <code>surah</code> (required), <code>start</code>, <code>end</code></p>
+    <div class="header">
+        <div class="container">
+            <h1>🕌 Quran Data API</h1>
+            <p>Comprehensive RESTful API for Quran verses, translations, and metadata with rich scholarly descriptions</p>
+            <div style="margin-top: 20px;">
+                <span class="badge">TypeScript</span>
+                <span class="badge">Prisma</span>
+                <span class="badge">Neon Database</span>
+                <span class="badge">Vercel</span>
+            </div>
+        </div>
     </div>
+
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#endpoints">API Endpoints</a></li>
+                <li><a href="#frameworks">Framework Examples</a></li>
+                <li><a href="#authentication">Authentication</a></li>
+                <li><a href="#rate-limits">Rate Limits</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="toc">
+            <h3>📋 Quick Navigation</h3>
+            <ul>
+                <li><a href="#react">React (Hooks & Server Components)</a></li>
+                <li><a href="#nextjs">Next.js (App Router)</a></li>
+                <li><a href="#vue">Vue.js (Composition API)</a></li>
+                <li><a href="#angular">Angular (Signals)</a></li>
+                <li><a href="#swift">Swift iOS (URLSession & Async/Await)</a></li>
+                <li><a href="#flutter">Flutter (Dart)</a></li>
+            </ul>
+        </div>
+
+        <section id="overview" class="section">
+            <h2>🌟 API Overview</h2>
+            <p>The Quran Data API provides developers with comprehensive access to Quran content, including authentic scholarly descriptions, verse translations, and metadata. Built with modern technologies and optimized for performance.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>📚 Rich Content</h4>
+                    <p>114 authentic surah descriptions with historical context and themes</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔒 Secure</h4>
+                    <p>JWT authentication with Clerk integration</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⚡ Fast</h4>
+                    <p>Optimized queries with Prisma and Neon database</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🌐 CORS Enabled</h4>
+                    <p>Cross-origin requests supported for web applications</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+<span class="comment">// Base URL</span>
+<span class="keyword">const</span> <span class="function">API_BASE</span> = <span class="string">'https://quran-data-api.vercel.app'</span>;
+
+<span class="comment">// All endpoints support both /api/v1/* and /v1/* formats</span>
+<span class="keyword">const</span> <span class="function">endpoints</span> = {
+  verses: <span class="string">`${API_BASE}/api/v1/get-verses`</span>,
+  metadata: <span class="string">`${API_BASE}/api/v1/get-metadata`</span>,
+  descriptions: <span class="string">`${API_BASE}/api/v1/get-surah-description`</span>,
+  translations: <span class="string">`${API_BASE}/api/v1/get-translated-verse`</span>,
+  bookmarks: <span class="string">`${API_BASE}/api/v1/user-bookmarks`</span>
+};
+            </div>
+        </section>
+
+        <section id="endpoints" class="section">
+            <h2>🔗 API Endpoints</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>/api/v1/get-verses</strong>
+                <p>Retrieve verses from a specific Surah with optional range filtering</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>surah</code> (required) - Surah number (1-114)</li>
+                    <li><code>start</code> (optional) - Starting verse number</li>
+                    <li><code>end</code> (optional) - Ending verse number</li>
+                </ul>
+                <div class="response-example">
+                    <h4>Example Response:</h4>
+                    <div class="code-block">
+{
+  "verses": [
+    {
+      "id": 1,
+      "sura": 1,
+      "aya": 1,
+      "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"
+    }
+  ]
+}
+                    </div>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>/api/v1/get-surah-description</strong>
+                <p>Get comprehensive description and details for a specific Surah with scholarly content</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>surahId</code> (required) - Surah number (1-114)</li>
+                </ul>
+                <div class="response-example">
+                    <h4>Enhanced Response Format:</h4>
+                    <div class="code-block">
+{
+  "success": true,
+  "source": "neon_database",
+  "surah": {
+    "id": 1,
+    "name": {
+      "arabic": "الفاتحة",
+      "transliteration": "Al-Fatihah",
+      "english": "The Opening"
+    },
+    "description": "**Surah Al-Fatiha (The Opening)** Often called the \"Mother of the Quran,\" Al-Fatiha is the first Surah, revealed early in Mecca...",
+    "metadata": {
+      "totalVerses": 7,
+      "revelationType": "Meccan",
+      "chronologicalOrder": 5,
+      "rukus": 1,
+      "lastUpdated": "2025-05-28T20:39:08.000Z"
+    }
+  }
+}
+                    </div>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>/api/v1/get-metadata</strong>
+                <p>Get comprehensive Quran metadata and Surah information</p>
+                <p><strong>Parameters:</strong> <code>type</code> (optional) - Filter metadata type</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>/api/v1/get-translated-verse</strong>
+                <p>Get translated verse content with multiple translation options</p>
+                <p><strong>Parameters:</strong> <code>surah</code>, <code>verse</code></p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get post put delete">GET/POST/PUT/DELETE</span>
+                <strong>/api/v1/user-bookmarks</strong>
+                <p>Manage user bookmarks with full CRUD operations (requires authentication)</p>
+                <p><strong>Authentication:</strong> Bearer token required</p>
+            </div>
+        </section>
+
+        <section id="frameworks" class="section">
+            <h2>🚀 Framework Implementation Examples</h2>
+            <p>Ready-to-use code examples for the most popular web and mobile frameworks in 2025.</p>
+
+            <div class="framework-grid">
+                <div id="react" class="framework-card">
+                    <h3>⚛️ React (Hooks & Custom Hooks)</h3>
+                    <p>Modern React patterns with hooks, error boundaries, and race condition handling.</p>
+                    
+                    <div class="code-block">
+<span class="comment">// Custom hook for Surah descriptions</span>
+<span class="keyword">import</span> { useState, useEffect } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">function</span> <span class="function">useSurahDescription</span>(surahId) {
+  <span class="keyword">const</span> [data, setData] = <span class="function">useState</span>(<span class="keyword">null</span>);
+  <span class="keyword">const</span> [loading, setLoading] = <span class="function">useState</span>(<span class="keyword">true</span>);
+  <span class="keyword">const</span> [error, setError] = <span class="function">useState</span>(<span class="keyword">null</span>);
+
+  <span class="function">useEffect</span>(() => {
+    <span class="keyword">let</span> ignore = <span class="keyword">false</span>;
+
+    <span class="keyword">async function</span> <span class="function">fetchDescription</span>() {
+      <span class="keyword">try</span> {
+        setLoading(<span class="keyword">true</span>);
+        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+          <span class="string">`https://quran-data-api.vercel.app/api/v1/get-surah-description?surahId=${surahId}`</span>
+        );
+        
+        <span class="keyword">if</span> (!response.ok) {
+          <span class="keyword">throw new</span> <span class="function">Error</span>(<span class="string">`HTTP error! status: ${response.status}`</span>);
+        }
+        
+        <span class="keyword">const</span> result = <span class="keyword">await</span> response.<span class="function">json</span>();
+        
+        <span class="keyword">if</span> (!ignore) {
+          <span class="function">setData</span>(result);
+          <span class="function">setError</span>(<span class="keyword">null</span>);
+        }
+      } <span class="keyword">catch</span> (err) {
+        <span class="keyword">if</span> (!ignore) {
+          <span class="function">setError</span>(err.message);
+          <span class="function">setData</span>(<span class="keyword">null</span>);
+        }
+      } <span class="keyword">finally</span> {
+        <span class="keyword">if</span> (!ignore) {
+          <span class="function">setLoading</span>(<span class="keyword">false</span>);
+        }
+      }
+    }
+
+    <span class="function">fetchDescription</span>();
+
+    <span class="keyword">return</span> () => {
+      ignore = <span class="keyword">true</span>;
+    };
+  }, [surahId]);
+
+  <span class="keyword">return</span> { data, loading, error };
+}
+
+<span class="comment">// Component usage</span>
+<span class="keyword">function</span> <span class="function">SurahCard</span>({ surahId }) {
+  <span class="keyword">const</span> { data, loading, error } = <span class="function">useSurahDescription</span>(surahId);
+
+  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;Loading...&lt;/div&gt;;
+  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;div&gt;Error: {error}&lt;/div&gt;;
+
+  <span class="keyword">return</span> (
+    &lt;div className=<span class="string">"surah-card"</span>&gt;
+      &lt;h2&gt;{data.surah.name.english}&lt;/h2&gt;
+      &lt;p&gt;{data.surah.name.transliteration}&lt;/p&gt;
+      &lt;div dangerouslySetInnerHTML={{ __html: data.surah.description }} /&gt;
+      &lt;small&gt;{data.surah.metadata.totalVerses} verses • {data.surah.metadata.revelationType}&lt;/small&gt;
+    &lt;/div&gt;
+  );
+}
+                    </div>
+                </div>
+
+                <div id="nextjs" class="framework-card">
+                    <h3>▲ Next.js (App Router & Server Components)</h3>
+                    <p>Server-side data fetching with Next.js 15 App Router and streaming.</p>
+                    
+                    <div class="code-block">
+<span class="comment">// app/surah/[id]/page.tsx - Server Component</span>
+<span class="keyword">import</span> { Suspense } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">async function</span> <span class="function">getSurahDescription</span>(id: string) {
+  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="function">fetch</span>(
+    <span class="string">`https://quran-data-api.vercel.app/api/v1/get-surah-description?surahId=${id}`</span>,
+    { 
+      cache: <span class="string">'force-cache'</span>, <span class="comment">// Static generation</span>
+      next: { revalidate: 3600 } <span class="comment">// Revalidate every hour</span>
+    }
+  );
+  
+  <span class="keyword">if</span> (!res.ok) {
+    <span class="keyword">throw new</span> <span class="function">Error</span>(<span class="string">'Failed to fetch surah description'</span>);
+  }
+  
+  <span class="keyword">return</span> res.<span class="function">json</span>();
+}
+
+<span class="keyword">async function</span> <span class="function">getVerses</span>(id: string) {
+  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="function">fetch</span>(
+    <span class="string">`https://quran-data-api.vercel.app/api/v1/get-verses?surah=${id}`</span>,
+    { cache: <span class="string">'force-cache'</span> }
+  );
+  
+  <span class="keyword">return</span> res.<span class="function">json</span>();
+}
+
+<span class="keyword">export default async function</span> <span class="function">SurahPage</span>({ 
+  params 
+}: { 
+  params: Promise&lt;{ id: string }&gt; 
+}) {
+  <span class="keyword">const</span> { id } = <span class="keyword">await</span> params;
+  
+  <span class="comment">// Parallel data fetching</span>
+  <span class="keyword">const</span> [description, verses] = <span class="keyword">await</span> Promise.<span class="function">all</span>([
+    <span class="function">getSurahDescription</span>(id),
+    <span class="function">getVerses</span>(id)
+  ]);
+
+  <span class="keyword">return</span> (
+    &lt;div&gt;
+      &lt;h1&gt;{description.surah.name.english}&lt;/h1&gt;
+      &lt;p&gt;{description.surah.name.arabic}&lt;/p&gt;
+      
+      &lt;Suspense fallback={&lt;div&gt;Loading description...&lt;/div&gt;}&gt;
+        &lt;div dangerouslySetInnerHTML={{ 
+          __html: description.surah.description 
+        }} /&gt;
+      &lt;/Suspense&gt;
+      
+      &lt;Suspense fallback={&lt;div&gt;Loading verses...&lt;/div&gt;}&gt;
+        &lt;div&gt;
+          {verses.verses.map((verse) =&gt; (
+            &lt;p key={verse.id}&gt;{verse.text}&lt;/p&gt;
+          ))}
+        &lt;/div&gt;
+      &lt;/Suspense&gt;
+    &lt;/div&gt;
+  );
+}
+
+<span class="comment">// Generate static params for all surahs</span>
+<span class="keyword">export async function</span> <span class="function">generateStaticParams</span>() {
+  <span class="keyword">return</span> Array.<span class="function">from</span>({ length: 114 }, (_, i) =&gt; ({
+    id: (i + 1).<span class="function">toString</span>()
+  }));
+}
+                    </div>
+                </div>
+
+                <div id="vue" class="framework-card">
+                    <h3>💚 Vue.js (Composition API)</h3>
+                    <p>Vue 3 Composition API with reactive data and error handling.</p>
+                    
+                    <div class="code-block">
+<span class="comment">// composables/useSurahData.js</span>
+<span class="keyword">import</span> { ref, computed, watchEffect } <span class="keyword">from</span> <span class="string">'vue'</span>;
+
+<span class="keyword">export function</span> <span class="function">useSurahData</span>(surahId) {
+  <span class="keyword">const</span> data = <span class="function">ref</span>(<span class="keyword">null</span>);
+  <span class="keyword">const</span> loading = <span class="function">ref</span>(<span class="keyword">false</span>);
+  <span class="keyword">const</span> error = <span class="function">ref</span>(<span class="keyword">null</span>);
+
+  <span class="keyword">const</span> <span class="function">fetchSurahData</span> = <span class="keyword">async</span> () => {
+    <span class="keyword">if</span> (!surahId.value) <span class="keyword">return</span>;
     
-    <div class="endpoint">
-        <div class="method">GET</div>
-        <strong>/api/v1/get-metadata</strong>
-        <p>Get Quran metadata and Surah information</p>
+    loading.value = <span class="keyword">true</span>;
+    error.value = <span class="keyword">null</span>;
+    
+    <span class="keyword">try</span> {
+      <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+        <span class="string">`https://quran-data-api.vercel.app/api/v1/get-surah-description?surahId=${surahId.value}`</span>
+      );
+      
+      <span class="keyword">if</span> (!response.ok) {
+        <span class="keyword">throw new</span> <span class="function">Error</span>(<span class="string">`HTTP error! status: ${response.status}`</span>);
+      }
+      
+      data.value = <span class="keyword">await</span> response.<span class="function">json</span>();
+    } <span class="keyword">catch</span> (err) {
+      error.value = err.message;
+    } <span class="keyword">finally</span> {
+      loading.value = <span class="keyword">false</span>;
+    }
+  };
+
+  <span class="function">watchEffect</span>(() => {
+    <span class="function">fetchSurahData</span>();
+  });
+
+  <span class="keyword">const</span> surahInfo = <span class="function">computed</span>(() => {
+    <span class="keyword">return</span> data.value ? {
+      name: data.value.surah.name,
+      description: data.value.surah.description,
+      metadata: data.value.surah.metadata
+    } : <span class="keyword">null</span>;
+  });
+
+  <span class="keyword">return</span> {
+    data,
+    loading,
+    error,
+    surahInfo,
+    refetch: fetchSurahData
+  };
+}
+
+<span class="comment">// Component usage</span>
+&lt;template&gt;
+  &lt;div class=<span class="string">"surah-component"</span>&gt;
+    &lt;div v-if=<span class="string">"loading"</span>&gt;Loading...&lt;/div&gt;
+    &lt;div v-else-if=<span class="string">"error"</span> class=<span class="string">"error"</span>&gt;{{ error }}&lt;/div&gt;
+    &lt;div v-else-if=<span class="string">"surahInfo"</span>&gt;
+      &lt;h2&gt;{{ surahInfo.name.english }}&lt;/h2&gt;
+      &lt;p&gt;{{ surahInfo.name.transliteration }}&lt;/p&gt;
+      &lt;div v-html=<span class="string">"surahInfo.description"</span>&gt;&lt;/div&gt;
+      &lt;small&gt;
+        {{ surahInfo.metadata.totalVerses }} verses • 
+        {{ surahInfo.metadata.revelationType }}
+      &lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+<span class="keyword">import</span> { ref } <span class="keyword">from</span> <span class="string">'vue'</span>;
+<span class="keyword">import</span> { useSurahData } <span class="keyword">from</span> <span class="string">'@/composables/useSurahData'</span>;
+
+<span class="keyword">const</span> surahId = <span class="function">ref</span>(1);
+<span class="keyword">const</span> { data, loading, error, surahInfo } = <span class="function">useSurahData</span>(surahId);
+&lt;/script&gt;
+                    </div>
+                </div>
+
+                <div id="angular" class="framework-card">
+                    <h3>🅰️ Angular (Signals & HttpClient)</h3>
+                    <p>Angular 17+ with signals, standalone components, and reactive patterns.</p>
+                    
+                    <div class="code-block">
+<span class="comment">// services/quran-api.service.ts</span>
+<span class="keyword">import</span> { Injectable, signal } <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+<span class="keyword">import</span> { HttpClient } <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;
+<span class="keyword">import</span> { Observable, catchError, of } <span class="keyword">from</span> <span class="string">'rxjs'</span>;
+
+<span class="keyword">@Injectable</span>({
+  providedIn: <span class="string">'root'</span>
+})
+<span class="keyword">export class</span> <span class="function">QuranApiService</span> {
+  <span class="keyword">private</span> baseUrl = <span class="string">'https://quran-data-api.vercel.app/api/v1'</span>;
+  
+  <span class="comment">// Signals for reactive state management</span>
+  loading = <span class="function">signal</span>(<span class="keyword">false</span>);
+  error = <span class="function">signal</span>&lt;string | <span class="keyword">null</span>&gt;(<span class="keyword">null</span>);
+
+  <span class="keyword">constructor</span>(<span class="keyword">private</span> http: HttpClient) {}
+
+  <span class="function">getSurahDescription</span>(surahId: number): Observable&lt;any&gt; {
+    this.loading.<span class="function">set</span>(<span class="keyword">true</span>);
+    this.error.<span class="function">set</span>(<span class="keyword">null</span>);
+
+    <span class="keyword">return</span> this.http.<span class="function">get</span>(<span class="string">`${this.baseUrl}/get-surah-description?surahId=${surahId}`</span>)
+      .<span class="function">pipe</span>(
+        <span class="function">catchError</span>((error) => {
+          this.error.<span class="function">set</span>(error.message);
+          this.loading.<span class="function">set</span>(<span class="keyword">false</span>);
+          <span class="keyword">return</span> <span class="function">of</span>(<span class="keyword">null</span>);
+        })
+      );
+  }
+}
+
+<span class="comment">// components/surah-card.component.ts</span>
+<span class="keyword">import</span> { Component, Input, OnInit, signal } <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+<span class="keyword">import</span> { CommonModule } <span class="keyword">from</span> <span class="string">'@angular/common'</span>;
+<span class="keyword">import</span> { QuranApiService } <span class="keyword">from</span> <span class="string">'../services/quran-api.service'</span>;
+
+<span class="keyword">@Component</span>({
+  selector: <span class="string">'app-surah-card'</span>,
+  standalone: <span class="keyword">true</span>,
+  imports: [CommonModule],
+  template: <span class="string">`
+    &lt;div class="surah-card"&gt;
+      @if (loading()) {
+        &lt;div&gt;Loading...&lt;/div&gt;
+      } @else if (error()) {
+        &lt;div class="error"&gt;{{ error() }}&lt;/div&gt;
+      } @else if (surahData()) {
+        &lt;h2&gt;{{ surahData().surah.name.english }}&lt;/h2&gt;
+        &lt;p&gt;{{ surahData().surah.name.transliteration }}&lt;/p&gt;
+        &lt;div [innerHTML]="surahData().surah.description"&gt;&lt;/div&gt;
+        &lt;small&gt;
+          {{ surahData().surah.metadata.totalVerses }} verses • 
+          {{ surahData().surah.metadata.revelationType }}
+        &lt;/small&gt;
+      }
+    &lt;/div&gt;
+  `</span>
+})
+<span class="keyword">export class</span> <span class="function">SurahCardComponent</span> <span class="keyword">implements</span> OnInit {
+  <span class="keyword">@Input</span>() surahId!: number;
+  
+  surahData = <span class="function">signal</span>&lt;any&gt;(<span class="keyword">null</span>);
+  loading = this.quranService.loading;
+  error = this.quranService.error;
+
+  <span class="keyword">constructor</span>(<span class="keyword">private</span> quranService: QuranApiService) {}
+
+  <span class="function">ngOnInit</span>() {
+    this.quranService.<span class="function">getSurahDescription</span>(this.surahId)
+      .<span class="function">subscribe</span>(data => {
+        <span class="keyword">if</span> (data) {
+          this.surahData.<span class="function">set</span>(data);
+        }
+        this.quranService.loading.<span class="function">set</span>(<span class="keyword">false</span>);
+      });
+  }
+}</span>
+                    </div>
+                </div>
+
+                <div id="swift" class="framework-card">
+                    <h3>🍎 Swift iOS (URLSession & Async/Await)</h3>
+                    <p>Modern Swift with async/await, structured concurrency, and SwiftUI integration.</p>
+                    
+                    <div class="code-block">
+<span class="comment">// Models/SurahModels.swift</span>
+<span class="keyword">import</span> Foundation
+
+<span class="keyword">struct</span> <span class="function">SurahResponse</span>: Codable {
+    <span class="keyword">let</span> success: Bool
+    <span class="keyword">let</span> source: String
+    <span class="keyword">let</span> surah: SurahDetail
+}
+
+<span class="keyword">struct</span> <span class="function">SurahDetail</span>: Codable {
+    <span class="keyword">let</span> id: Int
+    <span class="keyword">let</span> name: SurahName
+    <span class="keyword">let</span> description: String
+    <span class="keyword">let</span> metadata: SurahMetadata
+}
+
+<span class="keyword">struct</span> <span class="function">SurahName</span>: Codable {
+    <span class="keyword">let</span> arabic: String
+    <span class="keyword">let</span> transliteration: String
+    <span class="keyword">let</span> english: String
+}
+
+<span class="keyword">struct</span> <span class="function">SurahMetadata</span>: Codable {
+    <span class="keyword">let</span> totalVerses: Int
+    <span class="keyword">let</span> revelationType: String
+    <span class="keyword">let</span> chronologicalOrder: Int
+    <span class="keyword">let</span> rukus: Int
+}
+
+<span class="comment">// Services/QuranAPIService.swift</span>
+<span class="keyword">import</span> Foundation
+
+<span class="keyword">@MainActor</span>
+<span class="keyword">class</span> <span class="function">QuranAPIService</span>: ObservableObject {
+    <span class="keyword">private</span> <span class="keyword">let</span> baseURL = <span class="string">"https://quran-data-api.vercel.app/api/v1"</span>
+    <span class="keyword">private</span> <span class="keyword">let</span> session = URLSession.shared
+    
+    <span class="keyword">@Published</span> <span class="keyword">var</span> isLoading = <span class="keyword">false</span>
+    <span class="keyword">@Published</span> <span class="keyword">var</span> errorMessage: String?
+    
+    <span class="keyword">func</span> <span class="function">fetchSurahDescription</span>(surahId: Int) <span class="keyword">async throws</span> -> SurahResponse {
+        <span class="keyword">guard</span> surahId >= 1 && surahId <= 114 <span class="keyword">else</span> {
+            <span class="keyword">throw</span> APIError.invalidSurahId
+        }
+        
+        isLoading = <span class="keyword">true</span>
+        errorMessage = <span class="keyword">nil</span>
+        
+        <span class="keyword">defer</span> { isLoading = <span class="keyword">false</span> }
+        
+        <span class="keyword">guard</span> <span class="keyword">let</span> url = URL(string: <span class="string">"\(baseURL)/get-surah-description?surahId=\(surahId)"</span>) <span class="keyword">else</span> {
+            <span class="keyword">throw</span> APIError.invalidURL
+        }
+        
+        <span class="keyword">var</span> request = URLRequest(url: url)
+        request.setValue(<span class="string">"application/json"</span>, forHTTPHeaderField: <span class="string">"Accept"</span>)
+        request.timeoutInterval = 30
+        
+        <span class="keyword">do</span> {
+            <span class="keyword">let</span> (data, response) = <span class="keyword">try await</span> session.data(<span class="keyword">for</span>: request)
+            
+            <span class="keyword">guard</span> <span class="keyword">let</span> httpResponse = response <span class="keyword">as</span>? HTTPURLResponse <span class="keyword">else</span> {
+                <span class="keyword">throw</span> APIError.invalidResponse
+            }
+            
+            <span class="keyword">guard</span> 200...299 ~= httpResponse.statusCode <span class="keyword">else</span> {
+                <span class="keyword">throw</span> APIError.serverError(httpResponse.statusCode)
+            }
+            
+            <span class="keyword">let</span> decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
+            <span class="keyword">return try</span> decoder.decode(SurahResponse.<span class="keyword">self</span>, <span class="keyword">from</span>: data)
+            
+        } <span class="keyword">catch</span> {
+            errorMessage = error.localizedDescription
+            <span class="keyword">throw</span> error
+        }
+    }
+}
+
+<span class="keyword">enum</span> <span class="function">APIError</span>: LocalizedError {
+    <span class="keyword">case</span> invalidURL
+    <span class="keyword">case</span> invalidSurahId
+    <span class="keyword">case</span> invalidResponse
+    <span class="keyword">case</span> serverError(Int)
+    
+    <span class="keyword">var</span> errorDescription: String? {
+        <span class="keyword">switch</span> <span class="keyword">self</span> {
+        <span class="keyword">case</span> .invalidURL:
+            <span class="keyword">return</span> <span class="string">"Invalid URL"</span>
+        <span class="keyword">case</span> .invalidSurahId:
+            <span class="keyword">return</span> <span class="string">"Surah ID must be between 1 and 114"</span>
+        <span class="keyword">case</span> .invalidResponse:
+            <span class="keyword">return</span> <span class="string">"Invalid response from server"</span>
+        <span class="keyword">case</span> .serverError(<span class="keyword">let</span> code):
+            <span class="keyword">return</span> <span class="string">"Server error: \(code)"</span>
+        }
+    }
+}
+
+<span class="comment">// Views/SurahDetailView.swift</span>
+<span class="keyword">import</span> SwiftUI
+
+<span class="keyword">struct</span> <span class="function">SurahDetailView</span>: View {
+    <span class="keyword">let</span> surahId: Int
+    <span class="keyword">@StateObject</span> <span class="keyword">private</span> <span class="keyword">var</span> apiService = QuranAPIService()
+    <span class="keyword">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> surahData: SurahResponse?
+    
+    <span class="keyword">var</span> body: <span class="keyword">some</span> View {
+        NavigationView {
+            Group {
+                <span class="keyword">if</span> apiService.isLoading {
+                    ProgressView(<span class="string">"Loading..."</span>)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } <span class="keyword">else if</span> <span class="keyword">let</span> errorMessage = apiService.errorMessage {
+                    VStack {
+                        Image(systemName: <span class="string">"exclamationmark.triangle"</span>)
+                            .font(.largeTitle)
+                            .foregroundColor(.red)
+                        Text(errorMessage)
+                            .multilineTextAlignment(.center)
+                        Button(<span class="string">"Retry"</span>) {
+                            Task {
+                                <span class="keyword">await</span> loadSurahData()
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .padding()
+                } <span class="keyword">else if</span> <span class="keyword">let</span> surah = surahData?.surah {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            VStack(alignment: .leading) {
+                                Text(surah.name.english)
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text(surah.name.transliteration)
+                                    .font(.title2)
+                                    .foregroundColor(.secondary)
+                                Text(surah.name.arabic)
+                                    .font(.title)
+                                    .environment(\.layoutDirection, .rightToLeft)
+                            }
+                            
+                            Divider()
+                            
+                            Text(surah.description)
+                                .font(.body)
+                                .lineLimit(<span class="keyword">nil</span>)
+                            
+                            HStack {
+                                Label(<span class="string">"\(surah.metadata.totalVerses) verses"</span>, 
+                                      systemImage: <span class="string">"text.alignleft"</span>)
+                                Spacer()
+                                Label(surah.metadata.revelationType, 
+                                      systemImage: <span class="string">"location"</span>)
+                            }
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        }
+                        .padding()
+                    }
+                }
+            }
+            .navigationTitle(<span class="string">"Surah \(surahId)"</span>)
+            .task {
+                <span class="keyword">await</span> loadSurahData()
+            }
+        }
+    }
+    
+    <span class="keyword">private func</span> <span class="function">loadSurahData</span>() <span class="keyword">async</span> {
+        <span class="keyword">do</span> {
+            surahData = <span class="keyword">try await</span> apiService.fetchSurahDescription(surahId: surahId)
+        } <span class="keyword">catch</span> {
+            <span class="comment">// Error is already handled in the service</span>
+            print(<span class="string">"Failed to load surah data: \(error)"</span>)
+        }
+    }
+}
+                    </div>
+                </div>
+
+                <div id="flutter" class="framework-card">
+                    <h3>🐦 Flutter (Dart)</h3>
+                    <p>Flutter with modern state management, error handling, and responsive design.</p>
+                    
+                    <div class="code-block">
+<span class="comment">// models/surah_models.dart</span>
+<span class="keyword">class</span> <span class="function">SurahResponse</span> {
+  <span class="keyword">final</span> <span class="keyword">bool</span> success;
+  <span class="keyword">final</span> String source;
+  <span class="keyword">final</span> SurahDetail surah;
+
+  <span class="function">SurahResponse</span>({
+    <span class="keyword">required</span> <span class="keyword">this</span>.success,
+    <span class="keyword">required</span> <span class="keyword">this</span>.source,
+    <span class="keyword">required</span> <span class="keyword">this</span>.surah,
+  });
+
+  <span class="keyword">factory</span> SurahResponse.<span class="function">fromJson</span>(Map&lt;String, <span class="keyword">dynamic</span>&gt; json) {
+    <span class="keyword">return</span> <span class="function">SurahResponse</span>(
+      success: json[<span class="string">'success'</span>] ?? <span class="keyword">false</span>,
+      source: json[<span class="string">'source'</span>] ?? <span class="string">''</span>,
+      surah: <span class="function">SurahDetail</span>.fromJson(json[<span class="string">'surah'</span>]),
+    );
+  }
+}
+
+<span class="keyword">class</span> <span class="function">SurahDetail</span> {
+  <span class="keyword">final</span> <span class="keyword">int</span> id;
+  <span class="keyword">final</span> SurahName name;
+  <span class="keyword">final</span> String description;
+  <span class="keyword">final</span> SurahMetadata metadata;
+
+  <span class="function">SurahDetail</span>({
+    <span class="keyword">required</span> <span class="keyword">this</span>.id,
+    <span class="keyword">required</span> <span class="keyword">this</span>.name,
+    <span class="keyword">required</span> <span class="keyword">this</span>.description,
+    <span class="keyword">required</span> <span class="keyword">this</span>.metadata,
+  });
+
+  <span class="keyword">factory</span> SurahDetail.<span class="function">fromJson</span>(Map&lt;String, <span class="keyword">dynamic</span>&gt; json) {
+    <span class="keyword">return</span> <span class="function">SurahDetail</span>(
+      id: json[<span class="string">'id'</span>],
+      name: <span class="function">SurahName</span>.fromJson(json[<span class="string">'name'</span>]),
+      description: json[<span class="string">'description'</span>],
+      metadata: <span class="function">SurahMetadata</span>.fromJson(json[<span class="string">'metadata'</span>]),
+    );
+  }
+}
+
+<span class="comment">// services/quran_api_service.dart</span>
+<span class="keyword">import</span> <span class="string">'dart:convert'</span>;
+<span class="keyword">import</span> <span class="string">'package:http/http.dart'</span> <span class="keyword">as</span> http;
+
+<span class="keyword">class</span> <span class="function">QuranApiService</span> {
+  <span class="keyword">static const</span> String _baseUrl = <span class="string">'https://quran-data-api.vercel.app/api/v1'</span>;
+  <span class="keyword">static const</span> Duration _timeout = Duration(seconds: 30);
+
+  <span class="keyword">static</span> Future&lt;SurahResponse&gt; <span class="function">fetchSurahDescription</span>(<span class="keyword">int</span> surahId) <span class="keyword">async</span> {
+    <span class="keyword">if</span> (surahId &lt; 1 || surahId &gt; 114) {
+      <span class="keyword">throw</span> <span class="function">ArgumentError</span>(<span class="string">'Surah ID must be between 1 and 114'</span>);
+    }
+
+    <span class="keyword">final</span> uri = Uri.<span class="function">parse</span>(<span class="string">'$_baseUrl/get-surah-description?surahId=$surahId'</span>);
+    
+    <span class="keyword">try</span> {
+      <span class="keyword">final</span> response = <span class="keyword">await</span> http.<span class="function">get</span>(
+        uri,
+        headers: {<span class="string">'Accept'</span>: <span class="string">'application/json'</span>},
+      ).timeout(_timeout);
+
+      <span class="keyword">if</span> (response.statusCode == 200) {
+        <span class="keyword">final</span> Map&lt;String, <span class="keyword">dynamic</span>&gt; jsonData = json.<span class="function">decode</span>(response.body);
+        <span class="keyword">return</span> <span class="function">SurahResponse</span>.fromJson(jsonData);
+      } <span class="keyword">else</span> {
+        <span class="keyword">throw</span> <span class="function">HttpException</span>(
+          <span class="string">'Failed to load surah description: ${response.statusCode}'</span>
+        );
+      }
+    } <span class="keyword">on</span> TimeoutException {
+      <span class="keyword">throw</span> <span class="function">TimeoutException</span>(<span class="string">'Request timed out'</span>);
+    } <span class="keyword">catch</span> (e) {
+      <span class="keyword">throw</span> <span class="function">Exception</span>(<span class="string">'Network error: $e'</span>);
+    }
+  }
+}
+
+<span class="comment">// widgets/surah_card.dart</span>
+<span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;
+
+<span class="keyword">class</span> <span class="function">SurahCard</span> <span class="keyword">extends</span> StatefulWidget {
+  <span class="keyword">final</span> <span class="keyword">int</span> surahId;
+
+  <span class="keyword">const</span> <span class="function">SurahCard</span>({Key? key, <span class="keyword">required</span> <span class="keyword">this</span>.surahId}) : <span class="keyword">super</span>(key: key);
+
+  <span class="keyword">@override</span>
+  State&lt;SurahCard&gt; <span class="function">createState</span>() =&gt; <span class="function">_SurahCardState</span>();
+}
+
+<span class="keyword">class</span> <span class="function">_SurahCardState</span> <span class="keyword">extends</span> State&lt;SurahCard&gt; {
+  SurahResponse? _surahData;
+  <span class="keyword">bool</span> _isLoading = <span class="keyword">true</span>;
+  String? _errorMessage;
+
+  <span class="keyword">@override</span>
+  <span class="keyword">void</span> <span class="function">initState</span>() {
+    <span class="keyword">super</span>.initState();
+    <span class="function">_loadSurahData</span>();
+  }
+
+  Future&lt;<span class="keyword">void</span>&gt; <span class="function">_loadSurahData</span>() <span class="keyword">async</span> {
+    <span class="keyword">try</span> {
+      <span class="keyword">final</span> data = <span class="keyword">await</span> QuranApiService.<span class="function">fetchSurahDescription</span>(widget.surahId);
+      <span class="keyword">if</span> (<span class="function">mounted</span>) {
+        <span class="function">setState</span>(() {
+          _surahData = data;
+          _isLoading = <span class="keyword">false</span>;
+          _errorMessage = <span class="keyword">null</span>;
+        });
+      }
+    } <span class="keyword">catch</span> (e) {
+      <span class="keyword">if</span> (<span class="function">mounted</span>) {
+        <span class="function">setState</span>(() {
+          _isLoading = <span class="keyword">false</span>;
+          _errorMessage = e.<span class="function">toString</span>();
+        });
+      }
+    }
+  }
+
+  <span class="keyword">@override</span>
+  Widget <span class="function">build</span>(BuildContext context) {
+    <span class="keyword">if</span> (_isLoading) {
+      <span class="keyword">return const</span> <span class="function">Center</span>(
+        child: <span class="function">CircularProgressIndicator</span>(),
+      );
+    }
+
+    <span class="keyword">if</span> (_errorMessage != <span class="keyword">null</span>) {
+      <span class="keyword">return</span> <span class="function">Center</span>(
+        child: <span class="function">Column</span>(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            <span class="function">Icon</span>(Icons.error, color: Colors.red, size: 48),
+            <span class="function">SizedBox</span>(height: 16),
+            <span class="function">Text</span>(_errorMessage!, textAlign: TextAlign.center),
+            <span class="function">SizedBox</span>(height: 16),
+            <span class="function">ElevatedButton</span>(
+              onPressed: () {
+                <span class="function">setState</span>(() {
+                  _isLoading = <span class="keyword">true</span>;
+                  _errorMessage = <span class="keyword">null</span>;
+                });
+                <span class="function">_loadSurahData</span>();
+              },
+              child: <span class="function">Text</span>(<span class="string">'Retry'</span>),
+            ),
+          ],
+        ),
+      );
+    }
+
+    <span class="keyword">final</span> surah = _surahData!.surah;
+    
+    <span class="keyword">return</span> <span class="function">Card</span>(
+      margin: <span class="function">EdgeInsets</span>.all(16),
+      child: <span class="function">Padding</span>(
+        padding: <span class="function">EdgeInsets</span>.all(20),
+        child: <span class="function">Column</span>(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            <span class="function">Text</span>(
+              surah.name.english,
+              style: Theme.<span class="function">of</span>(context).textTheme.headlineMedium,
+            ),
+            <span class="function">Text</span>(
+              surah.name.transliteration,
+              style: Theme.<span class="function">of</span>(context).textTheme.titleMedium,
+            ),
+            <span class="function">SizedBox</span>(height: 16),
+            <span class="function">Text</span>(
+              surah.description,
+              style: Theme.<span class="function">of</span>(context).textTheme.bodyMedium,
+            ),
+            <span class="function">SizedBox</span>(height: 16),
+            <span class="function">Row</span>(
+              children: [
+                <span class="function">Icon</span>(Icons.book, size: 16),
+                <span class="function">SizedBox</span>(width: 4),
+                <span class="function">Text</span>(<span class="string">'${surah.metadata.totalVerses} verses'</span>),
+                <span class="function">SizedBox</span>(width: 16),
+                <span class="function">Icon</span>(Icons.location_on, size: 16),
+                <span class="function">SizedBox</span>(width: 4),
+                <span class="function">Text</span>(surah.metadata.revelationType),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="authentication" class="section">
+            <h2>🔐 Authentication</h2>
+            <p>The API uses JWT tokens for authentication. User bookmark endpoints require a valid Bearer token.</p>
+            
+            <div class="code-block">
+<span class="comment">// Example with authentication header</span>
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'https://quran-data-api.vercel.app/api/v1/user-bookmarks'</span>, {
+  method: <span class="string">'GET'</span>,
+  headers: {
+    <span class="string">'Authorization'</span>: <span class="string">`Bearer ${userToken}`</span>,
+    <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>
+  }
+});
+            </div>
+        </section>
+
+        <section id="rate-limits" class="section">
+            <h2>⚡ Rate Limits & Performance</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>📊 Rate Limits</h4>
+                    <p>1000 requests per hour per IP address</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💾 Caching</h4>
+                    <p>Responses cached for optimal performance</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🌍 Global CDN</h4>
+                    <p>Served via Vercel's global edge network</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📱 Mobile Optimized</h4>
+                    <p>Lightweight responses for mobile apps</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="section">
+            <h2>🤝 Support & Resources</h2>
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <h3>📖 Documentation</h3>
+                    <p>Comprehensive API documentation with examples for all major frameworks and platforms.</p>
+                </div>
+                <div class="framework-card">
+                    <h3>🐛 Issue Tracking</h3>
+                    <p>Report bugs and request features through our GitHub repository.</p>
+                </div>
+                <div class="framework-card">
+                    <h3>💬 Community</h3>
+                    <p>Join our developer community for discussions and support.</p>
+                </div>
+                <div class="framework-card">
+                    <h3>🔄 Updates</h3>
+                    <p>Regular updates with new features and improvements.</p>
+                </div>
+            </div>
+        </section>
     </div>
-    
-    <div class="endpoint">
-        <div class="method">GET</div>
-        <strong>/api/v1/get-surah-description</strong>
-        <p>Get description and details for a specific Surah</p>
-        <p><strong>Parameters:</strong> <code>surah</code> (required)</p>
-    </div>
-    
-    <div class="endpoint">
-        <div class="method">GET</div>
-        <strong>/api/v1/get-translated-verse</strong>
-        <p>Get translated verse content</p>
-        <p><strong>Parameters:</strong> <code>surah</code>, <code>verse</code></p>
-    </div>
-    
-    <div class="endpoint">
-        <div class="method">GET/POST/PUT/DELETE</div>
-        <strong>/api/v1/user-bookmarks</strong>
-        <p>Manage user bookmarks (requires authentication)</p>
-    </div>
-    
-    <h2>🔗 URL Aliases</h2>
-    <p>All endpoints are also available under <code>/v1/*</code> for shorter URLs.</p>
-    
-    <h2>🛠️ CORS</h2>
-    <p>CORS is enabled for all origins with support for credentials.</p>
-    
-    <footer style="margin-top: 50px; text-align: center; color: #666;">
-        <p>Powered by Vercel • Built with TypeScript & Prisma</p>
+
+    <footer style="background: #1e293b; color: white; padding: 40px 0; margin-top: 60px; text-align: center;">
+        <div class="container">
+            <h3>🕌 Quran Data API</h3>
+            <p>Empowering developers to build meaningful Islamic applications</p>
+            <div style="margin: 20px 0;">
+                <span class="badge">Open Source</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">Prisma</span>
+                <span class="badge">Vercel</span>
+            </div>
+            <p style="opacity: 0.7; margin-top: 20px;">
+                Built with ❤️ for the global Muslim developer community
+            </p>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Copy code block functionality
+        document.querySelectorAll('.code-block').forEach(block => {
+            const copyBtn = document.createElement('button');
+            copyBtn.innerHTML = '📋 Copy';
+            copyBtn.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: #667eea;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 12px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            `;
+            
+            block.style.position = 'relative';
+            block.appendChild(copyBtn);
+            
+            block.addEventListener('mouseenter', () => {
+                copyBtn.style.opacity = '1';
+            });
+            
+            block.addEventListener('mouseleave', () => {
+                copyBtn.style.opacity = '0';
+            });
+            
+            copyBtn.addEventListener('click', async () => {
+                const text = block.textContent;
+                try {
+                    await navigator.clipboard.writeText(text);
+                    copyBtn.innerHTML = '✅ Copied!';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = '📋 Copy';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
