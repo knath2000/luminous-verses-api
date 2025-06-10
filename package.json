@@ -7,18 +7,22 @@
     "build": "prisma generate && tsc -p api/tsconfig.json",
     "start": "vercel dev",
     "postinstall": "prisma generate",
-    "populate-descriptions": "tsx scripts/populate-surah-descriptions.ts"
+    "populate-descriptions": "tsx scripts/populate-surah-descriptions.ts",
+    "populate-transliterations": "tsx scripts/populate-transliterations.ts",
+    "test-transliterations": "tsx api/test/test-transliterations.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.16.2",
     "prisma": "^5.16.2",
     "@vercel/node": "^3.2.0",
-    "@clerk/backend": "^1.15.6"
+    "@clerk/backend": "^1.15.6",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
     "typescript": "~5.8.3",
     "@libsql/client": "^0.14.0",
-    "tsx": "^4.7.1"
+    "tsx": "^4.7.1",
+    "@types/xml2js": "^0.4.14"
   }
 }

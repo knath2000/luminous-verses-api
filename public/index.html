@@ -239,6 +239,7 @@
   metadata: <span class="string">`${API_BASE}/api/v1/get-metadata`</span>,
   descriptions: <span class="string">`${API_BASE}/api/v1/get-surah-description`</span>,
   translations: <span class="string">`${API_BASE}/api/v1/get-translated-verse`</span>,
+  transliterations: <span class="string">`${API_BASE}/api/v1/get-transliterations`</span>,
   bookmarks: <span class="string">`${API_BASE}/api/v1/user-bookmarks`</span>
 };
             </div>
@@ -341,6 +342,61 @@
             </div>
 
             <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>/api/v1/get-transliterations</strong>
+                <p>Get English transliterations for Quran verses with multiple format options</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>surah</code> (required) - Surah number (1-114)</li>
+                    <li><code>ayah</code> (optional) - Specific verse number for single verse</li>
+                    <li><code>start</code> (optional) - Starting verse for range queries</li>
+                    <li><code>end</code> (optional) - Ending verse for range queries</li>
+                    <li><code>format</code> (optional) - Format type: 'raw', 'clean', 'formatted', 'all' (default: 'all')</li>
+                </ul>
+                <div class="response-example">
+                    <h4>Single Verse Example:</h4>
+                    <div class="code-block">
+{
+  "success": true,
+  "data": {
+    "surahId": 1,
+    "ayahId": 1,
+    "transliteration": {
+      "raw": "Bismi All&lt;u&gt;a&lt;/U&gt;hi a&lt;b&gt;l&lt;/B&gt;rra&lt;u&gt;h&lt;/U&gt;m&lt;u&gt;a&lt;/U&gt;ni a&lt;b&gt;l&lt;/B&gt;rra&lt;u&gt;h&lt;/U&gt;eem&lt;b&gt;i&lt;/b&gt;",
+      "clean": "Bismi Allahi alrrahmani alrraheem",
+      "formatted": "Bismi All&lt;u&gt;a&lt;/u&gt;hi a&lt;b&gt;l&lt;/b&gt;rra&lt;u&gt;h&lt;/u&gt;m&lt;u&gt;a&lt;/u&gt;ni a&lt;b&gt;l&lt;/b&gt;rra&lt;u&gt;h&lt;/u&gt;eem&lt;b&gt;i&lt;/b&gt;"
+    },
+    "source": "tanzil.net"
+  }
+}
+                    </div>
+                </div>
+                <div class="response-example">
+                    <h4>Multiple Verses Example:</h4>
+                    <div class="code-block">
+{
+  "success": true,
+  "data": {
+    "surahId": 1,
+    "totalVerses": 7,
+    "verses": [
+      {
+        "ayahId": 1,
+        "transliteration": { /* format object */ }
+      }
+    ]
+  },
+  "pagination": {
+    "start": 1,
+    "end": 7,
+    "total": 7
+  }
+}
+                    </div>
+                </div>
+            </div>
+
+            <div class="endpoint">
                 <span class="method get post put delete">GET/POST/PUT/DELETE</span>
                 <strong>/api/v1/user-bookmarks</strong>
                 <p>Manage user bookmarks with full CRUD operations (requires authentication)</p>
@@ -360,6 +416,61 @@
                     <div class="code-block">
 <span class="comment">// Custom hook for Surah descriptions</span>
 <span class="keyword">import</span> { useState, useEffect } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="comment">// Custom hook for Transliterations</span>
+<span class="keyword">function</span> <span class="function">useTransliterations</span>(surahId, options = {}) {
+  <span class="keyword">const</span> [data, setData] = <span class="function">useState</span>(<span class="keyword">null</span>);
+  <span class="keyword">const</span> [loading, setLoading] = <span class="function">useState</span>(<span class="keyword">true</span>);
+  <span class="keyword">const</span> [error, setError] = <span class="function">useState</span>(<span class="keyword">null</span>);
+
+  <span class="function">useEffect</span>(() => {
+    <span class="keyword">let</span> ignore = <span class="keyword">false</span>;
+
+    <span class="keyword">async function</span> <span class="function">fetchTransliterations</span>() {
+      <span class="keyword">try</span> {
+        setLoading(<span class="keyword">true</span>);
+        
+        <span class="keyword">const</span> params = <span class="keyword">new</span> <span class="function">URLSearchParams</span>({ surah: surahId });
+        <span class="keyword">if</span> (options.ayah) params.<span class="function">append</span>(<span class="string">'ayah'</span>, options.ayah);
+        <span class="keyword">if</span> (options.start) params.<span class="function">append</span>(<span class="string">'start'</span>, options.start);
+        <span class="keyword">if</span> (options.end) params.<span class="function">append</span>(<span class="string">'end'</span>, options.end);
+        <span class="keyword">if</span> (options.format) params.<span class="function">append</span>(<span class="string">'format'</span>, options.format);
+        
+        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+          <span class="string">`https://luminous-verses-api-tan.vercel.app/api/v1/get-transliterations?${params}`</span>
+        );
+        
+        <span class="keyword">if</span> (!response.ok) {
+          <span class="keyword">throw new</span> <span class="function">Error</span>(<span class="string">`HTTP error! status: ${response.status}`</span>);
+        }
+        
+        <span class="keyword">const</span> result = <span class="keyword">await</span> response.<span class="function">json</span>();
+        
+        <span class="keyword">if</span> (!ignore) {
+          <span class="function">setData</span>(result);
+          <span class="function">setError</span>(<span class="keyword">null</span>);
+        }
+      } <span class="keyword">catch</span> (err) {
+        <span class="keyword">if</span> (!ignore) {
+          <span class="function">setError</span>(err.message);
+          <span class="function">setData</span>(<span class="keyword">null</span>);
+        }
+      } <span class="keyword">finally</span> {
+        <span class="keyword">if</span> (!ignore) {
+          <span class="function">setLoading</span>(<span class="keyword">false</span>);
+        }
+      }
+    }
+
+    <span class="function">fetchTransliterations</span>();
+
+    <span class="keyword">return</span> () => {
+      ignore = <span class="keyword">true</span>;
+    };
+  }, [surahId, options.ayah, options.start, options.end, options.format]);
+
+  <span class="keyword">return</span> { data, loading, error };
+}
 
 <span class="keyword">function</span> <span class="function">useSurahDescription</span>(surahId) {
   <span class="keyword">const</span> [data, setData] = <span class="function">useState</span>(<span class="keyword">null</span>);
@@ -408,7 +519,28 @@
   <span class="keyword">return</span> { data, loading, error };
 }
 
-<span class="comment">// Component usage</span>
+<span class="comment">// Component usage examples</span>
+<span class="keyword">function</span> <span class="function">TransliterationCard</span>({ surahId, ayahId }) {
+  <span class="keyword">const</span> { data, loading, error } = <span class="function">useTransliterations</span>(surahId, { 
+    ayah: ayahId, 
+    format: <span class="string">'all'</span> 
+  });
+
+  <span class="keyword">if</span> (loading) <span class="keyword">return</span> &lt;div&gt;Loading transliteration...&lt;/div&gt;;
+  <span class="keyword">if</span> (error) <span class="keyword">return</span> &lt;div&gt;Error: {error}&lt;/div&gt;;
+
+  <span class="keyword">return</span> (
+    &lt;div className=<span class="string">"transliteration-card"</span>&gt;
+      &lt;h3&gt;Surah {data.data.surahId}, Ayah {data.data.ayahId}&lt;/h3&gt;
+      &lt;p&gt;&lt;strong&gt;Clean:&lt;/strong&gt; {data.data.transliteration.clean}&lt;/p&gt;
+      &lt;p dangerouslySetInnerHTML={{ 
+        __html: <span class="string">`&lt;strong&gt;Formatted:&lt;/strong&gt; ${data.data.transliteration.formatted}`</span> 
+      }} /&gt;
+      &lt;small&gt;Source: {data.data.source}&lt;/small&gt;
+    &lt;/div&gt;
+  );
+}
+
 <span class="keyword">function</span> <span class="function">SurahCard</span>({ surahId }) {
   <span class="keyword">const</span> { data, loading, error } = <span class="function">useSurahDescription</span>(surahId);
 
