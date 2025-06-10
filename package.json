@@ -9,7 +9,12 @@
     "postinstall": "prisma generate",
     "populate-descriptions": "tsx scripts/populate-surah-descriptions.ts",
     "populate-transliterations": "tsx scripts/populate-transliterations.ts",
-    "test-transliterations": "tsx api/test/test-transliterations.ts"
+    "test-transliterations": "tsx api/test/test-transliterations.ts",
+    "test:performance": "tsx api/test/performance-test.ts",
+    "db:migrate": "prisma migrate deploy",
+    "db:generate": "prisma generate",
+    "db:optimize": "prisma migrate deploy && npm run test:performance",
+    "monitor": "echo 'Set ADMIN_API_KEY and API_URL environment variables, then run: curl -H \"Authorization: Bearer $ADMIN_API_KEY\" $API_URL/api/v1/performance-stats'"
   },
   "dependencies": {
     "@prisma/client": "^5.16.2",

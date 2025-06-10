@@ -28,7 +28,7 @@ async function handler(req, res) {
             return res.status(404).json({ error: 'Verse not found' });
         }
         return res.status(200).json({
-            id: arabicVerse?.id || translation?.index || 0,
+            id: Number(arabicVerse?.id || translation?.index || 0),
             surahId: surahNum,
             numberInSurah: ayahNum,
             text: arabicVerse?.text || '',

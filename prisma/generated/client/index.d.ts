@@ -43,6 +43,11 @@ export type SurahDescription = $Result.DefaultSelection<Prisma.$SurahDescription
  * 
  */
 export type UserBookmark = $Result.DefaultSelection<Prisma.$UserBookmarkPayload>
+/**
+ * Model QuranTransliteration
+ * 
+ */
+export type QuranTransliteration = $Result.DefaultSelection<Prisma.$QuranTransliterationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -226,6 +231,16 @@ export class PrismaClient<
     * ```
     */
   get userBookmark(): Prisma.UserBookmarkDelegate<ExtArgs>;
+
+  /**
+   * `prisma.quranTransliteration`: Exposes CRUD operations for the **QuranTransliteration** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more QuranTransliterations
+    * const quranTransliterations = await prisma.quranTransliteration.findMany()
+    * ```
+    */
+  get quranTransliteration(): Prisma.QuranTransliterationDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -672,7 +687,8 @@ export namespace Prisma {
     QuranSurah: 'QuranSurah',
     QuranText: 'QuranText',
     SurahDescription: 'SurahDescription',
-    UserBookmark: 'UserBookmark'
+    UserBookmark: 'UserBookmark',
+    QuranTransliteration: 'QuranTransliteration'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -688,7 +704,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "enYusufali" | "quranSajda" | "quranSurah" | "quranText" | "surahDescription" | "userBookmark"
+      modelProps: "enYusufali" | "quranSajda" | "quranSurah" | "quranText" | "surahDescription" | "userBookmark" | "quranTransliteration"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1109,6 +1125,76 @@ export namespace Prisma {
           count: {
             args: Prisma.UserBookmarkCountArgs<ExtArgs>
             result: $Utils.Optional<UserBookmarkCountAggregateOutputType> | number
+          }
+        }
+      }
+      QuranTransliteration: {
+        payload: Prisma.$QuranTransliterationPayload<ExtArgs>
+        fields: Prisma.QuranTransliterationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.QuranTransliterationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.QuranTransliterationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>
+          }
+          findFirst: {
+            args: Prisma.QuranTransliterationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.QuranTransliterationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>
+          }
+          findMany: {
+            args: Prisma.QuranTransliterationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>[]
+          }
+          create: {
+            args: Prisma.QuranTransliterationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>
+          }
+          createMany: {
+            args: Prisma.QuranTransliterationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.QuranTransliterationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>[]
+          }
+          delete: {
+            args: Prisma.QuranTransliterationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>
+          }
+          update: {
+            args: Prisma.QuranTransliterationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>
+          }
+          deleteMany: {
+            args: Prisma.QuranTransliterationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.QuranTransliterationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.QuranTransliterationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>
+          }
+          aggregate: {
+            args: Prisma.QuranTransliterationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateQuranTransliteration>
+          }
+          groupBy: {
+            args: Prisma.QuranTransliterationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<QuranTransliterationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.QuranTransliterationCountArgs<ExtArgs>
+            result: $Utils.Optional<QuranTransliterationCountAggregateOutputType> | number
           }
         }
       }
@@ -6842,6 +6928,962 @@ export namespace Prisma {
 
 
   /**
+   * Model QuranTransliteration
+   */
+
+  export type AggregateQuranTransliteration = {
+    _count: QuranTransliterationCountAggregateOutputType | null
+    _avg: QuranTransliterationAvgAggregateOutputType | null
+    _sum: QuranTransliterationSumAggregateOutputType | null
+    _min: QuranTransliterationMinAggregateOutputType | null
+    _max: QuranTransliterationMaxAggregateOutputType | null
+  }
+
+  export type QuranTransliterationAvgAggregateOutputType = {
+    id: number | null
+    sura: number | null
+    aya: number | null
+  }
+
+  export type QuranTransliterationSumAggregateOutputType = {
+    id: bigint | null
+    sura: bigint | null
+    aya: bigint | null
+  }
+
+  export type QuranTransliterationMinAggregateOutputType = {
+    id: bigint | null
+    sura: bigint | null
+    aya: bigint | null
+    rawText: string | null
+    cleanText: string | null
+    formattedText: string | null
+    source: string | null
+    createdAt: Date | null
+  }
+
+  export type QuranTransliterationMaxAggregateOutputType = {
+    id: bigint | null
+    sura: bigint | null
+    aya: bigint | null
+    rawText: string | null
+    cleanText: string | null
+    formattedText: string | null
+    source: string | null
+    createdAt: Date | null
+  }
+
+  export type QuranTransliterationCountAggregateOutputType = {
+    id: number
+    sura: number
+    aya: number
+    rawText: number
+    cleanText: number
+    formattedText: number
+    source: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type QuranTransliterationAvgAggregateInputType = {
+    id?: true
+    sura?: true
+    aya?: true
+  }
+
+  export type QuranTransliterationSumAggregateInputType = {
+    id?: true
+    sura?: true
+    aya?: true
+  }
+
+  export type QuranTransliterationMinAggregateInputType = {
+    id?: true
+    sura?: true
+    aya?: true
+    rawText?: true
+    cleanText?: true
+    formattedText?: true
+    source?: true
+    createdAt?: true
+  }
+
+  export type QuranTransliterationMaxAggregateInputType = {
+    id?: true
+    sura?: true
+    aya?: true
+    rawText?: true
+    cleanText?: true
+    formattedText?: true
+    source?: true
+    createdAt?: true
+  }
+
+  export type QuranTransliterationCountAggregateInputType = {
+    id?: true
+    sura?: true
+    aya?: true
+    rawText?: true
+    cleanText?: true
+    formattedText?: true
+    source?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type QuranTransliterationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuranTransliteration to aggregate.
+     */
+    where?: QuranTransliterationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuranTransliterations to fetch.
+     */
+    orderBy?: QuranTransliterationOrderByWithRelationInput | QuranTransliterationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: QuranTransliterationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuranTransliterations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuranTransliterations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned QuranTransliterations
+    **/
+    _count?: true | QuranTransliterationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: QuranTransliterationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: QuranTransliterationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: QuranTransliterationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: QuranTransliterationMaxAggregateInputType
+  }
+
+  export type GetQuranTransliterationAggregateType<T extends QuranTransliterationAggregateArgs> = {
+        [P in keyof T & keyof AggregateQuranTransliteration]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQuranTransliteration[P]>
+      : GetScalarType<T[P], AggregateQuranTransliteration[P]>
+  }
+
+
+
+
+  export type QuranTransliterationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuranTransliterationWhereInput
+    orderBy?: QuranTransliterationOrderByWithAggregationInput | QuranTransliterationOrderByWithAggregationInput[]
+    by: QuranTransliterationScalarFieldEnum[] | QuranTransliterationScalarFieldEnum
+    having?: QuranTransliterationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: QuranTransliterationCountAggregateInputType | true
+    _avg?: QuranTransliterationAvgAggregateInputType
+    _sum?: QuranTransliterationSumAggregateInputType
+    _min?: QuranTransliterationMinAggregateInputType
+    _max?: QuranTransliterationMaxAggregateInputType
+  }
+
+  export type QuranTransliterationGroupByOutputType = {
+    id: bigint
+    sura: bigint
+    aya: bigint
+    rawText: string | null
+    cleanText: string | null
+    formattedText: string | null
+    source: string | null
+    createdAt: Date
+    _count: QuranTransliterationCountAggregateOutputType | null
+    _avg: QuranTransliterationAvgAggregateOutputType | null
+    _sum: QuranTransliterationSumAggregateOutputType | null
+    _min: QuranTransliterationMinAggregateOutputType | null
+    _max: QuranTransliterationMaxAggregateOutputType | null
+  }
+
+  type GetQuranTransliterationGroupByPayload<T extends QuranTransliterationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<QuranTransliterationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof QuranTransliterationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], QuranTransliterationGroupByOutputType[P]>
+            : GetScalarType<T[P], QuranTransliterationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type QuranTransliterationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sura?: boolean
+    aya?: boolean
+    rawText?: boolean
+    cleanText?: boolean
+    formattedText?: boolean
+    source?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["quranTransliteration"]>
+
+  export type QuranTransliterationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sura?: boolean
+    aya?: boolean
+    rawText?: boolean
+    cleanText?: boolean
+    formattedText?: boolean
+    source?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["quranTransliteration"]>
+
+  export type QuranTransliterationSelectScalar = {
+    id?: boolean
+    sura?: boolean
+    aya?: boolean
+    rawText?: boolean
+    cleanText?: boolean
+    formattedText?: boolean
+    source?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $QuranTransliterationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "QuranTransliteration"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      sura: bigint
+      aya: bigint
+      rawText: string | null
+      cleanText: string | null
+      formattedText: string | null
+      source: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["quranTransliteration"]>
+    composites: {}
+  }
+
+  type QuranTransliterationGetPayload<S extends boolean | null | undefined | QuranTransliterationDefaultArgs> = $Result.GetResult<Prisma.$QuranTransliterationPayload, S>
+
+  type QuranTransliterationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuranTransliterationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: QuranTransliterationCountAggregateInputType | true
+    }
+
+  export interface QuranTransliterationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuranTransliteration'], meta: { name: 'QuranTransliteration' } }
+    /**
+     * Find zero or one QuranTransliteration that matches the filter.
+     * @param {QuranTransliterationFindUniqueArgs} args - Arguments to find a QuranTransliteration
+     * @example
+     * // Get one QuranTransliteration
+     * const quranTransliteration = await prisma.quranTransliteration.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends QuranTransliterationFindUniqueArgs>(args: SelectSubset<T, QuranTransliterationFindUniqueArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one QuranTransliteration that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {QuranTransliterationFindUniqueOrThrowArgs} args - Arguments to find a QuranTransliteration
+     * @example
+     * // Get one QuranTransliteration
+     * const quranTransliteration = await prisma.quranTransliteration.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends QuranTransliterationFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranTransliterationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first QuranTransliteration that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationFindFirstArgs} args - Arguments to find a QuranTransliteration
+     * @example
+     * // Get one QuranTransliteration
+     * const quranTransliteration = await prisma.quranTransliteration.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends QuranTransliterationFindFirstArgs>(args?: SelectSubset<T, QuranTransliterationFindFirstArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first QuranTransliteration that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationFindFirstOrThrowArgs} args - Arguments to find a QuranTransliteration
+     * @example
+     * // Get one QuranTransliteration
+     * const quranTransliteration = await prisma.quranTransliteration.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends QuranTransliterationFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranTransliterationFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more QuranTransliterations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all QuranTransliterations
+     * const quranTransliterations = await prisma.quranTransliteration.findMany()
+     * 
+     * // Get first 10 QuranTransliterations
+     * const quranTransliterations = await prisma.quranTransliteration.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const quranTransliterationWithIdOnly = await prisma.quranTransliteration.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends QuranTransliterationFindManyArgs>(args?: SelectSubset<T, QuranTransliterationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a QuranTransliteration.
+     * @param {QuranTransliterationCreateArgs} args - Arguments to create a QuranTransliteration.
+     * @example
+     * // Create one QuranTransliteration
+     * const QuranTransliteration = await prisma.quranTransliteration.create({
+     *   data: {
+     *     // ... data to create a QuranTransliteration
+     *   }
+     * })
+     * 
+     */
+    create<T extends QuranTransliterationCreateArgs>(args: SelectSubset<T, QuranTransliterationCreateArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many QuranTransliterations.
+     * @param {QuranTransliterationCreateManyArgs} args - Arguments to create many QuranTransliterations.
+     * @example
+     * // Create many QuranTransliterations
+     * const quranTransliteration = await prisma.quranTransliteration.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends QuranTransliterationCreateManyArgs>(args?: SelectSubset<T, QuranTransliterationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many QuranTransliterations and returns the data saved in the database.
+     * @param {QuranTransliterationCreateManyAndReturnArgs} args - Arguments to create many QuranTransliterations.
+     * @example
+     * // Create many QuranTransliterations
+     * const quranTransliteration = await prisma.quranTransliteration.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many QuranTransliterations and only return the `id`
+     * const quranTransliterationWithIdOnly = await prisma.quranTransliteration.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends QuranTransliterationCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranTransliterationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a QuranTransliteration.
+     * @param {QuranTransliterationDeleteArgs} args - Arguments to delete one QuranTransliteration.
+     * @example
+     * // Delete one QuranTransliteration
+     * const QuranTransliteration = await prisma.quranTransliteration.delete({
+     *   where: {
+     *     // ... filter to delete one QuranTransliteration
+     *   }
+     * })
+     * 
+     */
+    delete<T extends QuranTransliterationDeleteArgs>(args: SelectSubset<T, QuranTransliterationDeleteArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one QuranTransliteration.
+     * @param {QuranTransliterationUpdateArgs} args - Arguments to update one QuranTransliteration.
+     * @example
+     * // Update one QuranTransliteration
+     * const quranTransliteration = await prisma.quranTransliteration.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends QuranTransliterationUpdateArgs>(args: SelectSubset<T, QuranTransliterationUpdateArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more QuranTransliterations.
+     * @param {QuranTransliterationDeleteManyArgs} args - Arguments to filter QuranTransliterations to delete.
+     * @example
+     * // Delete a few QuranTransliterations
+     * const { count } = await prisma.quranTransliteration.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends QuranTransliterationDeleteManyArgs>(args?: SelectSubset<T, QuranTransliterationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more QuranTransliterations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many QuranTransliterations
+     * const quranTransliteration = await prisma.quranTransliteration.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends QuranTransliterationUpdateManyArgs>(args: SelectSubset<T, QuranTransliterationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one QuranTransliteration.
+     * @param {QuranTransliterationUpsertArgs} args - Arguments to update or create a QuranTransliteration.
+     * @example
+     * // Update or create a QuranTransliteration
+     * const quranTransliteration = await prisma.quranTransliteration.upsert({
+     *   create: {
+     *     // ... data to create a QuranTransliteration
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the QuranTransliteration we want to update
+     *   }
+     * })
+     */
+    upsert<T extends QuranTransliterationUpsertArgs>(args: SelectSubset<T, QuranTransliterationUpsertArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of QuranTransliterations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationCountArgs} args - Arguments to filter QuranTransliterations to count.
+     * @example
+     * // Count the number of QuranTransliterations
+     * const count = await prisma.quranTransliteration.count({
+     *   where: {
+     *     // ... the filter for the QuranTransliterations we want to count
+     *   }
+     * })
+    **/
+    count<T extends QuranTransliterationCountArgs>(
+      args?: Subset<T, QuranTransliterationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], QuranTransliterationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a QuranTransliteration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends QuranTransliterationAggregateArgs>(args: Subset<T, QuranTransliterationAggregateArgs>): Prisma.PrismaPromise<GetQuranTransliterationAggregateType<T>>
+
+    /**
+     * Group by QuranTransliteration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuranTransliterationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends QuranTransliterationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: QuranTransliterationGroupByArgs['orderBy'] }
+        : { orderBy?: QuranTransliterationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, QuranTransliterationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQuranTransliterationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the QuranTransliteration model
+   */
+  readonly fields: QuranTransliterationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for QuranTransliteration.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__QuranTransliterationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the QuranTransliteration model
+   */ 
+  interface QuranTransliterationFieldRefs {
+    readonly id: FieldRef<"QuranTransliteration", 'BigInt'>
+    readonly sura: FieldRef<"QuranTransliteration", 'BigInt'>
+    readonly aya: FieldRef<"QuranTransliteration", 'BigInt'>
+    readonly rawText: FieldRef<"QuranTransliteration", 'String'>
+    readonly cleanText: FieldRef<"QuranTransliteration", 'String'>
+    readonly formattedText: FieldRef<"QuranTransliteration", 'String'>
+    readonly source: FieldRef<"QuranTransliteration", 'String'>
+    readonly createdAt: FieldRef<"QuranTransliteration", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * QuranTransliteration findUnique
+   */
+  export type QuranTransliterationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * Filter, which QuranTransliteration to fetch.
+     */
+    where: QuranTransliterationWhereUniqueInput
+  }
+
+  /**
+   * QuranTransliteration findUniqueOrThrow
+   */
+  export type QuranTransliterationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * Filter, which QuranTransliteration to fetch.
+     */
+    where: QuranTransliterationWhereUniqueInput
+  }
+
+  /**
+   * QuranTransliteration findFirst
+   */
+  export type QuranTransliterationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * Filter, which QuranTransliteration to fetch.
+     */
+    where?: QuranTransliterationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuranTransliterations to fetch.
+     */
+    orderBy?: QuranTransliterationOrderByWithRelationInput | QuranTransliterationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuranTransliterations.
+     */
+    cursor?: QuranTransliterationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuranTransliterations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuranTransliterations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuranTransliterations.
+     */
+    distinct?: QuranTransliterationScalarFieldEnum | QuranTransliterationScalarFieldEnum[]
+  }
+
+  /**
+   * QuranTransliteration findFirstOrThrow
+   */
+  export type QuranTransliterationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * Filter, which QuranTransliteration to fetch.
+     */
+    where?: QuranTransliterationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuranTransliterations to fetch.
+     */
+    orderBy?: QuranTransliterationOrderByWithRelationInput | QuranTransliterationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuranTransliterations.
+     */
+    cursor?: QuranTransliterationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuranTransliterations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuranTransliterations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuranTransliterations.
+     */
+    distinct?: QuranTransliterationScalarFieldEnum | QuranTransliterationScalarFieldEnum[]
+  }
+
+  /**
+   * QuranTransliteration findMany
+   */
+  export type QuranTransliterationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * Filter, which QuranTransliterations to fetch.
+     */
+    where?: QuranTransliterationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuranTransliterations to fetch.
+     */
+    orderBy?: QuranTransliterationOrderByWithRelationInput | QuranTransliterationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing QuranTransliterations.
+     */
+    cursor?: QuranTransliterationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuranTransliterations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuranTransliterations.
+     */
+    skip?: number
+    distinct?: QuranTransliterationScalarFieldEnum | QuranTransliterationScalarFieldEnum[]
+  }
+
+  /**
+   * QuranTransliteration create
+   */
+  export type QuranTransliterationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * The data needed to create a QuranTransliteration.
+     */
+    data: XOR<QuranTransliterationCreateInput, QuranTransliterationUncheckedCreateInput>
+  }
+
+  /**
+   * QuranTransliteration createMany
+   */
+  export type QuranTransliterationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many QuranTransliterations.
+     */
+    data: QuranTransliterationCreateManyInput | QuranTransliterationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * QuranTransliteration createManyAndReturn
+   */
+  export type QuranTransliterationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many QuranTransliterations.
+     */
+    data: QuranTransliterationCreateManyInput | QuranTransliterationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * QuranTransliteration update
+   */
+  export type QuranTransliterationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * The data needed to update a QuranTransliteration.
+     */
+    data: XOR<QuranTransliterationUpdateInput, QuranTransliterationUncheckedUpdateInput>
+    /**
+     * Choose, which QuranTransliteration to update.
+     */
+    where: QuranTransliterationWhereUniqueInput
+  }
+
+  /**
+   * QuranTransliteration updateMany
+   */
+  export type QuranTransliterationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update QuranTransliterations.
+     */
+    data: XOR<QuranTransliterationUpdateManyMutationInput, QuranTransliterationUncheckedUpdateManyInput>
+    /**
+     * Filter which QuranTransliterations to update
+     */
+    where?: QuranTransliterationWhereInput
+  }
+
+  /**
+   * QuranTransliteration upsert
+   */
+  export type QuranTransliterationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * The filter to search for the QuranTransliteration to update in case it exists.
+     */
+    where: QuranTransliterationWhereUniqueInput
+    /**
+     * In case the QuranTransliteration found by the `where` argument doesn't exist, create a new QuranTransliteration with this data.
+     */
+    create: XOR<QuranTransliterationCreateInput, QuranTransliterationUncheckedCreateInput>
+    /**
+     * In case the QuranTransliteration was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<QuranTransliterationUpdateInput, QuranTransliterationUncheckedUpdateInput>
+  }
+
+  /**
+   * QuranTransliteration delete
+   */
+  export type QuranTransliterationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+    /**
+     * Filter which QuranTransliteration to delete.
+     */
+    where: QuranTransliterationWhereUniqueInput
+  }
+
+  /**
+   * QuranTransliteration deleteMany
+   */
+  export type QuranTransliterationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuranTransliterations to delete
+     */
+    where?: QuranTransliterationWhereInput
+  }
+
+  /**
+   * QuranTransliteration without action
+   */
+  export type QuranTransliterationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuranTransliteration
+     */
+    select?: QuranTransliterationSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6923,6 +7965,20 @@ export namespace Prisma {
   };
 
   export type UserBookmarkScalarFieldEnum = (typeof UserBookmarkScalarFieldEnum)[keyof typeof UserBookmarkScalarFieldEnum]
+
+
+  export const QuranTransliterationScalarFieldEnum: {
+    id: 'id',
+    sura: 'sura',
+    aya: 'aya',
+    rawText: 'rawText',
+    cleanText: 'cleanText',
+    formattedText: 'formattedText',
+    source: 'source',
+    createdAt: 'createdAt'
+  };
+
+  export type QuranTransliterationScalarFieldEnum = (typeof QuranTransliterationScalarFieldEnum)[keyof typeof QuranTransliterationScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7372,6 +8428,76 @@ export namespace Prisma {
     updatedat?: DateTimeNullableWithAggregatesFilter<"UserBookmark"> | Date | string | null
   }
 
+  export type QuranTransliterationWhereInput = {
+    AND?: QuranTransliterationWhereInput | QuranTransliterationWhereInput[]
+    OR?: QuranTransliterationWhereInput[]
+    NOT?: QuranTransliterationWhereInput | QuranTransliterationWhereInput[]
+    id?: BigIntFilter<"QuranTransliteration"> | bigint | number
+    sura?: BigIntFilter<"QuranTransliteration"> | bigint | number
+    aya?: BigIntFilter<"QuranTransliteration"> | bigint | number
+    rawText?: StringNullableFilter<"QuranTransliteration"> | string | null
+    cleanText?: StringNullableFilter<"QuranTransliteration"> | string | null
+    formattedText?: StringNullableFilter<"QuranTransliteration"> | string | null
+    source?: StringNullableFilter<"QuranTransliteration"> | string | null
+    createdAt?: DateTimeFilter<"QuranTransliteration"> | Date | string
+  }
+
+  export type QuranTransliterationOrderByWithRelationInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+    rawText?: SortOrderInput | SortOrder
+    cleanText?: SortOrderInput | SortOrder
+    formattedText?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type QuranTransliterationWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    sura_aya?: QuranTransliterationSuraAyaCompoundUniqueInput
+    AND?: QuranTransliterationWhereInput | QuranTransliterationWhereInput[]
+    OR?: QuranTransliterationWhereInput[]
+    NOT?: QuranTransliterationWhereInput | QuranTransliterationWhereInput[]
+    sura?: BigIntFilter<"QuranTransliteration"> | bigint | number
+    aya?: BigIntFilter<"QuranTransliteration"> | bigint | number
+    rawText?: StringNullableFilter<"QuranTransliteration"> | string | null
+    cleanText?: StringNullableFilter<"QuranTransliteration"> | string | null
+    formattedText?: StringNullableFilter<"QuranTransliteration"> | string | null
+    source?: StringNullableFilter<"QuranTransliteration"> | string | null
+    createdAt?: DateTimeFilter<"QuranTransliteration"> | Date | string
+  }, "id" | "sura_aya">
+
+  export type QuranTransliterationOrderByWithAggregationInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+    rawText?: SortOrderInput | SortOrder
+    cleanText?: SortOrderInput | SortOrder
+    formattedText?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: QuranTransliterationCountOrderByAggregateInput
+    _avg?: QuranTransliterationAvgOrderByAggregateInput
+    _max?: QuranTransliterationMaxOrderByAggregateInput
+    _min?: QuranTransliterationMinOrderByAggregateInput
+    _sum?: QuranTransliterationSumOrderByAggregateInput
+  }
+
+  export type QuranTransliterationScalarWhereWithAggregatesInput = {
+    AND?: QuranTransliterationScalarWhereWithAggregatesInput | QuranTransliterationScalarWhereWithAggregatesInput[]
+    OR?: QuranTransliterationScalarWhereWithAggregatesInput[]
+    NOT?: QuranTransliterationScalarWhereWithAggregatesInput | QuranTransliterationScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"QuranTransliteration"> | bigint | number
+    sura?: BigIntWithAggregatesFilter<"QuranTransliteration"> | bigint | number
+    aya?: BigIntWithAggregatesFilter<"QuranTransliteration"> | bigint | number
+    rawText?: StringNullableWithAggregatesFilter<"QuranTransliteration"> | string | null
+    cleanText?: StringNullableWithAggregatesFilter<"QuranTransliteration"> | string | null
+    formattedText?: StringNullableWithAggregatesFilter<"QuranTransliteration"> | string | null
+    source?: StringNullableWithAggregatesFilter<"QuranTransliteration"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"QuranTransliteration"> | Date | string
+  }
+
   export type EnYusufaliCreateInput = {
     index?: bigint | number
     sura?: bigint | number | null
@@ -7734,6 +8860,83 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type QuranTransliterationCreateInput = {
+    id?: bigint | number
+    sura: bigint | number
+    aya: bigint | number
+    rawText?: string | null
+    cleanText?: string | null
+    formattedText?: string | null
+    source?: string | null
+    createdAt?: Date | string
+  }
+
+  export type QuranTransliterationUncheckedCreateInput = {
+    id?: bigint | number
+    sura: bigint | number
+    aya: bigint | number
+    rawText?: string | null
+    cleanText?: string | null
+    formattedText?: string | null
+    source?: string | null
+    createdAt?: Date | string
+  }
+
+  export type QuranTransliterationUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: BigIntFieldUpdateOperationsInput | bigint | number
+    aya?: BigIntFieldUpdateOperationsInput | bigint | number
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanText?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuranTransliterationUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: BigIntFieldUpdateOperationsInput | bigint | number
+    aya?: BigIntFieldUpdateOperationsInput | bigint | number
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanText?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuranTransliterationCreateManyInput = {
+    id?: bigint | number
+    sura: bigint | number
+    aya: bigint | number
+    rawText?: string | null
+    cleanText?: string | null
+    formattedText?: string | null
+    source?: string | null
+    createdAt?: Date | string
+  }
+
+  export type QuranTransliterationUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: BigIntFieldUpdateOperationsInput | bigint | number
+    aya?: BigIntFieldUpdateOperationsInput | bigint | number
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanText?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuranTransliterationUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    sura?: BigIntFieldUpdateOperationsInput | bigint | number
+    aya?: BigIntFieldUpdateOperationsInput | bigint | number
+    rawText?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanText?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedText?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -8118,6 +9321,81 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type QuranTransliterationSuraAyaCompoundUniqueInput = {
+    sura: bigint | number
+    aya: bigint | number
+  }
+
+  export type QuranTransliterationCountOrderByAggregateInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+    rawText?: SortOrder
+    cleanText?: SortOrder
+    formattedText?: SortOrder
+    source?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type QuranTransliterationAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+  }
+
+  export type QuranTransliterationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+    rawText?: SortOrder
+    cleanText?: SortOrder
+    formattedText?: SortOrder
+    source?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type QuranTransliterationMinOrderByAggregateInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+    rawText?: SortOrder
+    cleanText?: SortOrder
+    formattedText?: SortOrder
+    source?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type QuranTransliterationSumOrderByAggregateInput = {
+    id?: SortOrder
+    sura?: SortOrder
+    aya?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -8144,6 +9422,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -8331,6 +9613,31 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
 
 
   /**
@@ -8360,6 +9667,10 @@ export namespace Prisma {
      * @deprecated Use UserBookmarkDefaultArgs instead
      */
     export type UserBookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserBookmarkDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuranTransliterationDefaultArgs instead
+     */
+    export type QuranTransliterationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuranTransliterationDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

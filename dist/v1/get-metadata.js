@@ -30,22 +30,26 @@ async function handler(req, res) {
                     },
                 });
                 return res.status(200).json(surahs.map((s) => ({
-                    number: s.number,
+                    number: Number(s.number),
                     name: s.arabicName,
                     tname: s.transliteration,
                     ename: s.englishName,
-                    ayas: s.ayas,
+                    ayas: Number(s.ayas),
                     type: s.revelationType,
-                    order: s.chronologicalOrder,
-                    rukus: s.rukus,
-                    startIndex: s.startIndex
+                    order: Number(s.chronologicalOrder),
+                    rukus: Number(s.rukus),
+                    startIndex: Number(s.startIndex)
                 })));
             case 'sajdas':
                 console.log('Fetching sajdas...');
                 const sajdas = await prisma_1.prisma.quranSajda.findMany({
                     orderBy: [{ surahNumber: 'asc' }, { ayahNumber: 'asc' }]
                 });
-                return res.status(200).json(sajdas);
+                return res.status(200).json(sajdas.map(sajda => ({
+                    ...sajda,
+                    surahNumber: Number(sajda.surahNumber),
+                    ayahNumber: Number(sajda.ayahNumber)
+                })));
             case undefined:
             case null:
             case '':
@@ -75,15 +79,15 @@ async function handler(req, res) {
                     defaultData: {
                         totalSurahs: defaultSurahs.length,
                         surahs: defaultSurahs.map((s) => ({
-                            number: s.number,
+                            number: Number(s.number),
                             name: s.arabicName,
                             tname: s.transliteration,
                             ename: s.englishName,
-                            ayas: s.ayas,
+                            ayas: Number(s.ayas),
                             type: s.revelationType,
-                            order: s.chronologicalOrder,
-                            rukus: s.rukus,
-                            startIndex: s.startIndex
+                            order: Number(s.chronologicalOrder),
+                            rukus: Number(s.rukus),
+                            startIndex: Number(s.startIndex)
                         }))
                     }
                 });

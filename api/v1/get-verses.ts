@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { QuranText } from '../../prisma/generated/client'; // Import from generated client path
-import { prisma } from '../lib/prisma';
+import { optimizedPrisma, QueryPerformanceMonitor, ApiCache } from '../lib/optimized-prisma';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
@@ -25,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const verses = await prisma.quranText.findMany({
+    const verses = await optimizedPrisma.quranText.findMany({
       where: { sura: surahNumber },
       orderBy: { aya: 'asc' },
       select: {

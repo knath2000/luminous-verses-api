@@ -174,6 +174,17 @@ exports.Prisma.UserBookmarkScalarFieldEnum = {
   updatedat: 'updatedat'
 };
 
+exports.Prisma.QuranTransliterationScalarFieldEnum = {
+  id: 'id',
+  sura: 'sura',
+  aya: 'aya',
+  rawText: 'rawText',
+  cleanText: 'cleanText',
+  formattedText: 'formattedText',
+  source: 'source',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -196,7 +207,8 @@ exports.Prisma.ModelName = {
   QuranSurah: 'QuranSurah',
   QuranText: 'QuranText',
   SurahDescription: 'SurahDescription',
-  UserBookmark: 'UserBookmark'
+  UserBookmark: 'UserBookmark',
+  QuranTransliteration: 'QuranTransliteration'
 };
 
 /**

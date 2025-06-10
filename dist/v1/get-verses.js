@@ -31,9 +31,9 @@ async function handler(req, res) {
             }
         });
         const response = verses.map((verse) => ({
-            id: verse.id,
-            surahId: verse.sura,
-            numberInSurah: verse.aya,
+            id: Number(verse.id),
+            surahId: Number(verse.sura),
+            numberInSurah: Number(verse.aya),
             text: verse.text
         }));
         return res.status(200).json(response);
