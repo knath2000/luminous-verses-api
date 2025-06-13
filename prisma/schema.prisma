@@ -59,6 +59,20 @@ model SurahDescription {
   @@map("surah_descriptions")
 }
 
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String?
+  userType  String    @default("guest") @map("user_type") // 'guest' or 'registered'
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  
+  // Relations
+  bookmarks UserBookmark[]
+
+  @@map("users")
+}
+
 model UserBookmark {
   id          String    @id(map: "sqlite_autoindex_user_bookmarks_1") @default(cuid())
   userid      String?
@@ -70,6 +84,9 @@ model UserBookmark {
   notes       String?
   createdat   DateTime? @default(now()) @db.Timestamptz(6)
   updatedat   DateTime? @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  user        User?     @relation(fields: [userid], references: [id])
 
   @@unique([userid, surahid, versenumber], map: "sqlite_autoindex_user_bookmarks_2")
   @@map("user_bookmarks")

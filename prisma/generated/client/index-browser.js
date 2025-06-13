@@ -161,6 +161,15 @@ exports.Prisma.SurahDescriptionScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  userType: 'userType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserBookmarkScalarFieldEnum = {
   id: 'id',
   userid: 'userid',
@@ -207,6 +216,7 @@ exports.Prisma.ModelName = {
   QuranSurah: 'QuranSurah',
   QuranText: 'QuranText',
   SurahDescription: 'SurahDescription',
+  User: 'User',
   UserBookmark: 'UserBookmark',
   QuranTransliteration: 'QuranTransliteration'
 };

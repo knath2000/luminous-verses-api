@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 const ALLOWED_ORIGINS = [
   'https://quranastroweb.vercel.app',
+  'https://luminous-verses.vercel.app',
   'http://localhost:4321',
   'http://localhost:3000'
 ];
