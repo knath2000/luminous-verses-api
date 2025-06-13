@@ -17,17 +17,20 @@
     "monitor": "echo 'Set ADMIN_API_KEY and API_URL environment variables, then run: curl -H \"Authorization: Bearer $ADMIN_API_KEY\" $API_URL/api/v1/performance-stats'"
   },
   "dependencies": {
-    "@prisma/client": "^5.16.2",
-    "prisma": "^5.16.2",
-    "@vercel/node": "^3.2.0",
     "@clerk/backend": "^1.15.6",
-    "xml2js": "^0.6.2"
+    "@prisma/client": "^5.16.2",
+    "@vercel/node": "^3.2.29",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.16.2",
+    "xml2js": "^0.6.2",
+    "zod": "^3.25.64"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10",
-    "typescript": "~5.8.3",
     "@libsql/client": "^0.14.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^20.19.0",
+    "@types/xml2js": "^0.4.14",
     "tsx": "^4.7.1",
-    "@types/xml2js": "^0.4.14"
+    "typescript": "~5.8.3"
   }
 }

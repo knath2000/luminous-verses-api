@@ -2,11 +2,17 @@
   "extends": "./api/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": "./",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "paths": {
+      "jsonwebtoken": ["./types/jsonwebtoken.d.ts"]
+    }
   },
   "include": [
     "api/v1/**/*.ts",
-    "api/lib/**/*.ts"
+    "api/lib/**/*.ts",
+    "middleware/**/*.ts", // Include middleware
+    "types/**/*.d.ts"     // Include custom type declarations
   ],
   "exclude": [
     "node_modules",
