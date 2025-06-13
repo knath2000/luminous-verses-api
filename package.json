@@ -18,9 +18,11 @@
   },
   "dependencies": {
     "@clerk/backend": "^1.15.6",
+    "@neondatabase/serverless": "^1.0.1",
+    "@prisma/adapter-neon": "^5.22.0",
     "@prisma/client": "^5.16.2",
     "@vercel/node": "^3.2.29",
-    "jsonwebtoken": "^9.0.2",
+    "jose": "^6.0.11",
     "prisma": "^5.16.2",
     "xml2js": "^0.6.2",
     "zod": "^3.25.64"

@@ -6208,7 +6208,7 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    email: string
+    email: string | null
     name: string | null
     userType: string
     createdAt: Date
@@ -6274,7 +6274,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      email: string
+      email: string | null
       name: string | null
       userType: string
       createdAt: Date
@@ -7045,15 +7045,15 @@ export namespace Prisma {
   }
 
   export type UserBookmarkSumAggregateOutputType = {
-    surahid: bigint | null
-    versenumber: bigint | null
+    surahid: number | null
+    versenumber: number | null
   }
 
   export type UserBookmarkMinAggregateOutputType = {
     id: string | null
     userid: string | null
-    surahid: bigint | null
-    versenumber: bigint | null
+    surahid: number | null
+    versenumber: number | null
     versetext: string | null
     surahname: string | null
     translation: string | null
@@ -7065,8 +7065,8 @@ export namespace Prisma {
   export type UserBookmarkMaxAggregateOutputType = {
     id: string | null
     userid: string | null
-    surahid: bigint | null
-    versenumber: bigint | null
+    surahid: number | null
+    versenumber: number | null
     versetext: string | null
     surahname: string | null
     translation: string | null
@@ -7228,15 +7228,15 @@ export namespace Prisma {
 
   export type UserBookmarkGroupByOutputType = {
     id: string
-    userid: string | null
-    surahid: bigint | null
-    versenumber: bigint | null
-    versetext: string | null
-    surahname: string | null
-    translation: string | null
+    userid: string
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes: string | null
-    createdat: Date | null
-    updatedat: Date | null
+    createdat: Date
+    updatedat: Date
     _count: UserBookmarkCountAggregateOutputType | null
     _avg: UserBookmarkAvgAggregateOutputType | null
     _sum: UserBookmarkSumAggregateOutputType | null
@@ -7269,7 +7269,7 @@ export namespace Prisma {
     notes?: boolean
     createdat?: boolean
     updatedat?: boolean
-    user?: boolean | UserBookmark$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userBookmark"]>
 
   export type UserBookmarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7283,7 +7283,7 @@ export namespace Prisma {
     notes?: boolean
     createdat?: boolean
     updatedat?: boolean
-    user?: boolean | UserBookmark$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userBookmark"]>
 
   export type UserBookmarkSelectScalar = {
@@ -7300,28 +7300,28 @@ export namespace Prisma {
   }
 
   export type UserBookmarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserBookmark$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type UserBookmarkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserBookmark$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $UserBookmarkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserBookmark"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userid: string | null
-      surahid: bigint | null
-      versenumber: bigint | null
-      versetext: string | null
-      surahname: string | null
-      translation: string | null
+      userid: string
+      surahid: number
+      versenumber: number
+      versetext: string
+      surahname: string
+      translation: string
       notes: string | null
-      createdat: Date | null
-      updatedat: Date | null
+      createdat: Date
+      updatedat: Date
     }, ExtArgs["result"]["userBookmark"]>
     composites: {}
   }
@@ -7686,7 +7686,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserBookmarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserBookmark$userArgs<ExtArgs> = {}>(args?: Subset<T, UserBookmark$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7718,8 +7718,8 @@ export namespace Prisma {
   interface UserBookmarkFieldRefs {
     readonly id: FieldRef<"UserBookmark", 'String'>
     readonly userid: FieldRef<"UserBookmark", 'String'>
-    readonly surahid: FieldRef<"UserBookmark", 'BigInt'>
-    readonly versenumber: FieldRef<"UserBookmark", 'BigInt'>
+    readonly surahid: FieldRef<"UserBookmark", 'Int'>
+    readonly versenumber: FieldRef<"UserBookmark", 'Int'>
     readonly versetext: FieldRef<"UserBookmark", 'String'>
     readonly surahname: FieldRef<"UserBookmark", 'String'>
     readonly translation: FieldRef<"UserBookmark", 'String'>
@@ -7920,7 +7920,7 @@ export namespace Prisma {
     /**
      * The data needed to create a UserBookmark.
      */
-    data?: XOR<UserBookmarkCreateInput, UserBookmarkUncheckedCreateInput>
+    data: XOR<UserBookmarkCreateInput, UserBookmarkUncheckedCreateInput>
   }
 
   /**
@@ -8041,21 +8041,6 @@ export namespace Prisma {
      * Filter which UserBookmarks to delete
      */
     where?: UserBookmarkWhereInput
-  }
-
-  /**
-   * UserBookmark.user
-   */
-  export type UserBookmark$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
   }
 
   /**
@@ -9511,7 +9496,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
+    email?: StringNullableFilter<"User"> | string | null
     name?: StringNullableFilter<"User"> | string | null
     userType?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -9521,7 +9506,7 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     userType?: SortOrder
     createdAt?: SortOrder
@@ -9544,7 +9529,7 @@ export namespace Prisma {
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     userType?: SortOrder
     createdAt?: SortOrder
@@ -9559,7 +9544,7 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    email?: StringWithAggregatesFilter<"User"> | string
+    email?: StringNullableWithAggregatesFilter<"User"> | string | null
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     userType?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -9571,29 +9556,29 @@ export namespace Prisma {
     OR?: UserBookmarkWhereInput[]
     NOT?: UserBookmarkWhereInput | UserBookmarkWhereInput[]
     id?: StringFilter<"UserBookmark"> | string
-    userid?: StringNullableFilter<"UserBookmark"> | string | null
-    surahid?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
-    versenumber?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
-    versetext?: StringNullableFilter<"UserBookmark"> | string | null
-    surahname?: StringNullableFilter<"UserBookmark"> | string | null
-    translation?: StringNullableFilter<"UserBookmark"> | string | null
+    userid?: StringFilter<"UserBookmark"> | string
+    surahid?: IntFilter<"UserBookmark"> | number
+    versenumber?: IntFilter<"UserBookmark"> | number
+    versetext?: StringFilter<"UserBookmark"> | string
+    surahname?: StringFilter<"UserBookmark"> | string
+    translation?: StringFilter<"UserBookmark"> | string
     notes?: StringNullableFilter<"UserBookmark"> | string | null
-    createdat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
-    updatedat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
-    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    createdat?: DateTimeFilter<"UserBookmark"> | Date | string
+    updatedat?: DateTimeFilter<"UserBookmark"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type UserBookmarkOrderByWithRelationInput = {
     id?: SortOrder
-    userid?: SortOrderInput | SortOrder
-    surahid?: SortOrderInput | SortOrder
-    versenumber?: SortOrderInput | SortOrder
-    versetext?: SortOrderInput | SortOrder
-    surahname?: SortOrderInput | SortOrder
-    translation?: SortOrderInput | SortOrder
+    userid?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
+    versetext?: SortOrder
+    surahname?: SortOrder
+    translation?: SortOrder
     notes?: SortOrderInput | SortOrder
-    createdat?: SortOrderInput | SortOrder
-    updatedat?: SortOrderInput | SortOrder
+    createdat?: SortOrder
+    updatedat?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -9603,29 +9588,29 @@ export namespace Prisma {
     AND?: UserBookmarkWhereInput | UserBookmarkWhereInput[]
     OR?: UserBookmarkWhereInput[]
     NOT?: UserBookmarkWhereInput | UserBookmarkWhereInput[]
-    userid?: StringNullableFilter<"UserBookmark"> | string | null
-    surahid?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
-    versenumber?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
-    versetext?: StringNullableFilter<"UserBookmark"> | string | null
-    surahname?: StringNullableFilter<"UserBookmark"> | string | null
-    translation?: StringNullableFilter<"UserBookmark"> | string | null
+    userid?: StringFilter<"UserBookmark"> | string
+    surahid?: IntFilter<"UserBookmark"> | number
+    versenumber?: IntFilter<"UserBookmark"> | number
+    versetext?: StringFilter<"UserBookmark"> | string
+    surahname?: StringFilter<"UserBookmark"> | string
+    translation?: StringFilter<"UserBookmark"> | string
     notes?: StringNullableFilter<"UserBookmark"> | string | null
-    createdat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
-    updatedat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
-    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    createdat?: DateTimeFilter<"UserBookmark"> | Date | string
+    updatedat?: DateTimeFilter<"UserBookmark"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "userid_surahid_versenumber">
 
   export type UserBookmarkOrderByWithAggregationInput = {
     id?: SortOrder
-    userid?: SortOrderInput | SortOrder
-    surahid?: SortOrderInput | SortOrder
-    versenumber?: SortOrderInput | SortOrder
-    versetext?: SortOrderInput | SortOrder
-    surahname?: SortOrderInput | SortOrder
-    translation?: SortOrderInput | SortOrder
+    userid?: SortOrder
+    surahid?: SortOrder
+    versenumber?: SortOrder
+    versetext?: SortOrder
+    surahname?: SortOrder
+    translation?: SortOrder
     notes?: SortOrderInput | SortOrder
-    createdat?: SortOrderInput | SortOrder
-    updatedat?: SortOrderInput | SortOrder
+    createdat?: SortOrder
+    updatedat?: SortOrder
     _count?: UserBookmarkCountOrderByAggregateInput
     _avg?: UserBookmarkAvgOrderByAggregateInput
     _max?: UserBookmarkMaxOrderByAggregateInput
@@ -9638,15 +9623,15 @@ export namespace Prisma {
     OR?: UserBookmarkScalarWhereWithAggregatesInput[]
     NOT?: UserBookmarkScalarWhereWithAggregatesInput | UserBookmarkScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserBookmark"> | string
-    userid?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
-    surahid?: BigIntNullableWithAggregatesFilter<"UserBookmark"> | bigint | number | null
-    versenumber?: BigIntNullableWithAggregatesFilter<"UserBookmark"> | bigint | number | null
-    versetext?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
-    surahname?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
-    translation?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
+    userid?: StringWithAggregatesFilter<"UserBookmark"> | string
+    surahid?: IntWithAggregatesFilter<"UserBookmark"> | number
+    versenumber?: IntWithAggregatesFilter<"UserBookmark"> | number
+    versetext?: StringWithAggregatesFilter<"UserBookmark"> | string
+    surahname?: StringWithAggregatesFilter<"UserBookmark"> | string
+    translation?: StringWithAggregatesFilter<"UserBookmark"> | string
     notes?: StringNullableWithAggregatesFilter<"UserBookmark"> | string | null
-    createdat?: DateTimeNullableWithAggregatesFilter<"UserBookmark"> | Date | string | null
-    updatedat?: DateTimeNullableWithAggregatesFilter<"UserBookmark"> | Date | string | null
+    createdat?: DateTimeWithAggregatesFilter<"UserBookmark"> | Date | string
+    updatedat?: DateTimeWithAggregatesFilter<"UserBookmark"> | Date | string
   }
 
   export type QuranTransliterationWhereInput = {
@@ -9993,8 +9978,8 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    id?: string
-    email: string
+    id: string
+    email?: string | null
     name?: string | null
     userType?: string
     createdAt?: Date | string
@@ -10003,8 +9988,8 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: string
-    email: string
+    id: string
+    email?: string | null
     name?: string | null
     userType?: string
     createdAt?: Date | string
@@ -10014,7 +9999,7 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10024,7 +10009,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10033,8 +10018,8 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: string
-    email: string
+    id: string
+    email?: string | null
     name?: string | null
     userType?: string
     createdAt?: Date | string
@@ -10043,7 +10028,7 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10052,7 +10037,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10061,92 +10046,92 @@ export namespace Prisma {
 
   export type UserBookmarkCreateInput = {
     id?: string
-    surahid?: bigint | number | null
-    versenumber?: bigint | number | null
-    versetext?: string | null
-    surahname?: string | null
-    translation?: string | null
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes?: string | null
-    createdat?: Date | string | null
-    updatedat?: Date | string | null
-    user?: UserCreateNestedOneWithoutBookmarksInput
+    createdat?: Date | string
+    updatedat?: Date | string
+    user: UserCreateNestedOneWithoutBookmarksInput
   }
 
   export type UserBookmarkUncheckedCreateInput = {
     id?: string
-    userid?: string | null
-    surahid?: bigint | number | null
-    versenumber?: bigint | number | null
-    versetext?: string | null
-    surahname?: string | null
-    translation?: string | null
+    userid: string
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes?: string | null
-    createdat?: Date | string | null
-    updatedat?: Date | string | null
+    createdat?: Date | string
+    updatedat?: Date | string
   }
 
   export type UserBookmarkUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneWithoutBookmarksNestedInput
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
   }
 
   export type UserBookmarkUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userid?: NullableStringFieldUpdateOperationsInput | string | null
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    userid?: StringFieldUpdateOperationsInput | string
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBookmarkCreateManyInput = {
     id?: string
-    userid?: string | null
-    surahid?: bigint | number | null
-    versenumber?: bigint | number | null
-    versetext?: string | null
-    surahname?: string | null
-    translation?: string | null
+    userid: string
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes?: string | null
-    createdat?: Date | string | null
-    updatedat?: Date | string | null
+    createdat?: Date | string
+    updatedat?: Date | string
   }
 
   export type UserBookmarkUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBookmarkUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userid?: NullableStringFieldUpdateOperationsInput | string | null
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    userid?: StringFieldUpdateOperationsInput | string
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type QuranTransliterationCreateInput = {
@@ -10615,15 +10600,26 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type UserNullableRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type UserBookmarkUseridSurahidVersenumberCompoundUniqueInput = {
     userid: string
-    surahid: bigint | number
-    versenumber: bigint | number
+    surahid: number
+    versenumber: number
   }
 
   export type UserBookmarkCountOrderByAggregateInput = {
@@ -10673,6 +10669,22 @@ export namespace Prisma {
   export type UserBookmarkSumOrderByAggregateInput = {
     surahid?: SortOrder
     versenumber?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type QuranTransliterationSuraAyaCompoundUniqueInput = {
@@ -10805,12 +10817,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneWithoutBookmarksNestedInput = {
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutBookmarksNestedInput = {
     create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
     connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
     upsert?: UserUpsertWithoutBookmarksInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookmarksInput, UserUpdateWithoutBookmarksInput>, UserUncheckedUpdateWithoutBookmarksInput>
   }
@@ -11025,28 +11043,44 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type UserBookmarkCreateWithoutUserInput = {
     id?: string
-    surahid?: bigint | number | null
-    versenumber?: bigint | number | null
-    versetext?: string | null
-    surahname?: string | null
-    translation?: string | null
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes?: string | null
-    createdat?: Date | string | null
-    updatedat?: Date | string | null
+    createdat?: Date | string
+    updatedat?: Date | string
   }
 
   export type UserBookmarkUncheckedCreateWithoutUserInput = {
     id?: string
-    surahid?: bigint | number | null
-    versenumber?: bigint | number | null
-    versetext?: string | null
-    surahname?: string | null
-    translation?: string | null
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes?: string | null
-    createdat?: Date | string | null
-    updatedat?: Date | string | null
+    createdat?: Date | string
+    updatedat?: Date | string
   }
 
   export type UserBookmarkCreateOrConnectWithoutUserInput = {
@@ -11080,20 +11114,20 @@ export namespace Prisma {
     OR?: UserBookmarkScalarWhereInput[]
     NOT?: UserBookmarkScalarWhereInput | UserBookmarkScalarWhereInput[]
     id?: StringFilter<"UserBookmark"> | string
-    userid?: StringNullableFilter<"UserBookmark"> | string | null
-    surahid?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
-    versenumber?: BigIntNullableFilter<"UserBookmark"> | bigint | number | null
-    versetext?: StringNullableFilter<"UserBookmark"> | string | null
-    surahname?: StringNullableFilter<"UserBookmark"> | string | null
-    translation?: StringNullableFilter<"UserBookmark"> | string | null
+    userid?: StringFilter<"UserBookmark"> | string
+    surahid?: IntFilter<"UserBookmark"> | number
+    versenumber?: IntFilter<"UserBookmark"> | number
+    versetext?: StringFilter<"UserBookmark"> | string
+    surahname?: StringFilter<"UserBookmark"> | string
+    translation?: StringFilter<"UserBookmark"> | string
     notes?: StringNullableFilter<"UserBookmark"> | string | null
-    createdat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
-    updatedat?: DateTimeNullableFilter<"UserBookmark"> | Date | string | null
+    createdat?: DateTimeFilter<"UserBookmark"> | Date | string
+    updatedat?: DateTimeFilter<"UserBookmark"> | Date | string
   }
 
   export type UserCreateWithoutBookmarksInput = {
-    id?: string
-    email: string
+    id: string
+    email?: string | null
     name?: string | null
     userType?: string
     createdAt?: Date | string
@@ -11101,8 +11135,8 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutBookmarksInput = {
-    id?: string
-    email: string
+    id: string
+    email?: string | null
     name?: string | null
     userType?: string
     createdAt?: Date | string
@@ -11127,7 +11161,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutBookmarksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11136,7 +11170,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutBookmarksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11145,50 +11179,50 @@ export namespace Prisma {
 
   export type UserBookmarkCreateManyUserInput = {
     id?: string
-    surahid?: bigint | number | null
-    versenumber?: bigint | number | null
-    versetext?: string | null
-    surahname?: string | null
-    translation?: string | null
+    surahid: number
+    versenumber: number
+    versetext: string
+    surahname: string
+    translation: string
     notes?: string | null
-    createdat?: Date | string | null
-    updatedat?: Date | string | null
+    createdat?: Date | string
+    updatedat?: Date | string
   }
 
   export type UserBookmarkUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBookmarkUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBookmarkUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    surahid?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versenumber?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
-    versetext?: NullableStringFieldUpdateOperationsInput | string | null
-    surahname?: NullableStringFieldUpdateOperationsInput | string | null
-    translation?: NullableStringFieldUpdateOperationsInput | string | null
+    surahid?: IntFieldUpdateOperationsInput | number
+    versenumber?: IntFieldUpdateOperationsInput | number
+    versetext?: StringFieldUpdateOperationsInput | string
+    surahname?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    createdat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedat?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdat?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedat?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

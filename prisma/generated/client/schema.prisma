@@ -60,8 +60,8 @@ model SurahDescription {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
+  id        String   @id @db.VarChar(255) // Clerk user id
+  email     String?  @unique
   name      String?
   userType  String   @default("guest") @map("user_type") // 'guest' or 'registered'
   createdAt DateTime @default(now()) @map("created_at")
@@ -74,21 +74,19 @@ model User {
 }
 
 model UserBookmark {
-  id          String    @id(map: "sqlite_autoindex_user_bookmarks_1") @default(cuid())
-  userid      String?
-  surahid     BigInt?
-  versenumber BigInt?
-  versetext   String?
-  surahname   String?
-  translation String?
+  id          String   @id @default(uuid())
+  userid      String   @db.VarChar(255)
+  user        User     @relation(fields: [userid], references: [id], onDelete: Cascade)
+  surahid     Int
+  versenumber Int
+  versetext   String
+  surahname   String
+  translation String
   notes       String?
-  createdat   DateTime? @default(now()) @db.Timestamptz(6)
-  updatedat   DateTime? @default(now()) @db.Timestamptz(6)
+  createdat   DateTime @default(now())
+  updatedat   DateTime @default(now())
 
-  // Relations
-  user User? @relation(fields: [userid], references: [id])
-
-  @@unique([userid, surahid, versenumber], map: "sqlite_autoindex_user_bookmarks_2")
+  @@unique([userid, surahid, versenumber])
   @@map("user_bookmarks")
 }
 

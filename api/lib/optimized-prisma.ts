@@ -1,4 +1,6 @@
 import { PrismaClient } from '../../prisma/generated/client';
+import { Pool } from '@neondatabase/serverless';
+import { PrismaNeon } from '@prisma/adapter-neon';
 
 // Global Prisma instance to prevent connection pool exhaustion
 // Based on Prisma best practices for serverless environments
@@ -8,16 +10,13 @@ declare global {
 
 // Optimized Prisma configuration for performance
 const createPrismaClient = () => {
+  const connectionString = process.env.DATABASE_URL;
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaNeon(pool);
   return new PrismaClient({
+    adapter,
     // Enable query logging in development
     log: process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : ['error'],
-    
-    // Optimize connection pool for serverless
-    datasources: {
-      db: {
-        url: process.env.DATABASE_URL,
-      },
-    },
   });
 };
 
