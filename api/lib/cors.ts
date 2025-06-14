@@ -8,10 +8,14 @@ const ALLOWED_ORIGINS = [
 ];
 
 export function setCorsHeaders(req: VercelRequest, res: VercelResponse) {
-  const origin = req.headers.origin;
+  // Safely get the origin header
+  const origin = req?.headers?.origin;
   
   if (origin && ALLOWED_ORIGINS.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    // Fallback for development - allow localhost:3000
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   }
   
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
