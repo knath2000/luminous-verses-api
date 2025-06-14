@@ -9,20 +9,24 @@ export const withAuth = (handler: Function) => {
     
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.substring(7);
+      
       try {
-        // For Stack Auth, we can decode the JWT payload to get user info
-        // In production, you'd verify the signature against Stack Auth's public key
-        const parts = token.split('.');
-        if (parts.length === 3) {
-          const payload = JSON.parse(Buffer.from(parts[1], 'base64').toString());
-          
-          // Stack Auth tokens typically have 'sub' (subject) as the user ID
-          userId = payload.sub || payload.user_id || payload.userId;
-          
-          console.log('Auth token decoded:', { userId, tokenType: 'Stack Auth' });
+        // First, try to decode as JWT
+        if (token.includes('.')) {
+          // This looks like a JWT token
+          const parts = token.split('.');
+          if (parts.length === 3) {
+            const payload = JSON.parse(Buffer.from(parts[1], 'base64').toString());
+            userId = payload.sub || payload.user_id || payload.userId;
+            console.log('JWT token decoded:', { userId, tokenType: 'JWT' });
+          }
+        } else {
+          // This looks like a direct user ID from Stack Auth
+          userId = token;
+          console.log('Direct user ID received:', { userId, tokenType: 'Direct ID' });
         }
       } catch (error) {
-        console.error('JWT token decode failed:', error);
+        console.error('Token processing failed:', error);
         return res.status(401).json({ 
           message: 'Unauthorized: Invalid token format',
           error: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.message : String(error)) : undefined
