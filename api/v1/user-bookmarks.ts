@@ -20,8 +20,7 @@ const updateBookmarkSchema = z.object({
 });
 
 async function handler(req: VercelRequest, res: VercelResponse) {
-  setCorsHeaders(res as any, req.headers.origin as any); // Explicit cast to bypass type error
-
+  setCorsHeaders(req, res); 
   // Handle preflight request
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
