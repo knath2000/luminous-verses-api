@@ -60,10 +60,10 @@ model SurahDescription {
 }
 
 model User {
-  id        String   @id @db.VarChar(255) // Clerk user id
+  id        String   @id @db.VarChar(255) // Stack user id
   email     String?  @unique
   name      String?
-  userType  String   @default("guest") @map("user_type") // 'guest' or 'registered'
+  userType  String   @default("registered") @map("user_type") // 'guest' or 'registered'
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 

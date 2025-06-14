@@ -56,7 +56,7 @@ export type QuranTransliteration = $Result.DefaultSelection<Prisma.$QuranTransli
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -65,7 +65,7 @@ export type QuranTransliteration = $Result.DefaultSelection<Prisma.$QuranTransli
  * const enYusufalis = await prisma.enYusufali.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
@@ -77,7 +77,7 @@ export class PrismaClient<
 
     /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -86,12 +86,12 @@ export class PrismaClient<
    * const enYusufalis = await prisma.enYusufali.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
    * Connect with the database
@@ -116,7 +116,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -128,7 +128,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -139,7 +139,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -151,7 +151,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -175,9 +175,7 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.enYusufali`: Exposes CRUD operations for the **EnYusufali** model.
@@ -187,7 +185,7 @@ export class PrismaClient<
     * const enYusufalis = await prisma.enYusufali.findMany()
     * ```
     */
-  get enYusufali(): Prisma.EnYusufaliDelegate<ExtArgs, ClientOptions>;
+  get enYusufali(): Prisma.EnYusufaliDelegate<ExtArgs>;
 
   /**
    * `prisma.quranSajda`: Exposes CRUD operations for the **QuranSajda** model.
@@ -197,7 +195,7 @@ export class PrismaClient<
     * const quranSajdas = await prisma.quranSajda.findMany()
     * ```
     */
-  get quranSajda(): Prisma.QuranSajdaDelegate<ExtArgs, ClientOptions>;
+  get quranSajda(): Prisma.QuranSajdaDelegate<ExtArgs>;
 
   /**
    * `prisma.quranSurah`: Exposes CRUD operations for the **QuranSurah** model.
@@ -207,7 +205,7 @@ export class PrismaClient<
     * const quranSurahs = await prisma.quranSurah.findMany()
     * ```
     */
-  get quranSurah(): Prisma.QuranSurahDelegate<ExtArgs, ClientOptions>;
+  get quranSurah(): Prisma.QuranSurahDelegate<ExtArgs>;
 
   /**
    * `prisma.quranText`: Exposes CRUD operations for the **QuranText** model.
@@ -217,7 +215,7 @@ export class PrismaClient<
     * const quranTexts = await prisma.quranText.findMany()
     * ```
     */
-  get quranText(): Prisma.QuranTextDelegate<ExtArgs, ClientOptions>;
+  get quranText(): Prisma.QuranTextDelegate<ExtArgs>;
 
   /**
    * `prisma.surahDescription`: Exposes CRUD operations for the **SurahDescription** model.
@@ -227,7 +225,7 @@ export class PrismaClient<
     * const surahDescriptions = await prisma.surahDescription.findMany()
     * ```
     */
-  get surahDescription(): Prisma.SurahDescriptionDelegate<ExtArgs, ClientOptions>;
+  get surahDescription(): Prisma.SurahDescriptionDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -237,7 +235,7 @@ export class PrismaClient<
     * const users = await prisma.user.findMany()
     * ```
     */
-  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+  get user(): Prisma.UserDelegate<ExtArgs>;
 
   /**
    * `prisma.userBookmark`: Exposes CRUD operations for the **UserBookmark** model.
@@ -247,7 +245,7 @@ export class PrismaClient<
     * const userBookmarks = await prisma.userBookmark.findMany()
     * ```
     */
-  get userBookmark(): Prisma.UserBookmarkDelegate<ExtArgs, ClientOptions>;
+  get userBookmark(): Prisma.UserBookmarkDelegate<ExtArgs>;
 
   /**
    * `prisma.quranTransliteration`: Exposes CRUD operations for the **QuranTransliteration** model.
@@ -257,7 +255,7 @@ export class PrismaClient<
     * const quranTransliterations = await prisma.quranTransliteration.findMany()
     * ```
     */
-  get quranTransliteration(): Prisma.QuranTransliterationDelegate<ExtArgs, ClientOptions>;
+  get quranTransliteration(): Prisma.QuranTransliterationDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -278,6 +276,7 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
+  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -298,7 +297,7 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics
+   * Metrics 
    */
   export type Metrics = runtime.Metrics
   export type Metric<T> = runtime.Metric<T>
@@ -316,14 +315,14 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.9.0
-   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
+   * Prisma Client JS version: 5.22.0
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
   }
 
-  export const prismaVersion: PrismaVersion
+  export const prismaVersion: PrismaVersion 
 
   /**
    * Utility Types
@@ -339,15 +338,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -357,9 +356,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -369,9 +368,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -382,21 +381,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -584,7 +583,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -715,14 +714,11 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
-    globalOmitOptions: {
-      omit: GlobalOmitOptions
-    }
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
       modelProps: "enYusufali" | "quranSajda" | "quranSurah" | "quranText" | "surahDescription" | "user" | "userBookmark" | "quranTransliteration"
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -779,10 +775,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.EnYusufaliUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.EnYusufaliUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EnYusufaliPayload>[]
           }
           upsert: {
             args: Prisma.EnYusufaliUpsertArgs<ExtArgs>
@@ -854,10 +846,6 @@ export namespace Prisma {
             args: Prisma.QuranSajdaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.QuranSajdaUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$QuranSajdaPayload>[]
-          }
           upsert: {
             args: Prisma.QuranSajdaUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$QuranSajdaPayload>
@@ -927,10 +915,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.QuranSurahUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.QuranSurahUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$QuranSurahPayload>[]
           }
           upsert: {
             args: Prisma.QuranSurahUpsertArgs<ExtArgs>
@@ -1002,10 +986,6 @@ export namespace Prisma {
             args: Prisma.QuranTextUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.QuranTextUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$QuranTextPayload>[]
-          }
           upsert: {
             args: Prisma.QuranTextUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$QuranTextPayload>
@@ -1075,10 +1055,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.SurahDescriptionUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.SurahDescriptionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SurahDescriptionPayload>[]
           }
           upsert: {
             args: Prisma.SurahDescriptionUpsertArgs<ExtArgs>
@@ -1150,10 +1126,6 @@ export namespace Prisma {
             args: Prisma.UserUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
           upsert: {
             args: Prisma.UserUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -1224,10 +1196,6 @@ export namespace Prisma {
             args: Prisma.UserBookmarkUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.UserBookmarkUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserBookmarkPayload>[]
-          }
           upsert: {
             args: Prisma.UserBookmarkUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserBookmarkPayload>
@@ -1297,10 +1265,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.QuranTransliterationUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.QuranTransliterationUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$QuranTransliterationPayload>[]
           }
           upsert: {
             args: Prisma.QuranTransliterationUpsertArgs<ExtArgs>
@@ -1390,33 +1354,9 @@ export namespace Prisma {
     /**
      * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
      */
-    adapter?: runtime.SqlDriverAdapterFactory | null
-    /**
-     * Global configuration for omitting model fields by default.
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   omit: {
-     *     user: {
-     *       password: true
-     *     }
-     *   }
-     * })
-     * ```
-     */
-    omit?: Prisma.GlobalOmitConfig
+    adapter?: runtime.DriverAdapter | null
   }
-  export type GlobalOmitConfig = {
-    enYusufali?: EnYusufaliOmit
-    quranSajda?: QuranSajdaOmit
-    quranSurah?: QuranSurahOmit
-    quranText?: QuranTextOmit
-    surahDescription?: SurahDescriptionOmit
-    user?: UserOmit
-    userBookmark?: UserBookmarkOmit
-    quranTransliteration?: QuranTransliterationOmit
-  }
+
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -1457,7 +1397,6 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
-    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -1747,13 +1686,6 @@ export namespace Prisma {
     text?: boolean
   }, ExtArgs["result"]["enYusufali"]>
 
-  export type EnYusufaliSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    index?: boolean
-    sura?: boolean
-    aya?: boolean
-    text?: boolean
-  }, ExtArgs["result"]["enYusufali"]>
-
   export type EnYusufaliSelectScalar = {
     index?: boolean
     sura?: boolean
@@ -1761,7 +1693,6 @@ export namespace Prisma {
     text?: boolean
   }
 
-  export type EnYusufaliOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "sura" | "aya" | "text", ExtArgs["result"]["enYusufali"]>
 
   export type $EnYusufaliPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "EnYusufali"
@@ -1777,12 +1708,12 @@ export namespace Prisma {
 
   type EnYusufaliGetPayload<S extends boolean | null | undefined | EnYusufaliDefaultArgs> = $Result.GetResult<Prisma.$EnYusufaliPayload, S>
 
-  type EnYusufaliCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<EnYusufaliFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type EnYusufaliCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<EnYusufaliFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: EnYusufaliCountAggregateInputType | true
     }
 
-  export interface EnYusufaliDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface EnYusufaliDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EnYusufali'], meta: { name: 'EnYusufali' } }
     /**
      * Find zero or one EnYusufali that matches the filter.
@@ -1795,10 +1726,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends EnYusufaliFindUniqueArgs>(args: SelectSubset<T, EnYusufaliFindUniqueArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends EnYusufaliFindUniqueArgs>(args: SelectSubset<T, EnYusufaliFindUniqueArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one EnYusufali that matches the filter or throw an error with `error.code='P2025'`
+     * Find one EnYusufali that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {EnYusufaliFindUniqueOrThrowArgs} args - Arguments to find a EnYusufali
      * @example
@@ -1809,7 +1740,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends EnYusufaliFindUniqueOrThrowArgs>(args: SelectSubset<T, EnYusufaliFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends EnYusufaliFindUniqueOrThrowArgs>(args: SelectSubset<T, EnYusufaliFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first EnYusufali that matches the filter.
@@ -1824,7 +1755,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends EnYusufaliFindFirstArgs>(args?: SelectSubset<T, EnYusufaliFindFirstArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends EnYusufaliFindFirstArgs>(args?: SelectSubset<T, EnYusufaliFindFirstArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first EnYusufali that matches the filter or
@@ -1840,7 +1771,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends EnYusufaliFindFirstOrThrowArgs>(args?: SelectSubset<T, EnYusufaliFindFirstOrThrowArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends EnYusufaliFindFirstOrThrowArgs>(args?: SelectSubset<T, EnYusufaliFindFirstOrThrowArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more EnYusufalis that matches the filter.
@@ -1858,7 +1789,7 @@ export namespace Prisma {
      * const enYusufaliWithIndexOnly = await prisma.enYusufali.findMany({ select: { index: true } })
      * 
      */
-    findMany<T extends EnYusufaliFindManyArgs>(args?: SelectSubset<T, EnYusufaliFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends EnYusufaliFindManyArgs>(args?: SelectSubset<T, EnYusufaliFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a EnYusufali.
@@ -1872,7 +1803,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends EnYusufaliCreateArgs>(args: SelectSubset<T, EnYusufaliCreateArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends EnYusufaliCreateArgs>(args: SelectSubset<T, EnYusufaliCreateArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many EnYusufalis.
@@ -1900,7 +1831,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many EnYusufalis and only return the `index`
-     * const enYusufaliWithIndexOnly = await prisma.enYusufali.createManyAndReturn({
+     * const enYusufaliWithIndexOnly = await prisma.enYusufali.createManyAndReturn({ 
      *   select: { index: true },
      *   data: [
      *     // ... provide data here
@@ -1910,7 +1841,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends EnYusufaliCreateManyAndReturnArgs>(args?: SelectSubset<T, EnYusufaliCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends EnYusufaliCreateManyAndReturnArgs>(args?: SelectSubset<T, EnYusufaliCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a EnYusufali.
@@ -1924,7 +1855,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends EnYusufaliDeleteArgs>(args: SelectSubset<T, EnYusufaliDeleteArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends EnYusufaliDeleteArgs>(args: SelectSubset<T, EnYusufaliDeleteArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one EnYusufali.
@@ -1941,7 +1872,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends EnYusufaliUpdateArgs>(args: SelectSubset<T, EnYusufaliUpdateArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends EnYusufaliUpdateArgs>(args: SelectSubset<T, EnYusufaliUpdateArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more EnYusufalis.
@@ -1977,36 +1908,6 @@ export namespace Prisma {
     updateMany<T extends EnYusufaliUpdateManyArgs>(args: SelectSubset<T, EnYusufaliUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more EnYusufalis and returns the data updated in the database.
-     * @param {EnYusufaliUpdateManyAndReturnArgs} args - Arguments to update many EnYusufalis.
-     * @example
-     * // Update many EnYusufalis
-     * const enYusufali = await prisma.enYusufali.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more EnYusufalis and only return the `index`
-     * const enYusufaliWithIndexOnly = await prisma.enYusufali.updateManyAndReturn({
-     *   select: { index: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends EnYusufaliUpdateManyAndReturnArgs>(args: SelectSubset<T, EnYusufaliUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one EnYusufali.
      * @param {EnYusufaliUpsertArgs} args - Arguments to update or create a EnYusufali.
      * @example
@@ -2023,7 +1924,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends EnYusufaliUpsertArgs>(args: SelectSubset<T, EnYusufaliUpsertArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends EnYusufaliUpsertArgs>(args: SelectSubset<T, EnYusufaliUpsertArgs<ExtArgs>>): Prisma__EnYusufaliClient<$Result.GetResult<Prisma.$EnYusufaliPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -2163,7 +2064,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__EnYusufaliClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__EnYusufaliClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2192,7 +2093,7 @@ export namespace Prisma {
 
   /**
    * Fields of the EnYusufali model
-   */
+   */ 
   interface EnYusufaliFieldRefs {
     readonly index: FieldRef<"EnYusufali", 'BigInt'>
     readonly sura: FieldRef<"EnYusufali", 'BigInt'>
@@ -2211,10 +2112,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * Filter, which EnYusufali to fetch.
      */
     where: EnYusufaliWhereUniqueInput
@@ -2229,10 +2126,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * Filter, which EnYusufali to fetch.
      */
     where: EnYusufaliWhereUniqueInput
@@ -2246,10 +2139,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the EnYusufali
      */
     select?: EnYusufaliSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
     /**
      * Filter, which EnYusufali to fetch.
      */
@@ -2295,10 +2184,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * Filter, which EnYusufali to fetch.
      */
     where?: EnYusufaliWhereInput
@@ -2343,10 +2228,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * Filter, which EnYusufalis to fetch.
      */
     where?: EnYusufaliWhereInput
@@ -2386,10 +2267,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * The data needed to create a EnYusufali.
      */
     data?: XOR<EnYusufaliCreateInput, EnYusufaliUncheckedCreateInput>
@@ -2415,10 +2292,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * The data used to create many EnYusufalis.
      */
     data: EnYusufaliCreateManyInput | EnYusufaliCreateManyInput[]
@@ -2433,10 +2306,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the EnYusufali
      */
     select?: EnYusufaliSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
     /**
      * The data needed to update a EnYusufali.
      */
@@ -2459,36 +2328,6 @@ export namespace Prisma {
      * Filter which EnYusufalis to update
      */
     where?: EnYusufaliWhereInput
-    /**
-     * Limit how many EnYusufalis to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * EnYusufali updateManyAndReturn
-   */
-  export type EnYusufaliUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the EnYusufali
-     */
-    select?: EnYusufaliSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
-     * The data used to update EnYusufalis.
-     */
-    data: XOR<EnYusufaliUpdateManyMutationInput, EnYusufaliUncheckedUpdateManyInput>
-    /**
-     * Filter which EnYusufalis to update
-     */
-    where?: EnYusufaliWhereInput
-    /**
-     * Limit how many EnYusufalis to update.
-     */
-    limit?: number
   }
 
   /**
@@ -2499,10 +2338,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the EnYusufali
      */
     select?: EnYusufaliSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
     /**
      * The filter to search for the EnYusufali to update in case it exists.
      */
@@ -2526,10 +2361,6 @@ export namespace Prisma {
      */
     select?: EnYusufaliSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
-    /**
      * Filter which EnYusufali to delete.
      */
     where: EnYusufaliWhereUniqueInput
@@ -2543,10 +2374,6 @@ export namespace Prisma {
      * Filter which EnYusufalis to delete
      */
     where?: EnYusufaliWhereInput
-    /**
-     * Limit how many EnYusufalis to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -2557,10 +2384,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the EnYusufali
      */
     select?: EnYusufaliSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the EnYusufali
-     */
-    omit?: EnYusufaliOmit<ExtArgs> | null
   }
 
 
@@ -2771,13 +2594,6 @@ export namespace Prisma {
     type?: boolean
   }, ExtArgs["result"]["quranSajda"]>
 
-  export type QuranSajdaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    sajdaId?: boolean
-    surahNumber?: boolean
-    ayahNumber?: boolean
-    type?: boolean
-  }, ExtArgs["result"]["quranSajda"]>
-
   export type QuranSajdaSelectScalar = {
     sajdaId?: boolean
     surahNumber?: boolean
@@ -2785,7 +2601,6 @@ export namespace Prisma {
     type?: boolean
   }
 
-  export type QuranSajdaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"sajdaId" | "surahNumber" | "ayahNumber" | "type", ExtArgs["result"]["quranSajda"]>
 
   export type $QuranSajdaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "QuranSajda"
@@ -2801,12 +2616,12 @@ export namespace Prisma {
 
   type QuranSajdaGetPayload<S extends boolean | null | undefined | QuranSajdaDefaultArgs> = $Result.GetResult<Prisma.$QuranSajdaPayload, S>
 
-  type QuranSajdaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<QuranSajdaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type QuranSajdaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuranSajdaFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: QuranSajdaCountAggregateInputType | true
     }
 
-  export interface QuranSajdaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface QuranSajdaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuranSajda'], meta: { name: 'QuranSajda' } }
     /**
      * Find zero or one QuranSajda that matches the filter.
@@ -2819,10 +2634,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends QuranSajdaFindUniqueArgs>(args: SelectSubset<T, QuranSajdaFindUniqueArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends QuranSajdaFindUniqueArgs>(args: SelectSubset<T, QuranSajdaFindUniqueArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one QuranSajda that matches the filter or throw an error with `error.code='P2025'`
+     * Find one QuranSajda that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {QuranSajdaFindUniqueOrThrowArgs} args - Arguments to find a QuranSajda
      * @example
@@ -2833,7 +2648,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends QuranSajdaFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranSajdaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends QuranSajdaFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranSajdaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first QuranSajda that matches the filter.
@@ -2848,7 +2663,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends QuranSajdaFindFirstArgs>(args?: SelectSubset<T, QuranSajdaFindFirstArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends QuranSajdaFindFirstArgs>(args?: SelectSubset<T, QuranSajdaFindFirstArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first QuranSajda that matches the filter or
@@ -2864,7 +2679,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends QuranSajdaFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranSajdaFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends QuranSajdaFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranSajdaFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more QuranSajdas that matches the filter.
@@ -2882,7 +2697,7 @@ export namespace Prisma {
      * const quranSajdaWithSajdaIdOnly = await prisma.quranSajda.findMany({ select: { sajdaId: true } })
      * 
      */
-    findMany<T extends QuranSajdaFindManyArgs>(args?: SelectSubset<T, QuranSajdaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends QuranSajdaFindManyArgs>(args?: SelectSubset<T, QuranSajdaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a QuranSajda.
@@ -2896,7 +2711,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends QuranSajdaCreateArgs>(args: SelectSubset<T, QuranSajdaCreateArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends QuranSajdaCreateArgs>(args: SelectSubset<T, QuranSajdaCreateArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many QuranSajdas.
@@ -2924,7 +2739,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many QuranSajdas and only return the `sajdaId`
-     * const quranSajdaWithSajdaIdOnly = await prisma.quranSajda.createManyAndReturn({
+     * const quranSajdaWithSajdaIdOnly = await prisma.quranSajda.createManyAndReturn({ 
      *   select: { sajdaId: true },
      *   data: [
      *     // ... provide data here
@@ -2934,7 +2749,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends QuranSajdaCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranSajdaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends QuranSajdaCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranSajdaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a QuranSajda.
@@ -2948,7 +2763,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends QuranSajdaDeleteArgs>(args: SelectSubset<T, QuranSajdaDeleteArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends QuranSajdaDeleteArgs>(args: SelectSubset<T, QuranSajdaDeleteArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one QuranSajda.
@@ -2965,7 +2780,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends QuranSajdaUpdateArgs>(args: SelectSubset<T, QuranSajdaUpdateArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends QuranSajdaUpdateArgs>(args: SelectSubset<T, QuranSajdaUpdateArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more QuranSajdas.
@@ -3001,36 +2816,6 @@ export namespace Prisma {
     updateMany<T extends QuranSajdaUpdateManyArgs>(args: SelectSubset<T, QuranSajdaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more QuranSajdas and returns the data updated in the database.
-     * @param {QuranSajdaUpdateManyAndReturnArgs} args - Arguments to update many QuranSajdas.
-     * @example
-     * // Update many QuranSajdas
-     * const quranSajda = await prisma.quranSajda.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more QuranSajdas and only return the `sajdaId`
-     * const quranSajdaWithSajdaIdOnly = await prisma.quranSajda.updateManyAndReturn({
-     *   select: { sajdaId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends QuranSajdaUpdateManyAndReturnArgs>(args: SelectSubset<T, QuranSajdaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one QuranSajda.
      * @param {QuranSajdaUpsertArgs} args - Arguments to update or create a QuranSajda.
      * @example
@@ -3047,7 +2832,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends QuranSajdaUpsertArgs>(args: SelectSubset<T, QuranSajdaUpsertArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends QuranSajdaUpsertArgs>(args: SelectSubset<T, QuranSajdaUpsertArgs<ExtArgs>>): Prisma__QuranSajdaClient<$Result.GetResult<Prisma.$QuranSajdaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -3187,7 +2972,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__QuranSajdaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__QuranSajdaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3216,7 +3001,7 @@ export namespace Prisma {
 
   /**
    * Fields of the QuranSajda model
-   */
+   */ 
   interface QuranSajdaFieldRefs {
     readonly sajdaId: FieldRef<"QuranSajda", 'BigInt'>
     readonly surahNumber: FieldRef<"QuranSajda", 'BigInt'>
@@ -3235,10 +3020,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSajda to fetch.
      */
     where: QuranSajdaWhereUniqueInput
@@ -3253,10 +3034,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSajda to fetch.
      */
     where: QuranSajdaWhereUniqueInput
@@ -3270,10 +3047,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSajda
      */
     select?: QuranSajdaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
     /**
      * Filter, which QuranSajda to fetch.
      */
@@ -3319,10 +3092,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSajda to fetch.
      */
     where?: QuranSajdaWhereInput
@@ -3367,10 +3136,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSajdas to fetch.
      */
     where?: QuranSajdaWhereInput
@@ -3410,10 +3175,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * The data needed to create a QuranSajda.
      */
     data?: XOR<QuranSajdaCreateInput, QuranSajdaUncheckedCreateInput>
@@ -3439,10 +3200,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * The data used to create many QuranSajdas.
      */
     data: QuranSajdaCreateManyInput | QuranSajdaCreateManyInput[]
@@ -3457,10 +3214,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSajda
      */
     select?: QuranSajdaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
     /**
      * The data needed to update a QuranSajda.
      */
@@ -3483,36 +3236,6 @@ export namespace Prisma {
      * Filter which QuranSajdas to update
      */
     where?: QuranSajdaWhereInput
-    /**
-     * Limit how many QuranSajdas to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * QuranSajda updateManyAndReturn
-   */
-  export type QuranSajdaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the QuranSajda
-     */
-    select?: QuranSajdaSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
-     * The data used to update QuranSajdas.
-     */
-    data: XOR<QuranSajdaUpdateManyMutationInput, QuranSajdaUncheckedUpdateManyInput>
-    /**
-     * Filter which QuranSajdas to update
-     */
-    where?: QuranSajdaWhereInput
-    /**
-     * Limit how many QuranSajdas to update.
-     */
-    limit?: number
   }
 
   /**
@@ -3523,10 +3246,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSajda
      */
     select?: QuranSajdaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
     /**
      * The filter to search for the QuranSajda to update in case it exists.
      */
@@ -3550,10 +3269,6 @@ export namespace Prisma {
      */
     select?: QuranSajdaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
-    /**
      * Filter which QuranSajda to delete.
      */
     where: QuranSajdaWhereUniqueInput
@@ -3567,10 +3282,6 @@ export namespace Prisma {
      * Filter which QuranSajdas to delete
      */
     where?: QuranSajdaWhereInput
-    /**
-     * Limit how many QuranSajdas to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -3581,10 +3292,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSajda
      */
     select?: QuranSajdaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSajda
-     */
-    omit?: QuranSajdaOmit<ExtArgs> | null
   }
 
 
@@ -3848,18 +3555,6 @@ export namespace Prisma {
     startIndex?: boolean
   }, ExtArgs["result"]["quranSurah"]>
 
-  export type QuranSurahSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    number?: boolean
-    arabicName?: boolean
-    transliteration?: boolean
-    englishName?: boolean
-    ayas?: boolean
-    revelationType?: boolean
-    chronologicalOrder?: boolean
-    rukus?: boolean
-    startIndex?: boolean
-  }, ExtArgs["result"]["quranSurah"]>
-
   export type QuranSurahSelectScalar = {
     number?: boolean
     arabicName?: boolean
@@ -3872,7 +3567,6 @@ export namespace Prisma {
     startIndex?: boolean
   }
 
-  export type QuranSurahOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"number" | "arabicName" | "transliteration" | "englishName" | "ayas" | "revelationType" | "chronologicalOrder" | "rukus" | "startIndex", ExtArgs["result"]["quranSurah"]>
 
   export type $QuranSurahPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "QuranSurah"
@@ -3893,12 +3587,12 @@ export namespace Prisma {
 
   type QuranSurahGetPayload<S extends boolean | null | undefined | QuranSurahDefaultArgs> = $Result.GetResult<Prisma.$QuranSurahPayload, S>
 
-  type QuranSurahCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<QuranSurahFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type QuranSurahCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuranSurahFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: QuranSurahCountAggregateInputType | true
     }
 
-  export interface QuranSurahDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface QuranSurahDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuranSurah'], meta: { name: 'QuranSurah' } }
     /**
      * Find zero or one QuranSurah that matches the filter.
@@ -3911,10 +3605,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends QuranSurahFindUniqueArgs>(args: SelectSubset<T, QuranSurahFindUniqueArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends QuranSurahFindUniqueArgs>(args: SelectSubset<T, QuranSurahFindUniqueArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one QuranSurah that matches the filter or throw an error with `error.code='P2025'`
+     * Find one QuranSurah that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {QuranSurahFindUniqueOrThrowArgs} args - Arguments to find a QuranSurah
      * @example
@@ -3925,7 +3619,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends QuranSurahFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranSurahFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends QuranSurahFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranSurahFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first QuranSurah that matches the filter.
@@ -3940,7 +3634,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends QuranSurahFindFirstArgs>(args?: SelectSubset<T, QuranSurahFindFirstArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends QuranSurahFindFirstArgs>(args?: SelectSubset<T, QuranSurahFindFirstArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first QuranSurah that matches the filter or
@@ -3956,7 +3650,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends QuranSurahFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranSurahFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends QuranSurahFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranSurahFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more QuranSurahs that matches the filter.
@@ -3974,7 +3668,7 @@ export namespace Prisma {
      * const quranSurahWithNumberOnly = await prisma.quranSurah.findMany({ select: { number: true } })
      * 
      */
-    findMany<T extends QuranSurahFindManyArgs>(args?: SelectSubset<T, QuranSurahFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends QuranSurahFindManyArgs>(args?: SelectSubset<T, QuranSurahFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a QuranSurah.
@@ -3988,7 +3682,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends QuranSurahCreateArgs>(args: SelectSubset<T, QuranSurahCreateArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends QuranSurahCreateArgs>(args: SelectSubset<T, QuranSurahCreateArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many QuranSurahs.
@@ -4016,7 +3710,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many QuranSurahs and only return the `number`
-     * const quranSurahWithNumberOnly = await prisma.quranSurah.createManyAndReturn({
+     * const quranSurahWithNumberOnly = await prisma.quranSurah.createManyAndReturn({ 
      *   select: { number: true },
      *   data: [
      *     // ... provide data here
@@ -4026,7 +3720,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends QuranSurahCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranSurahCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends QuranSurahCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranSurahCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a QuranSurah.
@@ -4040,7 +3734,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends QuranSurahDeleteArgs>(args: SelectSubset<T, QuranSurahDeleteArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends QuranSurahDeleteArgs>(args: SelectSubset<T, QuranSurahDeleteArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one QuranSurah.
@@ -4057,7 +3751,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends QuranSurahUpdateArgs>(args: SelectSubset<T, QuranSurahUpdateArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends QuranSurahUpdateArgs>(args: SelectSubset<T, QuranSurahUpdateArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more QuranSurahs.
@@ -4093,36 +3787,6 @@ export namespace Prisma {
     updateMany<T extends QuranSurahUpdateManyArgs>(args: SelectSubset<T, QuranSurahUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more QuranSurahs and returns the data updated in the database.
-     * @param {QuranSurahUpdateManyAndReturnArgs} args - Arguments to update many QuranSurahs.
-     * @example
-     * // Update many QuranSurahs
-     * const quranSurah = await prisma.quranSurah.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more QuranSurahs and only return the `number`
-     * const quranSurahWithNumberOnly = await prisma.quranSurah.updateManyAndReturn({
-     *   select: { number: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends QuranSurahUpdateManyAndReturnArgs>(args: SelectSubset<T, QuranSurahUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one QuranSurah.
      * @param {QuranSurahUpsertArgs} args - Arguments to update or create a QuranSurah.
      * @example
@@ -4139,7 +3803,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends QuranSurahUpsertArgs>(args: SelectSubset<T, QuranSurahUpsertArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends QuranSurahUpsertArgs>(args: SelectSubset<T, QuranSurahUpsertArgs<ExtArgs>>): Prisma__QuranSurahClient<$Result.GetResult<Prisma.$QuranSurahPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -4279,7 +3943,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__QuranSurahClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__QuranSurahClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4308,7 +3972,7 @@ export namespace Prisma {
 
   /**
    * Fields of the QuranSurah model
-   */
+   */ 
   interface QuranSurahFieldRefs {
     readonly number: FieldRef<"QuranSurah", 'BigInt'>
     readonly arabicName: FieldRef<"QuranSurah", 'String'>
@@ -4332,10 +3996,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSurah to fetch.
      */
     where: QuranSurahWhereUniqueInput
@@ -4350,10 +4010,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSurah to fetch.
      */
     where: QuranSurahWhereUniqueInput
@@ -4367,10 +4023,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSurah
      */
     select?: QuranSurahSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
     /**
      * Filter, which QuranSurah to fetch.
      */
@@ -4416,10 +4068,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSurah to fetch.
      */
     where?: QuranSurahWhereInput
@@ -4464,10 +4112,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * Filter, which QuranSurahs to fetch.
      */
     where?: QuranSurahWhereInput
@@ -4507,10 +4151,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * The data needed to create a QuranSurah.
      */
     data?: XOR<QuranSurahCreateInput, QuranSurahUncheckedCreateInput>
@@ -4536,10 +4176,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * The data used to create many QuranSurahs.
      */
     data: QuranSurahCreateManyInput | QuranSurahCreateManyInput[]
@@ -4554,10 +4190,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSurah
      */
     select?: QuranSurahSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
     /**
      * The data needed to update a QuranSurah.
      */
@@ -4580,36 +4212,6 @@ export namespace Prisma {
      * Filter which QuranSurahs to update
      */
     where?: QuranSurahWhereInput
-    /**
-     * Limit how many QuranSurahs to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * QuranSurah updateManyAndReturn
-   */
-  export type QuranSurahUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the QuranSurah
-     */
-    select?: QuranSurahSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
-     * The data used to update QuranSurahs.
-     */
-    data: XOR<QuranSurahUpdateManyMutationInput, QuranSurahUncheckedUpdateManyInput>
-    /**
-     * Filter which QuranSurahs to update
-     */
-    where?: QuranSurahWhereInput
-    /**
-     * Limit how many QuranSurahs to update.
-     */
-    limit?: number
   }
 
   /**
@@ -4620,10 +4222,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSurah
      */
     select?: QuranSurahSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
     /**
      * The filter to search for the QuranSurah to update in case it exists.
      */
@@ -4647,10 +4245,6 @@ export namespace Prisma {
      */
     select?: QuranSurahSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
-    /**
      * Filter which QuranSurah to delete.
      */
     where: QuranSurahWhereUniqueInput
@@ -4664,10 +4258,6 @@ export namespace Prisma {
      * Filter which QuranSurahs to delete
      */
     where?: QuranSurahWhereInput
-    /**
-     * Limit how many QuranSurahs to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -4678,10 +4268,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranSurah
      */
     select?: QuranSurahSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranSurah
-     */
-    omit?: QuranSurahOmit<ExtArgs> | null
   }
 
 
@@ -4892,13 +4478,6 @@ export namespace Prisma {
     text?: boolean
   }, ExtArgs["result"]["quranText"]>
 
-  export type QuranTextSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    sura?: boolean
-    aya?: boolean
-    text?: boolean
-  }, ExtArgs["result"]["quranText"]>
-
   export type QuranTextSelectScalar = {
     id?: boolean
     sura?: boolean
@@ -4906,7 +4485,6 @@ export namespace Prisma {
     text?: boolean
   }
 
-  export type QuranTextOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sura" | "aya" | "text", ExtArgs["result"]["quranText"]>
 
   export type $QuranTextPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "QuranText"
@@ -4922,12 +4500,12 @@ export namespace Prisma {
 
   type QuranTextGetPayload<S extends boolean | null | undefined | QuranTextDefaultArgs> = $Result.GetResult<Prisma.$QuranTextPayload, S>
 
-  type QuranTextCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<QuranTextFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type QuranTextCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuranTextFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: QuranTextCountAggregateInputType | true
     }
 
-  export interface QuranTextDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface QuranTextDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuranText'], meta: { name: 'QuranText' } }
     /**
      * Find zero or one QuranText that matches the filter.
@@ -4940,10 +4518,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends QuranTextFindUniqueArgs>(args: SelectSubset<T, QuranTextFindUniqueArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends QuranTextFindUniqueArgs>(args: SelectSubset<T, QuranTextFindUniqueArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one QuranText that matches the filter or throw an error with `error.code='P2025'`
+     * Find one QuranText that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {QuranTextFindUniqueOrThrowArgs} args - Arguments to find a QuranText
      * @example
@@ -4954,7 +4532,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends QuranTextFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranTextFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends QuranTextFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranTextFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first QuranText that matches the filter.
@@ -4969,7 +4547,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends QuranTextFindFirstArgs>(args?: SelectSubset<T, QuranTextFindFirstArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends QuranTextFindFirstArgs>(args?: SelectSubset<T, QuranTextFindFirstArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first QuranText that matches the filter or
@@ -4985,7 +4563,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends QuranTextFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranTextFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends QuranTextFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranTextFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more QuranTexts that matches the filter.
@@ -5003,7 +4581,7 @@ export namespace Prisma {
      * const quranTextWithIdOnly = await prisma.quranText.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends QuranTextFindManyArgs>(args?: SelectSubset<T, QuranTextFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends QuranTextFindManyArgs>(args?: SelectSubset<T, QuranTextFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a QuranText.
@@ -5017,7 +4595,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends QuranTextCreateArgs>(args: SelectSubset<T, QuranTextCreateArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends QuranTextCreateArgs>(args: SelectSubset<T, QuranTextCreateArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many QuranTexts.
@@ -5045,7 +4623,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many QuranTexts and only return the `id`
-     * const quranTextWithIdOnly = await prisma.quranText.createManyAndReturn({
+     * const quranTextWithIdOnly = await prisma.quranText.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5055,7 +4633,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends QuranTextCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranTextCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends QuranTextCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranTextCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a QuranText.
@@ -5069,7 +4647,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends QuranTextDeleteArgs>(args: SelectSubset<T, QuranTextDeleteArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends QuranTextDeleteArgs>(args: SelectSubset<T, QuranTextDeleteArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one QuranText.
@@ -5086,7 +4664,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends QuranTextUpdateArgs>(args: SelectSubset<T, QuranTextUpdateArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends QuranTextUpdateArgs>(args: SelectSubset<T, QuranTextUpdateArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more QuranTexts.
@@ -5122,36 +4700,6 @@ export namespace Prisma {
     updateMany<T extends QuranTextUpdateManyArgs>(args: SelectSubset<T, QuranTextUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more QuranTexts and returns the data updated in the database.
-     * @param {QuranTextUpdateManyAndReturnArgs} args - Arguments to update many QuranTexts.
-     * @example
-     * // Update many QuranTexts
-     * const quranText = await prisma.quranText.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more QuranTexts and only return the `id`
-     * const quranTextWithIdOnly = await prisma.quranText.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends QuranTextUpdateManyAndReturnArgs>(args: SelectSubset<T, QuranTextUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one QuranText.
      * @param {QuranTextUpsertArgs} args - Arguments to update or create a QuranText.
      * @example
@@ -5168,7 +4716,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends QuranTextUpsertArgs>(args: SelectSubset<T, QuranTextUpsertArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends QuranTextUpsertArgs>(args: SelectSubset<T, QuranTextUpsertArgs<ExtArgs>>): Prisma__QuranTextClient<$Result.GetResult<Prisma.$QuranTextPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -5308,7 +4856,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__QuranTextClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__QuranTextClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5337,7 +4885,7 @@ export namespace Prisma {
 
   /**
    * Fields of the QuranText model
-   */
+   */ 
   interface QuranTextFieldRefs {
     readonly id: FieldRef<"QuranText", 'BigInt'>
     readonly sura: FieldRef<"QuranText", 'BigInt'>
@@ -5356,10 +4904,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * Filter, which QuranText to fetch.
      */
     where: QuranTextWhereUniqueInput
@@ -5374,10 +4918,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * Filter, which QuranText to fetch.
      */
     where: QuranTextWhereUniqueInput
@@ -5391,10 +4931,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranText
      */
     select?: QuranTextSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
     /**
      * Filter, which QuranText to fetch.
      */
@@ -5440,10 +4976,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * Filter, which QuranText to fetch.
      */
     where?: QuranTextWhereInput
@@ -5488,10 +5020,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * Filter, which QuranTexts to fetch.
      */
     where?: QuranTextWhereInput
@@ -5531,10 +5059,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * The data needed to create a QuranText.
      */
     data?: XOR<QuranTextCreateInput, QuranTextUncheckedCreateInput>
@@ -5560,10 +5084,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * The data used to create many QuranTexts.
      */
     data: QuranTextCreateManyInput | QuranTextCreateManyInput[]
@@ -5578,10 +5098,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranText
      */
     select?: QuranTextSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
     /**
      * The data needed to update a QuranText.
      */
@@ -5604,36 +5120,6 @@ export namespace Prisma {
      * Filter which QuranTexts to update
      */
     where?: QuranTextWhereInput
-    /**
-     * Limit how many QuranTexts to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * QuranText updateManyAndReturn
-   */
-  export type QuranTextUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the QuranText
-     */
-    select?: QuranTextSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
-     * The data used to update QuranTexts.
-     */
-    data: XOR<QuranTextUpdateManyMutationInput, QuranTextUncheckedUpdateManyInput>
-    /**
-     * Filter which QuranTexts to update
-     */
-    where?: QuranTextWhereInput
-    /**
-     * Limit how many QuranTexts to update.
-     */
-    limit?: number
   }
 
   /**
@@ -5644,10 +5130,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranText
      */
     select?: QuranTextSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
     /**
      * The filter to search for the QuranText to update in case it exists.
      */
@@ -5671,10 +5153,6 @@ export namespace Prisma {
      */
     select?: QuranTextSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
-    /**
      * Filter which QuranText to delete.
      */
     where: QuranTextWhereUniqueInput
@@ -5688,10 +5166,6 @@ export namespace Prisma {
      * Filter which QuranTexts to delete
      */
     where?: QuranTextWhereInput
-    /**
-     * Limit how many QuranTexts to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -5702,10 +5176,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranText
      */
     select?: QuranTextSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranText
-     */
-    omit?: QuranTextOmit<ExtArgs> | null
   }
 
 
@@ -5899,19 +5369,12 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["surahDescription"]>
 
-  export type SurahDescriptionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    surahId?: boolean
-    description?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["surahDescription"]>
-
   export type SurahDescriptionSelectScalar = {
     surahId?: boolean
     description?: boolean
     updatedAt?: boolean
   }
 
-  export type SurahDescriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"surahId" | "description" | "updatedAt", ExtArgs["result"]["surahDescription"]>
 
   export type $SurahDescriptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SurahDescription"
@@ -5926,12 +5389,12 @@ export namespace Prisma {
 
   type SurahDescriptionGetPayload<S extends boolean | null | undefined | SurahDescriptionDefaultArgs> = $Result.GetResult<Prisma.$SurahDescriptionPayload, S>
 
-  type SurahDescriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SurahDescriptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type SurahDescriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SurahDescriptionFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: SurahDescriptionCountAggregateInputType | true
     }
 
-  export interface SurahDescriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface SurahDescriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SurahDescription'], meta: { name: 'SurahDescription' } }
     /**
      * Find zero or one SurahDescription that matches the filter.
@@ -5944,10 +5407,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends SurahDescriptionFindUniqueArgs>(args: SelectSubset<T, SurahDescriptionFindUniqueArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends SurahDescriptionFindUniqueArgs>(args: SelectSubset<T, SurahDescriptionFindUniqueArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one SurahDescription that matches the filter or throw an error with `error.code='P2025'`
+     * Find one SurahDescription that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {SurahDescriptionFindUniqueOrThrowArgs} args - Arguments to find a SurahDescription
      * @example
@@ -5958,7 +5421,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SurahDescriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, SurahDescriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends SurahDescriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, SurahDescriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first SurahDescription that matches the filter.
@@ -5973,7 +5436,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends SurahDescriptionFindFirstArgs>(args?: SelectSubset<T, SurahDescriptionFindFirstArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends SurahDescriptionFindFirstArgs>(args?: SelectSubset<T, SurahDescriptionFindFirstArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first SurahDescription that matches the filter or
@@ -5989,7 +5452,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends SurahDescriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, SurahDescriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends SurahDescriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, SurahDescriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more SurahDescriptions that matches the filter.
@@ -6007,7 +5470,7 @@ export namespace Prisma {
      * const surahDescriptionWithSurahIdOnly = await prisma.surahDescription.findMany({ select: { surahId: true } })
      * 
      */
-    findMany<T extends SurahDescriptionFindManyArgs>(args?: SelectSubset<T, SurahDescriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends SurahDescriptionFindManyArgs>(args?: SelectSubset<T, SurahDescriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a SurahDescription.
@@ -6021,7 +5484,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends SurahDescriptionCreateArgs>(args: SelectSubset<T, SurahDescriptionCreateArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends SurahDescriptionCreateArgs>(args: SelectSubset<T, SurahDescriptionCreateArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many SurahDescriptions.
@@ -6049,7 +5512,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many SurahDescriptions and only return the `surahId`
-     * const surahDescriptionWithSurahIdOnly = await prisma.surahDescription.createManyAndReturn({
+     * const surahDescriptionWithSurahIdOnly = await prisma.surahDescription.createManyAndReturn({ 
      *   select: { surahId: true },
      *   data: [
      *     // ... provide data here
@@ -6059,7 +5522,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends SurahDescriptionCreateManyAndReturnArgs>(args?: SelectSubset<T, SurahDescriptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends SurahDescriptionCreateManyAndReturnArgs>(args?: SelectSubset<T, SurahDescriptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a SurahDescription.
@@ -6073,7 +5536,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends SurahDescriptionDeleteArgs>(args: SelectSubset<T, SurahDescriptionDeleteArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends SurahDescriptionDeleteArgs>(args: SelectSubset<T, SurahDescriptionDeleteArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one SurahDescription.
@@ -6090,7 +5553,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SurahDescriptionUpdateArgs>(args: SelectSubset<T, SurahDescriptionUpdateArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends SurahDescriptionUpdateArgs>(args: SelectSubset<T, SurahDescriptionUpdateArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more SurahDescriptions.
@@ -6126,36 +5589,6 @@ export namespace Prisma {
     updateMany<T extends SurahDescriptionUpdateManyArgs>(args: SelectSubset<T, SurahDescriptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SurahDescriptions and returns the data updated in the database.
-     * @param {SurahDescriptionUpdateManyAndReturnArgs} args - Arguments to update many SurahDescriptions.
-     * @example
-     * // Update many SurahDescriptions
-     * const surahDescription = await prisma.surahDescription.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more SurahDescriptions and only return the `surahId`
-     * const surahDescriptionWithSurahIdOnly = await prisma.surahDescription.updateManyAndReturn({
-     *   select: { surahId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends SurahDescriptionUpdateManyAndReturnArgs>(args: SelectSubset<T, SurahDescriptionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one SurahDescription.
      * @param {SurahDescriptionUpsertArgs} args - Arguments to update or create a SurahDescription.
      * @example
@@ -6172,7 +5605,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends SurahDescriptionUpsertArgs>(args: SelectSubset<T, SurahDescriptionUpsertArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends SurahDescriptionUpsertArgs>(args: SelectSubset<T, SurahDescriptionUpsertArgs<ExtArgs>>): Prisma__SurahDescriptionClient<$Result.GetResult<Prisma.$SurahDescriptionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -6312,7 +5745,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SurahDescriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__SurahDescriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6341,7 +5774,7 @@ export namespace Prisma {
 
   /**
    * Fields of the SurahDescription model
-   */
+   */ 
   interface SurahDescriptionFieldRefs {
     readonly surahId: FieldRef<"SurahDescription", 'BigInt'>
     readonly description: FieldRef<"SurahDescription", 'String'>
@@ -6359,10 +5792,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * Filter, which SurahDescription to fetch.
      */
     where: SurahDescriptionWhereUniqueInput
@@ -6377,10 +5806,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * Filter, which SurahDescription to fetch.
      */
     where: SurahDescriptionWhereUniqueInput
@@ -6394,10 +5819,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the SurahDescription
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
     /**
      * Filter, which SurahDescription to fetch.
      */
@@ -6443,10 +5864,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * Filter, which SurahDescription to fetch.
      */
     where?: SurahDescriptionWhereInput
@@ -6491,10 +5908,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * Filter, which SurahDescriptions to fetch.
      */
     where?: SurahDescriptionWhereInput
@@ -6534,10 +5947,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * The data needed to create a SurahDescription.
      */
     data: XOR<SurahDescriptionCreateInput, SurahDescriptionUncheckedCreateInput>
@@ -6563,10 +5972,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * The data used to create many SurahDescriptions.
      */
     data: SurahDescriptionCreateManyInput | SurahDescriptionCreateManyInput[]
@@ -6581,10 +5986,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the SurahDescription
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
     /**
      * The data needed to update a SurahDescription.
      */
@@ -6607,36 +6008,6 @@ export namespace Prisma {
      * Filter which SurahDescriptions to update
      */
     where?: SurahDescriptionWhereInput
-    /**
-     * Limit how many SurahDescriptions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * SurahDescription updateManyAndReturn
-   */
-  export type SurahDescriptionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SurahDescription
-     */
-    select?: SurahDescriptionSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
-     * The data used to update SurahDescriptions.
-     */
-    data: XOR<SurahDescriptionUpdateManyMutationInput, SurahDescriptionUncheckedUpdateManyInput>
-    /**
-     * Filter which SurahDescriptions to update
-     */
-    where?: SurahDescriptionWhereInput
-    /**
-     * Limit how many SurahDescriptions to update.
-     */
-    limit?: number
   }
 
   /**
@@ -6647,10 +6018,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the SurahDescription
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
     /**
      * The filter to search for the SurahDescription to update in case it exists.
      */
@@ -6674,10 +6041,6 @@ export namespace Prisma {
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
-    /**
      * Filter which SurahDescription to delete.
      */
     where: SurahDescriptionWhereUniqueInput
@@ -6691,10 +6054,6 @@ export namespace Prisma {
      * Filter which SurahDescriptions to delete
      */
     where?: SurahDescriptionWhereInput
-    /**
-     * Limit how many SurahDescriptions to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -6705,10 +6064,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the SurahDescription
      */
     select?: SurahDescriptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SurahDescription
-     */
-    omit?: SurahDescriptionOmit<ExtArgs> | null
   }
 
 
@@ -6897,15 +6252,6 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
-  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    name?: boolean
-    userType?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["user"]>
-
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
@@ -6915,13 +6261,11 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "userType" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -6941,12 +6285,12 @@ export namespace Prisma {
 
   type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
 
-  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: UserCountAggregateInputType | true
     }
 
-  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
     /**
      * Find zero or one User that matches the filter.
@@ -6959,10 +6303,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one User that matches the filter or throw an error with `error.code='P2025'`
+     * Find one User that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
      * @example
@@ -6973,7 +6317,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first User that matches the filter.
@@ -6988,7 +6332,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first User that matches the filter or
@@ -7004,7 +6348,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Users that matches the filter.
@@ -7022,7 +6366,7 @@ export namespace Prisma {
      * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a User.
@@ -7036,7 +6380,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Users.
@@ -7064,7 +6408,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     * const userWithIdOnly = await prisma.user.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7074,7 +6418,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a User.
@@ -7088,7 +6432,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one User.
@@ -7105,7 +6449,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Users.
@@ -7141,36 +6485,6 @@ export namespace Prisma {
     updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
-     * @example
-     * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one User.
      * @param {UserUpsertArgs} args - Arguments to update or create a User.
      * @example
@@ -7187,7 +6501,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -7327,9 +6641,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    bookmarks<T extends User$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bookmarks<T extends User$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7357,7 +6671,7 @@ export namespace Prisma {
 
   /**
    * Fields of the User model
-   */
+   */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
@@ -7378,10 +6692,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -7400,10 +6710,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -7421,10 +6727,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7474,10 +6776,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -7526,10 +6824,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -7573,10 +6867,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -7606,10 +6896,6 @@ export namespace Prisma {
      */
     select?: UserSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
@@ -7624,10 +6910,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7654,36 +6936,6 @@ export namespace Prisma {
      * Filter which Users to update
      */
     where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * User updateManyAndReturn
-   */
-  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * The data used to update Users.
-     */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
-    /**
-     * Filter which Users to update
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
   }
 
   /**
@@ -7694,10 +6946,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7725,10 +6973,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -7746,10 +6990,6 @@ export namespace Prisma {
      * Filter which Users to delete
      */
     where?: UserWhereInput
-    /**
-     * Limit how many Users to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -7760,10 +7000,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserBookmark
      */
     select?: UserBookmarkSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7784,10 +7020,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8054,20 +7286,6 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userBookmark"]>
 
-  export type UserBookmarkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userid?: boolean
-    surahid?: boolean
-    versenumber?: boolean
-    versetext?: boolean
-    surahname?: boolean
-    translation?: boolean
-    notes?: boolean
-    createdat?: boolean
-    updatedat?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userBookmark"]>
-
   export type UserBookmarkSelectScalar = {
     id?: boolean
     userid?: boolean
@@ -8081,14 +7299,10 @@ export namespace Prisma {
     updatedat?: boolean
   }
 
-  export type UserBookmarkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userid" | "surahid" | "versenumber" | "versetext" | "surahname" | "translation" | "notes" | "createdat" | "updatedat", ExtArgs["result"]["userBookmark"]>
   export type UserBookmarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type UserBookmarkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserBookmarkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -8114,12 +7328,12 @@ export namespace Prisma {
 
   type UserBookmarkGetPayload<S extends boolean | null | undefined | UserBookmarkDefaultArgs> = $Result.GetResult<Prisma.$UserBookmarkPayload, S>
 
-  type UserBookmarkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserBookmarkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type UserBookmarkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserBookmarkFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: UserBookmarkCountAggregateInputType | true
     }
 
-  export interface UserBookmarkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface UserBookmarkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserBookmark'], meta: { name: 'UserBookmark' } }
     /**
      * Find zero or one UserBookmark that matches the filter.
@@ -8132,10 +7346,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends UserBookmarkFindUniqueArgs>(args: SelectSubset<T, UserBookmarkFindUniqueArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UserBookmarkFindUniqueArgs>(args: SelectSubset<T, UserBookmarkFindUniqueArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one UserBookmark that matches the filter or throw an error with `error.code='P2025'`
+     * Find one UserBookmark that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {UserBookmarkFindUniqueOrThrowArgs} args - Arguments to find a UserBookmark
      * @example
@@ -8146,7 +7360,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserBookmarkFindUniqueOrThrowArgs>(args: SelectSubset<T, UserBookmarkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UserBookmarkFindUniqueOrThrowArgs>(args: SelectSubset<T, UserBookmarkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first UserBookmark that matches the filter.
@@ -8161,7 +7375,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends UserBookmarkFindFirstArgs>(args?: SelectSubset<T, UserBookmarkFindFirstArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UserBookmarkFindFirstArgs>(args?: SelectSubset<T, UserBookmarkFindFirstArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first UserBookmark that matches the filter or
@@ -8177,7 +7391,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserBookmarkFindFirstOrThrowArgs>(args?: SelectSubset<T, UserBookmarkFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UserBookmarkFindFirstOrThrowArgs>(args?: SelectSubset<T, UserBookmarkFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more UserBookmarks that matches the filter.
@@ -8195,7 +7409,7 @@ export namespace Prisma {
      * const userBookmarkWithIdOnly = await prisma.userBookmark.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserBookmarkFindManyArgs>(args?: SelectSubset<T, UserBookmarkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UserBookmarkFindManyArgs>(args?: SelectSubset<T, UserBookmarkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a UserBookmark.
@@ -8209,7 +7423,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends UserBookmarkCreateArgs>(args: SelectSubset<T, UserBookmarkCreateArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UserBookmarkCreateArgs>(args: SelectSubset<T, UserBookmarkCreateArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many UserBookmarks.
@@ -8237,7 +7451,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many UserBookmarks and only return the `id`
-     * const userBookmarkWithIdOnly = await prisma.userBookmark.createManyAndReturn({
+     * const userBookmarkWithIdOnly = await prisma.userBookmark.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8247,7 +7461,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserBookmarkCreateManyAndReturnArgs>(args?: SelectSubset<T, UserBookmarkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UserBookmarkCreateManyAndReturnArgs>(args?: SelectSubset<T, UserBookmarkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a UserBookmark.
@@ -8261,7 +7475,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends UserBookmarkDeleteArgs>(args: SelectSubset<T, UserBookmarkDeleteArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UserBookmarkDeleteArgs>(args: SelectSubset<T, UserBookmarkDeleteArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one UserBookmark.
@@ -8278,7 +7492,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserBookmarkUpdateArgs>(args: SelectSubset<T, UserBookmarkUpdateArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UserBookmarkUpdateArgs>(args: SelectSubset<T, UserBookmarkUpdateArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more UserBookmarks.
@@ -8314,36 +7528,6 @@ export namespace Prisma {
     updateMany<T extends UserBookmarkUpdateManyArgs>(args: SelectSubset<T, UserBookmarkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserBookmarks and returns the data updated in the database.
-     * @param {UserBookmarkUpdateManyAndReturnArgs} args - Arguments to update many UserBookmarks.
-     * @example
-     * // Update many UserBookmarks
-     * const userBookmark = await prisma.userBookmark.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more UserBookmarks and only return the `id`
-     * const userBookmarkWithIdOnly = await prisma.userBookmark.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserBookmarkUpdateManyAndReturnArgs>(args: SelectSubset<T, UserBookmarkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one UserBookmark.
      * @param {UserBookmarkUpsertArgs} args - Arguments to update or create a UserBookmark.
      * @example
@@ -8360,7 +7544,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends UserBookmarkUpsertArgs>(args: SelectSubset<T, UserBookmarkUpsertArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UserBookmarkUpsertArgs>(args: SelectSubset<T, UserBookmarkUpsertArgs<ExtArgs>>): Prisma__UserBookmarkClient<$Result.GetResult<Prisma.$UserBookmarkPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -8500,9 +7684,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserBookmarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UserBookmarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8530,7 +7714,7 @@ export namespace Prisma {
 
   /**
    * Fields of the UserBookmark model
-   */
+   */ 
   interface UserBookmarkFieldRefs {
     readonly id: FieldRef<"UserBookmark", 'String'>
     readonly userid: FieldRef<"UserBookmark", 'String'>
@@ -8555,10 +7739,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserBookmarkInclude<ExtArgs> | null
@@ -8577,10 +7757,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserBookmarkInclude<ExtArgs> | null
@@ -8598,10 +7774,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserBookmark
      */
     select?: UserBookmarkSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8651,10 +7823,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserBookmarkInclude<ExtArgs> | null
@@ -8703,10 +7871,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserBookmarkInclude<ExtArgs> | null
@@ -8750,10 +7914,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserBookmarkInclude<ExtArgs> | null
@@ -8783,10 +7943,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * The data used to create many UserBookmarks.
      */
     data: UserBookmarkCreateManyInput | UserBookmarkCreateManyInput[]
@@ -8805,10 +7961,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserBookmark
      */
     select?: UserBookmarkSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8835,40 +7987,6 @@ export namespace Prisma {
      * Filter which UserBookmarks to update
      */
     where?: UserBookmarkWhereInput
-    /**
-     * Limit how many UserBookmarks to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * UserBookmark updateManyAndReturn
-   */
-  export type UserBookmarkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserBookmark
-     */
-    select?: UserBookmarkSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
-     * The data used to update UserBookmarks.
-     */
-    data: XOR<UserBookmarkUpdateManyMutationInput, UserBookmarkUncheckedUpdateManyInput>
-    /**
-     * Filter which UserBookmarks to update
-     */
-    where?: UserBookmarkWhereInput
-    /**
-     * Limit how many UserBookmarks to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserBookmarkIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -8879,10 +7997,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserBookmark
      */
     select?: UserBookmarkSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8910,10 +8024,6 @@ export namespace Prisma {
      */
     select?: UserBookmarkSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserBookmarkInclude<ExtArgs> | null
@@ -8931,10 +8041,6 @@ export namespace Prisma {
      * Filter which UserBookmarks to delete
      */
     where?: UserBookmarkWhereInput
-    /**
-     * Limit how many UserBookmarks to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -8945,10 +8051,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserBookmark
      */
     select?: UserBookmarkSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserBookmark
-     */
-    omit?: UserBookmarkOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9199,17 +8301,6 @@ export namespace Prisma {
     createdAt?: boolean
   }, ExtArgs["result"]["quranTransliteration"]>
 
-  export type QuranTransliterationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    sura?: boolean
-    aya?: boolean
-    rawText?: boolean
-    cleanText?: boolean
-    formattedText?: boolean
-    source?: boolean
-    createdAt?: boolean
-  }, ExtArgs["result"]["quranTransliteration"]>
-
   export type QuranTransliterationSelectScalar = {
     id?: boolean
     sura?: boolean
@@ -9221,7 +8312,6 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type QuranTransliterationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sura" | "aya" | "rawText" | "cleanText" | "formattedText" | "source" | "createdAt", ExtArgs["result"]["quranTransliteration"]>
 
   export type $QuranTransliterationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "QuranTransliteration"
@@ -9241,12 +8331,12 @@ export namespace Prisma {
 
   type QuranTransliterationGetPayload<S extends boolean | null | undefined | QuranTransliterationDefaultArgs> = $Result.GetResult<Prisma.$QuranTransliterationPayload, S>
 
-  type QuranTransliterationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<QuranTransliterationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type QuranTransliterationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuranTransliterationFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: QuranTransliterationCountAggregateInputType | true
     }
 
-  export interface QuranTransliterationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface QuranTransliterationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuranTransliteration'], meta: { name: 'QuranTransliteration' } }
     /**
      * Find zero or one QuranTransliteration that matches the filter.
@@ -9259,10 +8349,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends QuranTransliterationFindUniqueArgs>(args: SelectSubset<T, QuranTransliterationFindUniqueArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends QuranTransliterationFindUniqueArgs>(args: SelectSubset<T, QuranTransliterationFindUniqueArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one QuranTransliteration that matches the filter or throw an error with `error.code='P2025'`
+     * Find one QuranTransliteration that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {QuranTransliterationFindUniqueOrThrowArgs} args - Arguments to find a QuranTransliteration
      * @example
@@ -9273,7 +8363,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends QuranTransliterationFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranTransliterationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends QuranTransliterationFindUniqueOrThrowArgs>(args: SelectSubset<T, QuranTransliterationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first QuranTransliteration that matches the filter.
@@ -9288,7 +8378,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends QuranTransliterationFindFirstArgs>(args?: SelectSubset<T, QuranTransliterationFindFirstArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends QuranTransliterationFindFirstArgs>(args?: SelectSubset<T, QuranTransliterationFindFirstArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first QuranTransliteration that matches the filter or
@@ -9304,7 +8394,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends QuranTransliterationFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranTransliterationFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends QuranTransliterationFindFirstOrThrowArgs>(args?: SelectSubset<T, QuranTransliterationFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more QuranTransliterations that matches the filter.
@@ -9322,7 +8412,7 @@ export namespace Prisma {
      * const quranTransliterationWithIdOnly = await prisma.quranTransliteration.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends QuranTransliterationFindManyArgs>(args?: SelectSubset<T, QuranTransliterationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends QuranTransliterationFindManyArgs>(args?: SelectSubset<T, QuranTransliterationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a QuranTransliteration.
@@ -9336,7 +8426,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends QuranTransliterationCreateArgs>(args: SelectSubset<T, QuranTransliterationCreateArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends QuranTransliterationCreateArgs>(args: SelectSubset<T, QuranTransliterationCreateArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many QuranTransliterations.
@@ -9364,7 +8454,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many QuranTransliterations and only return the `id`
-     * const quranTransliterationWithIdOnly = await prisma.quranTransliteration.createManyAndReturn({
+     * const quranTransliterationWithIdOnly = await prisma.quranTransliteration.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -9374,7 +8464,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends QuranTransliterationCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranTransliterationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends QuranTransliterationCreateManyAndReturnArgs>(args?: SelectSubset<T, QuranTransliterationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a QuranTransliteration.
@@ -9388,7 +8478,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends QuranTransliterationDeleteArgs>(args: SelectSubset<T, QuranTransliterationDeleteArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends QuranTransliterationDeleteArgs>(args: SelectSubset<T, QuranTransliterationDeleteArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one QuranTransliteration.
@@ -9405,7 +8495,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends QuranTransliterationUpdateArgs>(args: SelectSubset<T, QuranTransliterationUpdateArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends QuranTransliterationUpdateArgs>(args: SelectSubset<T, QuranTransliterationUpdateArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more QuranTransliterations.
@@ -9441,36 +8531,6 @@ export namespace Prisma {
     updateMany<T extends QuranTransliterationUpdateManyArgs>(args: SelectSubset<T, QuranTransliterationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more QuranTransliterations and returns the data updated in the database.
-     * @param {QuranTransliterationUpdateManyAndReturnArgs} args - Arguments to update many QuranTransliterations.
-     * @example
-     * // Update many QuranTransliterations
-     * const quranTransliteration = await prisma.quranTransliteration.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more QuranTransliterations and only return the `id`
-     * const quranTransliterationWithIdOnly = await prisma.quranTransliteration.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends QuranTransliterationUpdateManyAndReturnArgs>(args: SelectSubset<T, QuranTransliterationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one QuranTransliteration.
      * @param {QuranTransliterationUpsertArgs} args - Arguments to update or create a QuranTransliteration.
      * @example
@@ -9487,7 +8547,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends QuranTransliterationUpsertArgs>(args: SelectSubset<T, QuranTransliterationUpsertArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends QuranTransliterationUpsertArgs>(args: SelectSubset<T, QuranTransliterationUpsertArgs<ExtArgs>>): Prisma__QuranTransliterationClient<$Result.GetResult<Prisma.$QuranTransliterationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -9627,7 +8687,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__QuranTransliterationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__QuranTransliterationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9656,7 +8716,7 @@ export namespace Prisma {
 
   /**
    * Fields of the QuranTransliteration model
-   */
+   */ 
   interface QuranTransliterationFieldRefs {
     readonly id: FieldRef<"QuranTransliteration", 'BigInt'>
     readonly sura: FieldRef<"QuranTransliteration", 'BigInt'>
@@ -9679,10 +8739,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * Filter, which QuranTransliteration to fetch.
      */
     where: QuranTransliterationWhereUniqueInput
@@ -9697,10 +8753,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * Filter, which QuranTransliteration to fetch.
      */
     where: QuranTransliterationWhereUniqueInput
@@ -9714,10 +8766,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranTransliteration
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
     /**
      * Filter, which QuranTransliteration to fetch.
      */
@@ -9763,10 +8811,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * Filter, which QuranTransliteration to fetch.
      */
     where?: QuranTransliterationWhereInput
@@ -9811,10 +8855,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * Filter, which QuranTransliterations to fetch.
      */
     where?: QuranTransliterationWhereInput
@@ -9854,10 +8894,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * The data needed to create a QuranTransliteration.
      */
     data: XOR<QuranTransliterationCreateInput, QuranTransliterationUncheckedCreateInput>
@@ -9883,10 +8919,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * The data used to create many QuranTransliterations.
      */
     data: QuranTransliterationCreateManyInput | QuranTransliterationCreateManyInput[]
@@ -9901,10 +8933,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranTransliteration
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
     /**
      * The data needed to update a QuranTransliteration.
      */
@@ -9927,36 +8955,6 @@ export namespace Prisma {
      * Filter which QuranTransliterations to update
      */
     where?: QuranTransliterationWhereInput
-    /**
-     * Limit how many QuranTransliterations to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * QuranTransliteration updateManyAndReturn
-   */
-  export type QuranTransliterationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the QuranTransliteration
-     */
-    select?: QuranTransliterationSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
-     * The data used to update QuranTransliterations.
-     */
-    data: XOR<QuranTransliterationUpdateManyMutationInput, QuranTransliterationUncheckedUpdateManyInput>
-    /**
-     * Filter which QuranTransliterations to update
-     */
-    where?: QuranTransliterationWhereInput
-    /**
-     * Limit how many QuranTransliterations to update.
-     */
-    limit?: number
   }
 
   /**
@@ -9967,10 +8965,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranTransliteration
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
     /**
      * The filter to search for the QuranTransliteration to update in case it exists.
      */
@@ -9994,10 +8988,6 @@ export namespace Prisma {
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
-    /**
      * Filter which QuranTransliteration to delete.
      */
     where: QuranTransliterationWhereUniqueInput
@@ -10011,10 +9001,6 @@ export namespace Prisma {
      * Filter which QuranTransliterations to delete
      */
     where?: QuranTransliterationWhereInput
-    /**
-     * Limit how many QuranTransliterations to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -10025,10 +9011,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the QuranTransliteration
      */
     select?: QuranTransliterationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the QuranTransliteration
-     */
-    omit?: QuranTransliterationOmit<ExtArgs> | null
   }
 
 
@@ -10167,7 +9149,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
@@ -10583,7 +9565,7 @@ export namespace Prisma {
     notes?: StringNullableFilter<"UserBookmark"> | string | null
     createdat?: DateTimeFilter<"UserBookmark"> | Date | string
     updatedat?: DateTimeFilter<"UserBookmark"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type UserBookmarkOrderByWithRelationInput = {
@@ -10615,7 +9597,7 @@ export namespace Prisma {
     notes?: StringNullableFilter<"UserBookmark"> | string | null
     createdat?: DateTimeFilter<"UserBookmark"> | Date | string
     updatedat?: DateTimeFilter<"UserBookmark"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "userid_surahid_versenumber">
 
   export type UserBookmarkOrderByWithAggregationInput = {
@@ -11629,7 +10611,7 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type UserScalarRelationFilter = {
+  export type UserRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
@@ -12244,6 +11226,46 @@ export namespace Prisma {
   }
 
 
+
+  /**
+   * Aliases for legacy arg types
+   */
+    /**
+     * @deprecated Use UserCountOutputTypeDefaultArgs instead
+     */
+    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use EnYusufaliDefaultArgs instead
+     */
+    export type EnYusufaliArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EnYusufaliDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuranSajdaDefaultArgs instead
+     */
+    export type QuranSajdaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuranSajdaDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuranSurahDefaultArgs instead
+     */
+    export type QuranSurahArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuranSurahDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuranTextDefaultArgs instead
+     */
+    export type QuranTextArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuranTextDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SurahDescriptionDefaultArgs instead
+     */
+    export type SurahDescriptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SurahDescriptionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserDefaultArgs instead
+     */
+    export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserBookmarkDefaultArgs instead
+     */
+    export type UserBookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserBookmarkDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuranTransliterationDefaultArgs instead
+     */
+    export type QuranTransliterationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuranTransliterationDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

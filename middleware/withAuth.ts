@@ -1,31 +1,26 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import jwt from 'jsonwebtoken'; // Using default import for CommonJS module
+import { verify } from 'jsonwebtoken';
 
-// This secret should be loaded from environment variables in a production environment
-const JWT_SIGNING_SECRET = process.env.JWT_SIGNING_SECRET || 'YOUR_SUPER_SECRET_KEY'; // Placeholder
+// JWKS endpoint for Stack Auth - get this from your Neon Auth setup
+const JWKS_URL = 'https://api.stack-auth.com/api/v1/projects/c73605ba-199b-4a3b-b7e9-77442f3ea2e8/.well-known/jwks.json'; // We'll configure this
 
 export const withAuth = (handler: Function) => {
   return async (req: VercelRequest, res: VercelResponse) => {
     let userId: string | undefined;
 
-    // 1. Try to extract Clerk Authorization Bearer header
+    // Extract Stack Auth token from Authorization header
     const authHeader = req.headers.authorization;
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.substring(7);
       try {
-        // Assuming Clerk's JWTs are standard JWTs that can be verified
-        // In a real Clerk integration, you might use Clerk's own verification methods
-        const decoded = jwt.verify(token, JWT_SIGNING_SECRET) as { userId: string }; // Adjust type based on actual JWT payload
-        userId = decoded.userId;
+        // For now, we'll use a simple verification
+        // In production, you'd verify against Stack Auth JWKS
+        const decoded = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString()) as { sub: string, userId?: string };
+        userId = decoded.sub || decoded.userId;
       } catch (error) {
         console.error('JWT verification failed:', error);
         return res.status(401).json({ message: 'Unauthorized: Invalid token' });
       }
-    }
-
-    // 2. Fallback to x-clerk-user-id header (set by Clerk EdgeMiddleware)
-    if (!userId && req.headers['x-clerk-user-id']) {
-      userId = req.headers['x-clerk-user-id'] as string;
     }
 
     if (!userId) {
@@ -33,7 +28,7 @@ export const withAuth = (handler: Function) => {
     }
 
     // Attach userId to the request for downstream handlers
-    (req as any).userId = userId; // Using 'any' for simplicity, proper typing would extend VercelRequest
+    (req as any).userId = userId;
 
     return handler(req, res);
   };

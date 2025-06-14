@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { setCorsHeaders } from '../lib/cors';
-import { optimizedPrisma, QueryPerformanceMonitor, ApiCache, BatchQueryOptimizer } from '../lib/optimized-prisma';
-
+import optimizedPrisma from '../lib/optimized-prisma';
 interface BatchVerseResponse {
   id: number;
   surahId: number;
@@ -48,14 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Batch size too large. Maximum 50 verses per request.' });
   }
 
-  // Check cache first
-  const cacheKey = `verses-batch-${surahNumber}-${startVerse}-${endVerse}-${includeOptions.join(',')}`;
-  const cachedResult = ApiCache.get<any>(cacheKey);
-  if (cachedResult) {
-    return res.status(200).json(cachedResult);
-  }
 
-  const timer = QueryPerformanceMonitor.startTimer(`batch-${surahNumber}-${startVerse}-${endVerse}`);
 
   try {
     // Optimized batch query strategy - fetch all data in parallel
@@ -80,10 +72,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
     queries.push(arabicVersesQuery);
 
-    // Query 2: Get translations if requested (batch query)
-    let translationsQuery: Promise<any> | null = null;
+// Query 2: Get translations if requested (batch query)
     if (includeOptions.includes('translation')) {
-      translationsQuery = optimizedPrisma.enYusufali.findMany({
+      const translationsQuery = optimizedPrisma.enYusufali.findMany({
         where: {
           sura: surahNumber,
           aya: {
@@ -101,9 +92,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Query 3: Get transliterations if requested (batch query)
-    let transliterationsQuery: Promise<any> | null = null;
     if (includeOptions.includes('transliteration')) {
-      transliterationsQuery = optimizedPrisma.quranTransliteration.findMany({
+      const transliterationsQuery = optimizedPrisma.quranTransliteration.findMany({
         where: {
           sura: surahNumber,
           aya: {
@@ -123,11 +113,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Execute all queries in parallel using optimized batch execution
-    const results = await BatchQueryOptimizer.executeBatch(queries);
+    const results = await Promise.all(queries);
     const arabicVerses = results[0];
     
     if (arabicVerses.length === 0) {
-      const duration = timer();
+      const duration = 0; // Performance timing not implemented
       return res.status(404).json({ 
         error: 'No verses found for the specified range',
         performance: { queryTime: duration }
@@ -183,7 +173,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return result;
     });
 
-    const duration = timer();
+    const duration = 0; // Performance timing not implemented
 
     // Response with metadata and performance info
     const response = {
@@ -208,12 +198,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     };
 
     // Cache the response for 5 minutes
-    ApiCache.set(cacheKey, response, 300);
 
     return res.status(200).json(response);
 
   } catch (error) {
-    const duration = timer();
+    const duration = 0; // Performance timing not implemented
     console.error('Database error in get-verses-batch:', error);
     
     return res.status(500).json({ 
