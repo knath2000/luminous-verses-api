@@ -3,6 +3,7 @@ import { prisma } from '../lib/prisma';
 import { withAuth } from '../../middleware/withAuth';
 import { z } from 'zod';
 import { setCorsHeaders } from '../lib/cors';
+export const runtime = 'nodejs'
 
 // Define Zod schemas
 const bookmarkSchema = z.object({

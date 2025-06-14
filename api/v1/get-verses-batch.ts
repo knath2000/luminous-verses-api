@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { setCorsHeaders } from '../lib/cors';
 import optimizedPrisma from '../lib/optimized-prisma';
+export const runtime = 'nodejs'
 interface BatchVerseResponse {
   id: number;
   surahId: number;
