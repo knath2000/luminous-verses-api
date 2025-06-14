@@ -1,18 +1,12 @@
 import { PrismaClient } from '../../prisma/generated/client'
-import { PrismaNeon } from '@prisma/adapter-neon'
-import { Pool } from '@neondatabase/serverless'
-import ws from 'ws'
 
-const connectionString = process.env.DATABASE_URL!
-
-// Configure WebSocket for Vercel Node.js runtime
-const pool = new Pool({ 
-  connectionString,
-  // @ts-ignore - ws types compatibility
-  webSocketConstructor: ws
+// Use standard Prisma client - works reliably with Vercel
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL
+    }
+  }
 });
-
-const adapter = new PrismaNeon(pool);
-const prisma = new PrismaClient({ adapter });
 
 export default prisma;
