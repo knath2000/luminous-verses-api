@@ -2,6 +2,11 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export const withAuth = (handler: Function) => {
   return async (req: VercelRequest, res: VercelResponse) => {
+    // Bypass authentication for OPTIONS requests (CORS preflight)
+    if (req.method === 'OPTIONS') {
+      return handler(req, res);
+    }
+
     let userId: string | undefined;
 
     // Extract Stack Auth token from Authorization header
