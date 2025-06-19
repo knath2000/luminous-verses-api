@@ -1,25 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { setCorsHeaders as setCorsHeadersRoot } from '../../lib/cors';
 
-const ALLOWED_ORIGINS = [
-  'https://quranastroweb.vercel.app',
-  'https://luminous-verses.vercel.app',
-  'http://localhost:4321',
-  'http://localhost:3000'
-];
-
+// Thin wrapper to preserve (req, res) signature used by api/v1 handlers
 export function setCorsHeaders(req: VercelRequest, res: VercelResponse) {
-  // Safely get the origin header
-  const origin = req?.headers?.origin;
-  
-  if (origin && ALLOWED_ORIGINS.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    // Fallback for development - allow localhost:3000
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  }
-  
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-Requested-With');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Max-Age', '86400');
+  const origin = req.headers?.origin;
+  setCorsHeadersRoot(res, origin, req.method);
 }
